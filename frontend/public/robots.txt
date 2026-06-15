@@ -1,0 +1,16 @@
+# MintForge robots.txt
+# https://mintforge.dev
+
+User-agent: *
+Allow: /
+
+# Disallow private areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+
+# Sitemap location
+Sitemap: https://mintforge.dev/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 10
