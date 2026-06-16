@@ -19,7 +19,7 @@
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "mintforge-sdk": "^0.1.3"
+    "stacksminimint-sdk": "^0.2.1"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",
