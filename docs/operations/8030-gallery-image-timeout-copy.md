@@ -1,3 +1,0 @@
-# gallery image timeout copy
-
-Maintenance check: Review gallery image timeout copy behavior before the next MintForge production release.
