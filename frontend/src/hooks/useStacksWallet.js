@@ -203,7 +203,7 @@ async function requestWalletAddress(method) {
     return getStacksAddress(await withTimeout(
       requestStacksWallet(method, { network: WALLET_CONNECT_NETWORK }),
       WALLET_FALLBACK_TIMEOUT_MS,
-      `${method} wallet request timed out`
+      ERR_WALLET_REQUEST_TIMEOUT
     ));
   } catch (error) {
     if (error?.code !== -31001) {
@@ -220,7 +220,7 @@ async function selectWalletAddress() {
       'getAddresses'
     ),
     WALLET_SELECT_TIMEOUT_MS,
-    'Wallet connection timed out. Reopen your wallet extension, approve the request, then try again.'
+    ERR_WALLET_CONNECT_TIMEOUT
   );
   return {
     address: getStacksAddress(response),
@@ -264,14 +264,13 @@ export function useStacksWallet() {
       setCachedWalletAddress(nextAddress);
 
       if (!nextAddress) {
-        const message = 'Wallet connected but did not return a Stacks address. Confirm the wallet is unlocked on Stacks mainnet and try again.';
-        setError(message);
-        console.error(message, response);
+        setError(ERR_WALLET_NO_ADDRESS);
+        console.error(ERR_WALLET_NO_ADDRESS, response);
       }
     } catch (error) {
       if (error?.code !== -31001) {
-        setError(error?.message || 'Failed to connect Stacks wallet.');
-        console.error('Failed to connect Stacks wallet:', error);
+        setError(error?.message || ERR_WALLET_CONNECT_FAILED);
+        console.error(ERR_WALLET_CONNECT_FAILED, error);
       }
     } finally {
       setIsConnecting(false);

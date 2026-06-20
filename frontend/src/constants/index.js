@@ -146,6 +146,20 @@ export const URL_STACKS_DOCS = 'https://docs.stacks.co/';
 export const URL_GITHUB_REPO = 'https://github.com/AK-Bit-Lab/MintForge';
 export const URL_SIP009 = 'https://docs.stacks.co/reference/sips/sip009';
 
+// --- Error Messages ---
+
+/** General error when a wallet request times out */
+export const ERR_WALLET_REQUEST_TIMEOUT = 'Wallet request timed out. Please try again.';
+
+/** Error when the initial wallet connection prompt times out */
+export const ERR_WALLET_CONNECT_TIMEOUT = 'Wallet connection timed out. Reopen your wallet extension, approve the request, then try again.';
+
+/** Error when the wallet returns a successful connection but no valid Stacks address */
+export const ERR_WALLET_NO_ADDRESS = 'Wallet connected but did not return a Stacks address. Confirm the wallet is unlocked on Stacks mainnet and try again.';
+
+/** Generic fallback error for wallet connection failures */
+export const ERR_WALLET_CONNECT_FAILED = 'Failed to connect Stacks wallet.';
+
 // --- Explorer URLs ---
 // Base URLs for Stacks explorers.
 
