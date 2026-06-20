@@ -177,6 +177,14 @@ export const GALLERY_SKELETON_COUNT = 4;
 export const RECENT_MINTS_SKELETON_COUNT = 3;
 export const STATS_SKELETON_COUNT = 4;
 
+// --- Breakpoints ---
+
+export const BREAKPOINT_MOBILE_SM = 480;
+export const BREAKPOINT_MOBILE = 640;
+export const BREAKPOINT_TABLET = 720;
+export const BREAKPOINT_TABLET_LG = 900;
+export const BREAKPOINT_DESKTOP = 1024;
+
 // --- Explorer URLs ---
 // Base URLs for Stacks explorers.
 
