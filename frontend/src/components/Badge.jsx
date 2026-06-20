@@ -12,10 +12,19 @@ import './Badge.css'
 
 /**
  * Compact label for status, category, and metadata chips.
+ * 
+ * @param {Object} props - Component properties.
+ * @param {React.ReactNode} props.children - Badge content.
+ * @param {string} [props.variant='default'] - Visual style variant.
+ * @param {string} [props.size='medium'] - Size multiplier ('small', 'medium', 'large').
+ * @param {boolean} [props.dot=false] - Whether to render a leading status dot indicator.
+ * @param {string} [props.className=''] - Additional CSS classes.
+ * @param {string} [props.title] - Optional tooltip text.
+ * @returns {JSX.Element|null} The badge span element.
  */
-export function Badge({ 
-  children, 
-  variant = 'default', 
+export function Badge({
+  children,
+  variant = 'default',
   size = 'medium',
   dot = false,
   className = '',
