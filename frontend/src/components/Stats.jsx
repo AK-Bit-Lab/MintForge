@@ -11,9 +11,7 @@ import { useState, useEffect, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import './Stats.css'
 import { formatExactTime, formatLimit, formatSTX } from '../utils/collection'
-
-/** Number of skeleton stat cards to show while collection data is loading. */
-const STATS_SKELETON_COUNT = 4;
+import { STATS_SKELETON_COUNT } from '../constants'
 /** Minimum receipt count returned by the contract; negative values are clamped to this. */
 const STATS_MIN_RECEIPT_COUNT = 0;
 

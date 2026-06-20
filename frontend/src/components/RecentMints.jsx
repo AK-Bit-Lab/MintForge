@@ -11,9 +11,7 @@ import PropTypes from 'prop-types'
 import './RecentMints.css'
 import { formatAddress, formatExactTime, formatRelativeTime } from '../utils/collection'
 import { getExplorerUrl } from '../contract'
-
-/** Number of skeleton placeholder rows to show while recent mints are loading. */
-const RECENT_MINTS_SKELETON_COUNT = 3;
+import { RECENT_MINTS_SKELETON_COUNT } from '../constants'
 
 /**
  * normalizeMintTimestamp - Convert a mint timestamp to milliseconds.
@@ -131,8 +129,8 @@ export function RecentMints({ items = [] }) {
   }
 
   return (
-      <section className="recent-mints" aria-label="Recent mints" aria-describedby="recent-mints-subtitle" title="Recent wallet mint submissions" data-state="ready" data-count={String(recentMints.length)} aria-live="polite" aria-atomic="true">
-        <h2 className="recent-mints__title">Recent Mints</h2>
+    <section className="recent-mints" aria-label="Recent mints" aria-describedby="recent-mints-subtitle" title="Recent wallet mint submissions" data-state="ready" data-count={String(recentMints.length)} aria-live="polite" aria-atomic="true">
+      <h2 className="recent-mints__title">Recent Mints</h2>
       <p className="recent-mints__subtitle" id="recent-mints-subtitle" title="Recent activity updates after wallet submission">Fresh activity from this browser appears here as soon as a wallet submission is sent.</p>
       <div className="recent-mints__list" role="list" aria-label="Recent mint activity" title="Recent mint activity">
         {recentMints.map((mint) => {

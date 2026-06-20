@@ -170,6 +170,13 @@ export const SUCCESS_DISCONNECT = 'Wallet disconnected securely.';
 export const FORMAT_DATE_STYLE = 'medium';
 export const FORMAT_TIME_STYLE = 'short';
 
+// --- Pagination & UI Limits ---
+
+export const SKELETON_MAX_COUNT = 40;
+export const GALLERY_SKELETON_COUNT = 4;
+export const RECENT_MINTS_SKELETON_COUNT = 3;
+export const STATS_SKELETON_COUNT = 4;
+
 // --- Explorer URLs ---
 // Base URLs for Stacks explorers.
 

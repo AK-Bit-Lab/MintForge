@@ -9,9 +9,7 @@
 
 import PropTypes from 'prop-types'
 import './LoadingSkeleton.css'
-
-/** Maximum allowed skeleton count to prevent runaway rendering. */
-const SKELETON_MAX_COUNT = 40;
+import { SKELETON_MAX_COUNT } from '../constants';
 
 /**
  * Renders one or more non-interactive placeholder blocks for loading content.
