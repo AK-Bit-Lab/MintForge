@@ -40,11 +40,11 @@ Stored in the `contracts/` directory, the ecosystem consists of three actively m
 
 | Contract | Purpose | Standard |
 |----------|---------|----------|
-| `minimint-core-v-i27` | Base implementation, mint controller, and metadata management | SIP-009 |
-| `minimint-token-v-i27` | Reward token contract used by staking and payout flows | SIP-010 |
-| `minimint-hub-v-i27` | Central escrow for staking + marketplace, and consolidated SIP-010 reward token logic | SIP-010 + Custom |
+| `minimint-core-v-i28` | Base implementation, mint controller, and metadata management | SIP-009 |
+| `minimint-token-v-i28` | Reward token contract used by staking and payout flows | SIP-010 |
+| `minimint-hub-v-i28` | Central escrow for staking + marketplace, and consolidated SIP-010 reward token logic | SIP-010 + Custom |
 
-The legacy SIP-010 function surface (`transfer`, `mint`, `get-balance`, `get-total-supply`, `set-token-uri`, and related read-onlys) is preserved on `minimint-hub-v-i27`.
+The legacy SIP-010 function surface (`transfer`, `mint`, `get-balance`, `get-total-supply`, `set-token-uri`, and related read-onlys) is preserved on `minimint-hub-v-i28`.
 
 > [!NOTE]
 > The frontend targets the tracked `minimint-core-v-i27` and `minimint-hub-v-i27` contracts by default. Use environment overrides for contract names and addresses when you need to point the app at a different deployment.
