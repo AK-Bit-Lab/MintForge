@@ -11,10 +11,17 @@ import { useCallback } from 'react'
 import PropTypes from 'prop-types'
 import './CopyButton.css'
 import { useClipboard } from '../hooks'
-import { CLIPBOARD_TIMEOUT_MS } from '../constants'
+import { CLIPBOARD_TIMEOUT_MS, SUCCESS_COPIED } from '../constants'
 
 /**
  * Button that copies a normalized text value and announces copy state changes.
+ * 
+ * @param {Object} props - Component properties.
+ * @param {string|number} [props.text] - The text content to copy to the OS clipboard.
+ * @param {string} [props.label='Copy'] - Visual label and aria-label before copying.
+ * @param {string} [props.successLabel='Copied'] - Visual label and aria-label after copying.
+ * @param {string} [props.className=''] - Additional CSS classes.
+ * @returns {JSX.Element} The button element.
  */
 export function CopyButton({ text, label = 'Copy', successLabel = 'Copied', className = '' }) {
   const { copied, copy } = useClipboard(CLIPBOARD_TIMEOUT_MS)
