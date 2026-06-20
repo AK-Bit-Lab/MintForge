@@ -11,7 +11,7 @@
 ;; @version 1.0.0
 ;; @notice This contract is SIP-009 compliant.
 
-(impl-trait .sip-009-nft-trait-v-i27.sip-009-nft-trait)
+(impl-trait .sip-009-nft-trait-v-i28.sip-009-nft-trait)
 
 ;; --- Error Codes ---
 ;; Standardized error codes for consistent error handling across the ecosystem.
@@ -37,8 +37,8 @@
 ;; Immutable configuration values for the contract.
 
 ;; MINT-FEE: Fee charged per mint operation in micro-STX.
-;; u1000 = 0.001 STX (1 STX = 1,000,000 micro-STX).
-(define-constant MINT-FEE u1000)
+;; u0 = 0 STX (Minting is free).
+(define-constant MINT-FEE u0)
 
 ;; MAX-SUPPLY: Maximum number of NFTs that can ever be minted.
 ;; u10000 = 10,000 total NFTs in the collection.
@@ -93,7 +93,7 @@
     (asserts! (or 
                 (is-eq tx-sender sender)
                 ;; Whitelist the Hub contract so it can move NFTs in escrow natively
-                (is-eq contract-caller .minimint-hub-v-i27)
+                (is-eq contract-caller .minimint-hub-v-i28)
               ) ERR-NOT-AUTHORIZED)
     (nft-transfer? minimint token-id sender recipient)
   )
@@ -119,8 +119,7 @@
     (asserts! (not (var-get is-paused)) ERR-PAUSED)
     (asserts! (<= token-id MAX-SUPPLY) ERR-SOLD-OUT)
     
-    ;; Fee collection
-    (try! (stx-transfer? MINT-FEE tx-sender (var-get contract-owner)))
+    ;; Fee collection removed for free minting
     
     ;; Mint NFT
     (try! (nft-mint? minimint token-id tx-sender))

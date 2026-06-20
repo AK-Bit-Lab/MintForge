@@ -15,44 +15,44 @@ requirements = []  # External contract requirements (none for this project)
 # SIP standards implemented as traits for type checking and trait compliance.
 # These are stored in archive/ as they are reference implementations, not deployed.
 
-[contracts.sip-009-nft-trait-v-i27]
-path = 'contracts/archive/sip-009-nft-trait-v-i27.clar'
+[contracts.sip-009-nft-trait-v-i28]
+path = 'contracts/archive/sip-009-nft-trait-v-i28.clar'
 clarity_version = 2
 epoch = 2.4
 
-[contracts.sip-010-trait-ft-standard-v-i27]
-path = 'contracts/archive/sip-010-trait-ft-standard-v-i27.clar'
+[contracts.sip-010-trait-ft-standard-v-i28]
+path = 'contracts/archive/sip-010-trait-ft-standard-v-i28.clar'
 clarity_version = 2
 epoch = 2.4
 
 # --- Core Contracts ---
 # Active contracts deployed to Stacks mainnet/testnet.
 
-[contracts.minimint-core-v-i27]
+[contracts.minimint-core-v-i28]
 # Core NFT contract implementing SIP-009 standard
-path = 'contracts/minimint-core-v-i27.clar'
+path = 'contracts/minimint-core-v-i28.clar'
 clarity_version = 2
 epoch = 2.4
 
-[contracts.minimint-token-v-i27]
+[contracts.minimint-token-v-i28]
 # SIP-010 compliant reward token contract
-path = 'contracts/minimint-token-v-i27.clar'
+path = 'contracts/minimint-token-v-i28.clar'
 clarity_version = 2
 epoch = 2.4
 
-[contracts.minimint-hub-v-i27]
+[contracts.minimint-hub-v-i28]
 # Hub contract for staking, marketplace, and reward distribution
-path = 'contracts/minimint-hub-v-i27.clar'
+path = 'contracts/minimint-hub-v-i28.clar'
 clarity_version = 2
 epoch = 2.4
 # Deployment order: core and token must be deployed before hub
-depends_on = ["minimint-core-v-i27", "minimint-token-v-i27"]
+depends_on = ["minimint-core-v-i28", "minimint-token-v-i28"]
 
 # --- Static Analysis Configuration ---
 # Automated code analysis passes run during `clarinet check`.
 
 [repl.analysis]
-passes = ['call_checker', 'check_checker']
+passes = ["check_checker"]
 
 [repl.analysis.check_checker]
 # Check checker settings for security analysis

@@ -11,8 +11,8 @@
 ;; @version 1.0.0
 ;; @notice Manages staking, marketplace, and reward logic.
 
-;; Keep this path pinned to the local v-i27 SIP trait contract for Clarinet compatibility.
-(use-trait nft-trait .sip-009-nft-trait-v-i27.sip-009-nft-trait)
+;; Keep this path pinned to the local v-i28 SIP trait contract for Clarinet compatibility.
+(use-trait nft-trait .sip-009-nft-trait-v-i28.sip-009-nft-trait)
 
 ;; --- Error Codes ---
 ;; Standardized error codes for marketplace and staking operations.
@@ -61,7 +61,7 @@
 ;; CORE-CONTRACT: Reference to the official minimint-core contract.
 ;; Used to validate that NFTs being staked/listed are from the correct collection.
 ;; This is a security measure to prevent unauthorized NFTs from being used.
-(define-constant CORE-CONTRACT .minimint-core-v-i27)
+(define-constant CORE-CONTRACT .minimint-core-v-i28)
 
 ;; --- Staking Data ---
 ;; stakers: Maps token IDs to the address that staked them.
@@ -206,7 +206,7 @@
 
     ;; Mint pending rewards natively targeting minimint-token
     (if (> pending-rewards u0)
-        (unwrap-panic (contract-call? .minimint-token-v-i27 mint pending-rewards caller))
+        (unwrap-panic (contract-call? .minimint-token-v-i28 mint pending-rewards caller))
         true
     )
 
@@ -242,7 +242,7 @@
 
     ;; Mint pending rewards
     (if (> pending-rewards u0)
-        (unwrap-panic (contract-call? .minimint-token-v-i27 mint pending-rewards caller))
+        (unwrap-panic (contract-call? .minimint-token-v-i28 mint pending-rewards caller))
         true
     )
 
@@ -272,7 +272,7 @@
     )
     (asserts! (> pending-rewards u0) (ok pending-rewards))
 
-    (unwrap-panic (contract-call? .minimint-token-v-i27 mint pending-rewards caller))
+    (unwrap-panic (contract-call? .minimint-token-v-i28 mint pending-rewards caller))
 
     (map-set staking-info caller {
       staked-balance: (get staked-balance current-info),

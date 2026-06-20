@@ -1,5 +1,6 @@
 {
   "$schema": "https://openapi.vercel.io/vercel.json",
+  "name": "mintforge",
   "framework": "vite",
   "buildCommand": "cd frontend && npm ci && npm run build",
   "outputDirectory": "frontend/dist",

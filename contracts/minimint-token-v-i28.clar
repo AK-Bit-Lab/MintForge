@@ -3,7 +3,7 @@
 ;; SIP-010 reward token used by the hub contract for staking payouts.
 ;; Mint is restricted to the hub contract; owner may update the token URI.
 
-(impl-trait .sip-010-trait-ft-standard-v-i27.sip-010-trait)
+(impl-trait .sip-010-trait-ft-standard-v-i28.sip-010-trait)
 
 (define-constant ERR-NOT-AUTHORIZED (err u100))
 
@@ -40,7 +40,7 @@
 
 (define-public (mint (amount uint) (recipient principal))
   (begin
-    (asserts! (is-eq contract-caller .minimint-hub-v-i27) ERR-NOT-AUTHORIZED)
+    (asserts! (is-eq contract-caller .minimint-hub-v-i28) ERR-NOT-AUTHORIZED)
     (ft-mint? minimint-token amount recipient)))
 
 (define-public (set-token-uri (new-uri (optional (string-utf8 256))))

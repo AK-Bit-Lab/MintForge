@@ -85,3 +85,4 @@ tmp/
 # --- Misc ---
 *.pem
 *.key
+.vercel
