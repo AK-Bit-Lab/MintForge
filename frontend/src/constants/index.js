@@ -111,6 +111,18 @@ export const MINT_ACTIVITY_POLL_INTERVAL_MS = 30_000;
 /** Delay in ms before showing a loading spinner to avoid flash for fast responses */
 export const LOADING_DEBOUNCE_MS = 200;
 
+// --- Local Storage Keys ---
+// Keys used for persisting user preferences and session state.
+
+/** Local storage key for persisting the wallet address */
+export const WALLET_ADDRESS_STORAGE_KEY = 'mintforge:wallet-address';
+
+/** Local storage key for persisting the gallery view mode (grid or list) */
+export const GALLERY_VIEW_STORAGE_KEY = 'gallery-view-mode';
+
+/** Local storage key for persisting the selected UI theme (light or dark) */
+export const THEME_STORAGE_KEY = 'theme';
+
 // --- Network Labels ---
 // Human-readable labels for network display.
 

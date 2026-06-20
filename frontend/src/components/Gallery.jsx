@@ -12,13 +12,12 @@ import './Gallery.css'
 import { getTokenExplorerUrl } from '../contract'
 import { formatAddress } from '../utils/collection'
 import { useLocalStorage } from '../hooks'
+import { GALLERY_VIEW_STORAGE_KEY } from '../constants'
 
 /** Delay in ms before mock NFT data is shown, simulating a network load. */
 const GALLERY_MOCK_LOAD_DELAY_MS = 400;
 /** Number of skeleton placeholder cards to show while the gallery is loading. */
 const GALLERY_SKELETON_COUNT = 4;
-/** localStorage key used to persist the gallery view mode (grid or list). */
-const GALLERY_VIEW_STORAGE_KEY = 'gallery-view-mode';
 
 export function Gallery() {
   const [nfts, setNfts] = useState([])
@@ -131,7 +130,7 @@ export function Gallery() {
       return nft.id.toString() === idSearch
     }
     return nftName.includes(normalizedSearchTerm) ||
-           nftOwner.includes(normalizedSearchTerm)
+      nftOwner.includes(normalizedSearchTerm)
   }), [nfts, normalizedSearchTerm])
   const hasSearch = searchTerm.trim().length > 0
   const filteredLabel = filteredNfts.length === 1 ? 'item' : 'items'
@@ -319,13 +318,13 @@ export function Gallery() {
             <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true" focusable="false">
               <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" />
             </svg>
-            </button>
-          </div>
+          </button>
         </div>
+      </div>
 
-        <p className="gallery__search-hint" id={searchHintId}>
-          Search by name, owner, or <span>#token</span>. Press Escape to clear.
-        </p>
+      <p className="gallery__search-hint" id={searchHintId}>
+        Search by name, owner, or <span>#token</span>. Press Escape to clear.
+      </p>
 
       <p className="gallery__results" aria-live="polite" title="Current gallery result count">
         Showing {filteredNfts.length} {filteredLabel}

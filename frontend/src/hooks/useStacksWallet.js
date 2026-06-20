@@ -16,9 +16,9 @@ import {
 import { STACKS_MAINNET, STACKS_TESTNET } from '@stacks/network';
 import { NETWORK } from '../contract';
 import { formatAddress } from '../utils/collection';
+import { WALLET_ADDRESS_STORAGE_KEY } from '../constants';
 
 /** Permissions granted to this app when the user connects their Stacks wallet. */
-const WALLET_ADDRESS_STORAGE_KEY = 'mintforge:wallet-address';
 const WALLET_CONNECT_NETWORK = NETWORK === 'testnet' ? 'testnet' : 'mainnet';
 const WALLET_SELECT_TIMEOUT_MS = 45_000;
 const WALLET_FALLBACK_TIMEOUT_MS = 8_000;

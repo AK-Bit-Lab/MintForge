@@ -9,6 +9,7 @@
  */
 import React, { createContext, useCallback, useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { THEME_STORAGE_KEY } from '../constants';
 
 const ThemeContext = createContext();
 
@@ -16,7 +17,7 @@ export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
     if (typeof window === 'undefined') return 'dark';
     try {
-      const savedTheme = window.localStorage.getItem('theme');
+      const savedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
       if (savedTheme === 'light' || savedTheme === 'dark') return savedTheme;
     } catch (error) {
       console.warn('Unable to access stored theme', error);
@@ -28,7 +29,7 @@ export function ThemeProvider({ children }) {
     if (typeof window === 'undefined' || typeof document === 'undefined') return;
     document.documentElement.setAttribute('data-theme', theme);
     try {
-      window.localStorage.setItem('theme', theme);
+      window.localStorage.setItem(THEME_STORAGE_KEY, theme);
     } catch (error) {
       console.warn('Unable to persist theme preference', error);
     }
