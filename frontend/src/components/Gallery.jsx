@@ -12,13 +12,17 @@ import './Gallery.css'
 import { getTokenExplorerUrl } from '../contract'
 import { formatAddress } from '../utils/collection'
 import { useLocalStorage } from '../hooks'
-import { GALLERY_VIEW_STORAGE_KEY } from '../constants'
+import { GALLERY_VIEW_STORAGE_KEY, GALLERY_SKELETON_COUNT } from '../constants'
 
 /** Delay in ms before mock NFT data is shown, simulating a network load. */
 const GALLERY_MOCK_LOAD_DELAY_MS = 400;
-/** Number of skeleton placeholder cards to show while the gallery is loading. */
-const GALLERY_SKELETON_COUNT = 4;
 
+/**
+ * Interactive gallery grid/list for browsing the NFT collection.
+ * Includes search, view mode toggling, and a detail modal for tokens.
+ * 
+ * @returns {JSX.Element} The rendered gallery section.
+ */
 export function Gallery() {
   const [nfts, setNfts] = useState([])
   const [isLoading, setIsLoading] = useState(true)
