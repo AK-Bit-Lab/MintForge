@@ -9,25 +9,24 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { useWallet, useContract, useToast } from './hooks'
-import { SCROLL_THRESHOLD, MAX_RECENT_MINTS } from './constants'
-import { 
-  Header, 
-  MintCard, 
-  Stats, 
-  RecentMints, 
-  Gallery, 
-  Footer, 
+import {
+  SCROLL_THRESHOLD,
+  MAX_RECENT_MINTS,
+  APP_BASE_TITLE,
+  APP_CONNECTED_TITLE_PREFIX,
+  MINT_SUCCESS_TOAST_MESSAGE
+} from './constants'
+import {
+  Header,
+  MintCard,
+  Stats,
+  RecentMints,
+  Gallery,
+  Footer,
   ErrorBoundary,
   Toast
 } from './components'
 import './App.css'
-
-/** Base document title shown at all times including when wallet is disconnected. */
-const APP_BASE_TITLE = 'MintForge - NFT Minting on Stacks';
-/** Document title prefix shown when a wallet is connected. */
-const APP_CONNECTED_TITLE_PREFIX = 'Connected';
-/** Toast message shown when a mint transaction is successfully submitted. */
-const MINT_SUCCESS_TOAST_MESSAGE = 'Transaction sent to Stacks.';
 
 export function getAppConnectionState({ isConnected, isConnecting }) {
   if (isConnected) return 'connected'

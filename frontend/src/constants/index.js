@@ -42,6 +42,15 @@ export const MAX_SUPPLY = 10000;
 // --- UI Constants ---
 // Values used for consistent UI behavior across components.
 
+/** Base document title shown at all times including when wallet is disconnected. */
+export const APP_BASE_TITLE = 'MintForge - NFT Minting on Stacks';
+
+/** Document title prefix shown when a wallet is connected. */
+export const APP_CONNECTED_TITLE_PREFIX = 'Connected';
+
+/** Toast message shown when a mint transaction is successfully submitted. */
+export const MINT_SUCCESS_TOAST_MESSAGE = 'Transaction sent to Stacks.';
+
 /** Maximum number of recent mints to display in the activity feed */
 export const MAX_RECENT_MINTS = 6;
 
