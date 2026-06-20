@@ -165,6 +165,11 @@ export const ERR_WALLET_CONNECT_FAILED = 'Failed to connect Stacks wallet.';
 export const SUCCESS_COPIED = 'Copied to clipboard';
 export const SUCCESS_DISCONNECT = 'Wallet disconnected securely.';
 
+// --- Formatting Options ---
+
+export const FORMAT_DATE_STYLE = 'medium';
+export const FORMAT_TIME_STYLE = 'short';
+
 // --- Explorer URLs ---
 // Base URLs for Stacks explorers.
 

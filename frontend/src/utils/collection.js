@@ -6,6 +6,8 @@
  * 
  * @module collection
  */
+import { FORMAT_DATE_STYLE, FORMAT_TIME_STYLE } from '../constants'
+
 /**
  * Maximum character length for a token URI accepted by the contract.
  */
@@ -262,8 +264,8 @@ export function getExactTimeDescriptor(timestamp, locale) {
   const date = new Date(normalizedTime)
   return {
     label: new Intl.DateTimeFormat(locale, {
-      dateStyle: 'medium',
-      timeStyle: 'short'
+      dateStyle: FORMAT_DATE_STYLE,
+      timeStyle: FORMAT_TIME_STYLE
     }).format(date),
     iso: date.toISOString(),
     isValid: true
