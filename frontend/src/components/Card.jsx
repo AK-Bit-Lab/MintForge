@@ -11,9 +11,22 @@
 import PropTypes from 'prop-types'
 import { useCallback } from 'react'
 import './Card.css'
-
-export function Card({ 
-  children, 
+/**
+ * Interactive card container with customizable padding, variants, and hover states.
+ * 
+ * @param {Object} props - Component properties.
+ * @param {React.ReactNode} props.children - Card content.
+ * @param {string} [props.variant='default'] - Visual styling variant ('default', 'elevated', 'outlined', 'glass', 'gradient').
+ * @param {string} [props.padding='medium'] - Internal spacing multiplier ('none', 'small', 'medium', 'large').
+ * @param {boolean} [props.hover=false] - Whether to apply hover animation effects.
+ * @param {string} [props.className=''] - Additional CSS classes.
+ * @param {Function} [props.onClick] - Optional click handler; enables interactive button role.
+ * @param {string} [props.ariaLabel] - Accessible label, useful for interactive cards.
+ * @param {string} [props.ariaDescriptionId] - ID of an element that describes this card.
+ * @returns {JSX.Element} The card container div.
+ */
+export function Card({
+  children,
   variant = 'default',
   padding = 'medium',
   hover = false,
@@ -33,7 +46,7 @@ export function Card({
   }, [onClick])
 
   return (
-    <div 
+    <div
       className={[
         'card',
         `card--${variant}`,
@@ -60,7 +73,14 @@ export function Card({
     </div>
   )
 }
-
+/**
+ * Header section of a Card component.
+ * 
+ * @param {Object} props - Component properties.
+ * @param {React.ReactNode} props.children - Header content.
+ * @param {string} [props.className=''] - Additional CSS classes.
+ * @returns {JSX.Element} The card header wrapper.
+ */
 export function CardHeader({ children, className = '' }) {
   return (
     <div className={['card__header', className].filter(Boolean).join(' ')}>
@@ -68,7 +88,14 @@ export function CardHeader({ children, className = '' }) {
     </div>
   )
 }
-
+/**
+ * Main body content section of a Card.
+ * 
+ * @param {Object} props - Component properties.
+ * @param {React.ReactNode} props.children - Body content.
+ * @param {string} [props.className=''] - Additional CSS classes.
+ * @returns {JSX.Element} The card body wrapper.
+ */
 export function CardBody({ children, className = '' }) {
   return (
     <div className={['card__body', className].filter(Boolean).join(' ')}>
@@ -76,7 +103,14 @@ export function CardBody({ children, className = '' }) {
     </div>
   )
 }
-
+/**
+ * Footer section of a Card component.
+ * 
+ * @param {Object} props - Component properties.
+ * @param {React.ReactNode} props.children - Footer content.
+ * @param {string} [props.className=''] - Additional CSS classes.
+ * @returns {JSX.Element} The card footer wrapper.
+ */
 export function CardFooter({ children, className = '' }) {
   return (
     <div className={['card__footer', className].filter(Boolean).join(' ')}>
