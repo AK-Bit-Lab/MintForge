@@ -185,6 +185,17 @@ export const BREAKPOINT_TABLET = 720;
 export const BREAKPOINT_TABLET_LG = 900;
 export const BREAKPOINT_DESKTOP = 1024;
 
+// --- Z-Index Layers ---
+
+export const Z_INDEX_BACKGROUND = -1;
+export const Z_INDEX_BASE = 0;
+export const Z_INDEX_ELEVATED = 1;
+export const Z_INDEX_FLOATING = 99;
+export const Z_INDEX_HEADER = 100;
+export const Z_INDEX_OVERLAY = 120;
+export const Z_INDEX_MODAL = 1000;
+export const Z_INDEX_TOAST = 9999;
+
 // --- Explorer URLs ---
 // Base URLs for Stacks explorers.
 
