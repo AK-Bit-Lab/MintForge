@@ -135,6 +135,17 @@ export const TESTNET_LABEL = 'Stacks Testnet';
 /** Display name for local devnet */
 export const DEVNET_LABEL = 'Devnet';
 
+// --- External Links ---
+
+export const URL_STACKS_CO = 'https://www.stacks.co/';
+export const URL_IPFS_DOCS = 'https://docs.ipfs.tech/';
+export const URL_STACKS_DISCORD = 'https://discord.gg/stacks';
+export const URL_STACKS_X = 'https://x.com/Stacks';
+export const URL_LEATHER_WALLET = 'https://leather.io/';
+export const URL_STACKS_DOCS = 'https://docs.stacks.co/';
+export const URL_GITHUB_REPO = 'https://github.com/AK-Bit-Lab/MintForge';
+export const URL_SIP009 = 'https://docs.stacks.co/reference/sips/sip009';
+
 // --- Explorer URLs ---
 // Base URLs for Stacks explorers.
 

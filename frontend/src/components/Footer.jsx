@@ -8,28 +8,32 @@
  */
 
 import './Footer.css'
-import { CONTRACT_ADDRESS, CONTRACT_NAME, HUB_CONTRACT_ADDRESS, HUB_CONTRACT_NAME, NETWORK } from '../constants'
+import {
+  CONTRACT_ADDRESS, CONTRACT_NAME, HUB_CONTRACT_ADDRESS, HUB_CONTRACT_NAME, NETWORK,
+  URL_STACKS_CO, URL_IPFS_DOCS, URL_STACKS_DISCORD, URL_STACKS_X, URL_LEATHER_WALLET,
+  URL_STACKS_DOCS, URL_GITHUB_REPO, URL_SIP009
+} from '../constants'
 
 const coreContractPrincipal = `${CONTRACT_ADDRESS}.${CONTRACT_NAME}`
 const hubContractPrincipal = `${HUB_CONTRACT_ADDRESS}.${HUB_CONTRACT_NAME}`
 
 const FOOTER_LINKS = {
   project: [
-    { label: 'Stacks', href: 'https://www.stacks.co/' },
+    { label: 'Stacks', href: URL_STACKS_CO },
     { label: 'Hiro Explorer', href: `https://explorer.hiro.so/?chain=${NETWORK}` },
-    { label: 'IPFS Docs', href: 'https://docs.ipfs.tech/' }
+    { label: 'IPFS Docs', href: URL_IPFS_DOCS }
   ],
   community: [
-    { label: 'Stacks Discord', href: 'https://discord.gg/stacks' },
-    { label: 'Stacks on X', href: 'https://x.com/Stacks' },
-    { label: 'Leather Wallet', href: 'https://leather.io/' }
+    { label: 'Stacks Discord', href: URL_STACKS_DISCORD },
+    { label: 'Stacks on X', href: URL_STACKS_X },
+    { label: 'Leather Wallet', href: URL_LEATHER_WALLET }
   ],
   resources: [
-    { label: 'Stacks Docs', href: 'https://docs.stacks.co/' },
+    { label: 'Stacks Docs', href: URL_STACKS_DOCS },
     { label: 'Core Contract', href: `https://explorer.hiro.so/address/${coreContractPrincipal}?chain=${NETWORK}` },
     { label: 'Hub Contract', href: `https://explorer.hiro.so/address/${hubContractPrincipal}?chain=${NETWORK}` },
-    { label: 'GitHub', href: 'https://github.com/AK-Bit-Lab/MintForge' },
-    { label: 'SIP-009 NFT Standard', href: 'https://docs.stacks.co/reference/sips/sip009' }
+    { label: 'GitHub', href: URL_GITHUB_REPO },
+    { label: 'SIP-009 NFT Standard', href: URL_SIP009 }
   ]
 }
 
