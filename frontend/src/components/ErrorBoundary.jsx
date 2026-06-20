@@ -52,6 +52,8 @@ function getErrorMessage(error) {
 /**
  * A standard React Error Boundary component to catch JavaScript errors
  * anywhere in their child component tree.
+ * 
+ * @augments React.Component<{children: React.ReactNode}, {hasError: boolean, error: Error|null, errorInfo: React.ErrorInfo|null, errorMessage?: string}>
  */
 class ErrorBoundary extends React.Component {
   constructor(props) {
