@@ -160,6 +160,11 @@ export const ERR_WALLET_NO_ADDRESS = 'Wallet connected but did not return a Stac
 /** Generic fallback error for wallet connection failures */
 export const ERR_WALLET_CONNECT_FAILED = 'Failed to connect Stacks wallet.';
 
+// --- Success Messages ---
+
+export const SUCCESS_COPIED = 'Copied to clipboard';
+export const SUCCESS_DISCONNECT = 'Wallet disconnected securely.';
+
 // --- Explorer URLs ---
 // Base URLs for Stacks explorers.
 

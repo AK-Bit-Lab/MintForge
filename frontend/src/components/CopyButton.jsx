@@ -21,7 +21,7 @@ export function CopyButton({ text, label = 'Copy', successLabel = 'Copied', clas
   const copyValue = typeof text === 'string' ? text : text == null ? '' : String(text)
   const hasText = copyValue.trim().length > 0
   const safeLabel = typeof label === 'string' && label.trim() ? label.trim() : 'Copy'
-  const safeSuccessLabel = typeof successLabel === 'string' && successLabel.trim() ? successLabel.trim() : 'Copied'
+  const safeSuccessLabel = typeof successLabel === 'string' && successLabel.trim() ? successLabel.trim() : SUCCESS_COPIED
   const isDisabled = !hasText
   const buttonTitle = !hasText
     ? 'Nothing to copy yet'
