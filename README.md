@@ -47,7 +47,7 @@ Stored in the `contracts/` directory, the ecosystem consists of three actively m
 The legacy SIP-010 function surface (`transfer`, `mint`, `get-balance`, `get-total-supply`, `set-token-uri`, and related read-onlys) is preserved on `minimint-hub-v-i28`.
 
 > [!NOTE]
-> The frontend targets the tracked `minimint-core-v-i27` and `minimint-hub-v-i27` contracts by default. Use environment overrides for contract names and addresses when you need to point the app at a different deployment.
+> The frontend targets the deployed `minimint-core-v-i28` and `minimint-hub-v-i28` contracts by default. Use environment overrides (`VITE_CONTRACT_NAME`, `VITE_HUB_CONTRACT_NAME`) when pointing the app at a different deployment.
 
 ---
 
