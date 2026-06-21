@@ -30,6 +30,7 @@ export { useDebounce } from './useDebounce'
 export { useEventListener } from './useEventListener'
 export { useIsVisible } from './useIsVisible'
 export { useFocusTrap } from './useFocusTrap'
+export { useNetworkStatus } from './useNetworkStatus'
 
 /**
  * Default exports for individual hooks.
