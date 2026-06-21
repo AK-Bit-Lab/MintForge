@@ -10,6 +10,11 @@ export const isValidTokenId = (v) => {
   return Number.isInteger(Number(v)) && Number(v) >= 0;
 };
 
+/**
+ * Validates a mint count for batch operations.
+ * @param {*} v - Candidate mint count
+ * @returns {boolean} True when the value is an integer >= 1
+ */
 export const isValidMintCount = (v) => {
   if (v == null) return false;
   return Number.isInteger(Number(v)) && Number(v) >= 1;
