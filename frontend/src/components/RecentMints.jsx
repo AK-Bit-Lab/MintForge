@@ -12,6 +12,7 @@ import './RecentMints.css'
 import { formatAddress, formatExactTime, formatRelativeTime } from '../utils/collection'
 import { getExplorerUrl } from '../contract'
 import { RECENT_MINTS_SKELETON_COUNT } from '../constants'
+import { EmptyState } from './EmptyState'
 
 /**
  * normalizeMintTimestamp - Convert a mint timestamp to milliseconds.
@@ -117,13 +118,14 @@ export function RecentMints({ items = [] }) {
 
   if (recentMints.length === 0) {
     return (
-      <section className="recent-mints" aria-label="Recent mints empty state" title="No recent mints available yet" data-state="empty" data-count="0">
+      <section className="recent-mints" aria-label="Recent mints empty state" data-state="empty" data-count="0">
         <h2 className="recent-mints__title">Recent Mints</h2>
-        <div className="recent-mints__empty" role="status" aria-live="polite">
-          <span className="recent-mints__empty-icon" aria-hidden="true">🎨</span>
-          <p>No local mint receipts yet.</p>
-          <p className="recent-mints__empty-copy">Your next wallet submission will appear here.</p>
-        </div>
+        <EmptyState
+          icon="🎨"
+          title="No local mint receipts yet."
+          description="Your next wallet submission will appear here."
+          className="recent-mints__empty"
+        />
       </section>
     )
   }
