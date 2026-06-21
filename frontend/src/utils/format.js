@@ -207,7 +207,7 @@ export const formatMintCount = (count) => {
  * @param {number} end - Whitelist end block
  * @returns {string} Block range label (e.g. "WL 100000-105000")
  */
-export const formatWhitelistWindow = (start, end) => "WL " + Number(start) + "-" + Number(end);
+export const formatWhitelistWindow = (start, end) => `WL ${Number(start)}-${Number(end)}`;
 
 /**
  * formatOwnerTag - Format an owner address as a labelled string.
