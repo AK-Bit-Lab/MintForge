@@ -130,7 +130,7 @@ export const formatTxStatus = (s) => {
  * @param {number|null} id - Token ID
  * @returns {string} Combined label (e.g. "Genesis #42")
  */
-export const formatNFTName = (name, id) => (name ?? 'NFT') + " #" + (id ?? 0);
+export const formatNFTName = (name, id) => `${name ?? 'NFT'} #${id ?? 0}`;
 
 /**
  * formatIPFSUrl - Build an ipfs:// URI from a CID.
