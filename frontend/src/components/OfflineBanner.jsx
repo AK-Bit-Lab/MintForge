@@ -8,7 +8,7 @@
  * @module OfflineBanner
  */
 
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { useNetworkStatus } from '../hooks'
 
@@ -21,13 +21,14 @@ export function OfflineBanner({ message = 'No internet connection. Some features
 
   const handleDismiss = useCallback(() => setDismissed(true), [])
 
-  // Reset dismissed state when connectivity is restored so it shows again if it drops
-  if (isOnline) {
-    if (dismissed) setDismissed(false)
-    return null
-  }
+  // Reset dismissed flag inside an effect so we never call setState during render
+  useEffect(() => {
+    if (isOnline && dismissed) {
+      setDismissed(false)
+    }
+  }, [isOnline, dismissed])
 
-  if (dismissed) return null
+  if (isOnline || dismissed) return null
 
   const safeMessage = typeof message === 'string' && message.trim()
     ? message.trim()
