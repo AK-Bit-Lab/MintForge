@@ -27,6 +27,11 @@ export const isValidMintCount = (v) => {
  */
 export const isValidCID = (v) => typeof v === "string" && v.trim().length >= 10 && v.trim().length <= 128;
 
+/**
+ * Validates a royalty basis-points value within the allowed range.
+ * @param {*} v - Candidate royalty bps (0–10000)
+ * @returns {boolean} True when the value is a finite number within the accepted range
+ */
 export const isValidRoyaltyBps = (v) => {
   if (v == null) return false;
   return !isNaN(Number(v)) && Number(v) >= MIN_ROYALTY_BASIS_POINTS && Number(v) <= MAX_ROYALTY_BASIS_POINTS;
