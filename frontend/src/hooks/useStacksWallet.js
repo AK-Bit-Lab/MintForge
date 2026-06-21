@@ -16,7 +16,13 @@ import {
 import { STACKS_MAINNET, STACKS_TESTNET } from '@stacks/network';
 import { NETWORK } from '../contract';
 import { formatAddress } from '../utils/collection';
-import { WALLET_ADDRESS_STORAGE_KEY } from '../constants';
+import {
+  WALLET_ADDRESS_STORAGE_KEY,
+  ERR_WALLET_REQUEST_TIMEOUT,
+  ERR_WALLET_CONNECT_TIMEOUT,
+  ERR_WALLET_NO_ADDRESS,
+  ERR_WALLET_CONNECT_FAILED
+} from '../constants';
 
 /** Permissions granted to this app when the user connects their Stacks wallet. */
 const WALLET_CONNECT_NETWORK = NETWORK === 'testnet' ? 'testnet' : 'mainnet';
@@ -168,12 +174,29 @@ function setCachedWalletAddress(nextAddress) {
   }
 }
 
+/**
+ * wait - Returns a promise that resolves after `ms` milliseconds.
+ * @param {number} ms - Delay in milliseconds.
+ * @returns {Promise<void>}
+ */
 function wait(ms) {
   return new Promise((resolve) => {
     window.setTimeout(resolve, ms);
   });
 }
 
+/**
+ * withTimeout - Races a promise against a rejection timer.
+ *
+ * If `promise` does not settle within `ms`, the returned promise rejects
+ * with a new Error constructed from `message`.
+ *
+ * @template T
+ * @param {Promise<T>} promise - The promise to race.
+ * @param {number} ms - Timeout in milliseconds.
+ * @param {string} message - Error message if the timeout fires first.
+ * @returns {Promise<T>}
+ */
 function withTimeout(promise, ms, message) {
   let timeoutId;
   const timeoutPromise = new Promise((_, reject) => {
