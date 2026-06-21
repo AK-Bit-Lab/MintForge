@@ -7,7 +7,7 @@
  * @module Tooltip
  */
 
-import { useEffect, useId, useRef, useState } from 'react'
+import { useCallback, useEffect, useId, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import './Tooltip.css'
 
@@ -30,17 +30,17 @@ export function Tooltip({ children, content, position = 'top', delay = TOOLTIP_D
 
   if (!hasContent) return <>{children}</>
 
-  const showTooltip = () => {
+  const showTooltip = useCallback(() => {
     if (timerRef.current) {
       clearTimeout(timerRef.current)
     }
     timerRef.current = setTimeout(() => setIsVisible(true), safeDelay)
-  }
+  }, [safeDelay])
 
-  const hideTooltip = () => {
+  const hideTooltip = useCallback(() => {
     if (timerRef.current) clearTimeout(timerRef.current)
     setIsVisible(false)
-  }
+  }, [])
 
   useEffect(() => {
     return () => {
