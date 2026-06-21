@@ -86,3 +86,4 @@ tmp/
 *.pem
 *.key
 .vercel
+scripts/test-hub-stake.cjs
