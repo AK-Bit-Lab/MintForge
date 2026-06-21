@@ -28,6 +28,8 @@ export { Divider } from './Divider'
 export { default as DividerDefault } from './Divider'
 export { EmptyState } from './EmptyState'
 export { default as EmptyStateDefault } from './EmptyState'
+export { StatusDot } from './StatusDot'
+export { default as StatusDotDefault } from './StatusDot'
 
 /**
  * Default export for components module.
