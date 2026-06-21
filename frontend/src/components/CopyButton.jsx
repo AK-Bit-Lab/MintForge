@@ -21,9 +21,10 @@ import { CLIPBOARD_TIMEOUT_MS, SUCCESS_COPIED } from '../constants'
  * @param {string} [props.label='Copy'] - Visual label and aria-label before copying.
  * @param {string} [props.successLabel='Copied'] - Visual label and aria-label after copying.
  * @param {string} [props.className=''] - Additional CSS classes.
+ * @param {Function} [props.onCopied] - Optional callback invoked after a successful copy.
  * @returns {JSX.Element} The button element.
  */
-export function CopyButton({ text, label = 'Copy', successLabel = 'Copied', className = '' }) {
+export function CopyButton({ text, label = 'Copy', successLabel = 'Copied', className = '', onCopied }) {
   const { copied, copy } = useClipboard(CLIPBOARD_TIMEOUT_MS)
   const copyValue = typeof text === 'string' ? text : text == null ? '' : String(text)
   const hasText = copyValue.trim().length > 0
@@ -41,10 +42,13 @@ export function CopyButton({ text, label = 'Copy', successLabel = 'Copied', clas
 
     try {
       await copy(copyValue)
+      if (typeof onCopied === 'function') {
+        onCopied(copyValue)
+      }
     } catch (err) {
       console.error('Failed to copy:', err)
     }
-  }, [copyValue, hasText, copy])
+  }, [copyValue, hasText, copy, onCopied])
 
   return (
     <button
@@ -90,7 +94,8 @@ CopyButton.propTypes = {
   text: PropTypes.string,
   label: PropTypes.string,
   successLabel: PropTypes.string,
-  className: PropTypes.string
+  className: PropTypes.string,
+  onCopied: PropTypes.func
 }
 
 /**
