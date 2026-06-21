@@ -193,6 +193,11 @@ export const isValidMintPriceMicrostx = (v) => Number.isInteger(Number(v)) && Nu
  */
 export const isPositiveFinite = (v) => Number.isFinite(Number(v)) && Number(v) > 0;
 
+/**
+ * Validates a bulk-mint batch total (1–50 NFTs).
+ * @param {*} v - Candidate total count
+ * @returns {boolean} True when the value is an integer in the range 1–50
+ */
 export const isValidBatchTotal = (v) => Number.isInteger(Number(v)) && Number(v) >= 1 && Number(v) <= 50;
 
 export const isValidTraitCount = (v) => Number.isInteger(Number(v)) && Number(v) >= 0 && Number(v) <= 64;
