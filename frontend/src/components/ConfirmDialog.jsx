@@ -47,6 +47,7 @@ export function ConfirmDialog({
           className="confirm-dialog__cancel"
           onClick={onCancel}
           aria-label={safeCancel}
+          data-intent="cancel"
         >
           {safeCancel}
         </button>
@@ -55,6 +56,7 @@ export function ConfirmDialog({
           className="confirm-dialog__confirm"
           onClick={onConfirm}
           aria-label={safeConfirm}
+          data-intent="confirm"
         >
           {safeConfirm}
         </button>
