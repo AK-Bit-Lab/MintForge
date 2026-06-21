@@ -24,6 +24,8 @@ export { OfflineBanner } from './OfflineBanner'
 export { default as OfflineBannerDefault } from './OfflineBanner'
 export { SkipLink } from './SkipLink'
 export { default as SkipLinkDefault } from './SkipLink'
+export { Divider } from './Divider'
+export { default as DividerDefault } from './Divider'
 
 /**
  * Default export for components module.
