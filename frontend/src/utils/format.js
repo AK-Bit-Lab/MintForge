@@ -147,7 +147,7 @@ export const formatIPFSUrl = (cid) => `ipfs://${cid ?? ''}`;
  */
 export const formatGatewayUrl = (cid) => {
   const normalizedCid = String(cid ?? "").replace(/^\/+/, "");
-  return "https://ipfs.io/ipfs/" + normalizedCid;
+  return `https://ipfs.io/ipfs/${normalizedCid}`;
 };
 
 /**
