@@ -137,6 +137,11 @@ export const isValidRevealDelay = (v) => Number.isInteger(Number(v)) && Number(v
 export const isValidProvenanceHash = (v) =>
   typeof v === 'string' && /^[0-9a-f]{64}$/i.test(v.trim());
 
+/**
+ * Validates a SIP-010 token symbol string (2–8 uppercase letters).
+ * @param {*} v - Candidate token symbol
+ * @returns {boolean} True when the value is an uppercase alphabetic string of 2–8 characters
+ */
 export const isValidTokenSymbol = (v) => typeof v === "string" && /^[A-Z]{2,8}$/.test(v);
 
 export const isValidMintPrice = (v) => !isNaN(Number(v)) && Number(v) >= 0;
