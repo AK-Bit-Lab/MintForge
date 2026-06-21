@@ -16,6 +16,20 @@ const MODAL_DEFAULT_ARIA_LABEL = 'Dialog';
 /** Supported size variants for the modal panel. */
 const MODAL_SIZES = ['small', 'medium', 'large', 'full'];
 
+/**
+ * Modal - Accessible overlay dialog with focus management and scroll lock.
+ *
+ * Traps keyboard focus within the panel, locks body scroll while open,
+ * and restores both on close. Renders nothing when isOpen is false.
+ *
+ * @param {Object} props
+ * @param {boolean} props.isOpen - Whether the dialog is currently visible.
+ * @param {Function} props.onClose - Called when the user closes the dialog.
+ * @param {string} [props.title] - Optional dialog title rendered in the header.
+ * @param {React.ReactNode} [props.children] - Dialog body content.
+ * @param {'small'|'medium'|'large'|'full'} [props.size='medium'] - Width variant.
+ * @returns {JSX.Element|null}
+ */
 export function Modal({ isOpen, onClose, title, children, size = 'medium' }) {
   const safeSize = MODAL_SIZES.includes(size) ? size : 'medium'
   const hasBody = children != null
