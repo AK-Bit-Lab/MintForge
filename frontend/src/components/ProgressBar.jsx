@@ -10,12 +10,14 @@
 import PropTypes from 'prop-types'
 import './ProgressBar.css'
 
+/** Supported color variants for the progress fill element. */
+const SUPPORTED_COLORS = ['primary', 'success', 'warning', 'danger', 'gradient', 'striped'];
+
 /**
  * Bounded percentage bar with accessible value metadata.
  */
 export function ProgressBar({ value, max = 100, showLabel = true, size = 'medium', color = 'primary', ariaLabel = 'Progress' }) {
   const MAX_PERCENTAGE = 100
-  const SUPPORTED_COLORS = ['primary', 'success', 'warning', 'danger', 'gradient', 'striped']
   const safeMax = typeof max === 'number' && max > 0 ? max : MAX_PERCENTAGE
   const safeValue = typeof value === 'number' && Number.isFinite(value) ? value : 0
   const safeColor = SUPPORTED_COLORS.includes(color) ? color : 'primary'
