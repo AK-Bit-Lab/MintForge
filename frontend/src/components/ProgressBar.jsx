@@ -24,9 +24,10 @@ export function ProgressBar({ value, max = 100, showLabel = true, size = 'medium
   const boundedValue = Math.min(Math.max(safeValue, 0), safeMax)
   const percentage = Math.min(Math.max((boundedValue / safeMax) * MAX_PERCENTAGE, 0), MAX_PERCENTAGE)
   const formattedPercentage = Number.isInteger(percentage) ? String(percentage) : percentage.toFixed(1)
+  const isComplete = boundedValue >= safeMax
 
   return (
-    <div className={`progress progress--${size}`} role="group" aria-label={ariaLabel} title={`${formattedPercentage}% progress`} data-size={size} data-color={safeColor} data-show-label={showLabel ? 'true' : 'false'} data-max={String(safeMax)}>
+    <div className={`progress progress--${size}`} role="group" aria-label={ariaLabel} title={`${formattedPercentage}% progress`} data-size={size} data-color={safeColor} data-show-label={showLabel ? 'true' : 'false'} data-max={String(safeMax)} data-complete={isComplete ? 'true' : 'false'}>
       <div className="progress__bar">
         <div 
           className={`progress__fill progress__fill--${safeColor}`}
