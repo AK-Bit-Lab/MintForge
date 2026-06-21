@@ -701,3 +701,20 @@ export function formatDuration(ms) {
   if (minutes > 0) return `${minutes}m ${seconds}s`;
   return `${seconds}s`;
 }
+
+/**
+ * Formats a ratio (0–1) or a percentage value (0–100) as a percent string.
+ * Values between 0 and 1 inclusive are treated as ratios and multiplied by 100.
+ * Values outside 0–100 are clamped.
+ *
+ * @param {number} value - The ratio or percentage to format.
+ * @param {number} [decimals=0] - Number of decimal places to show.
+ * @returns {string} e.g. '75%', '33.3%'
+ */
+export function formatPercent(value, decimals = 0) {
+  if (!Number.isFinite(value)) return '0%';
+  const pct = value >= 0 && value <= 1 ? value * 100 : value;
+  const clamped = Math.min(100, Math.max(0, pct));
+  const safeDecimals = Number.isInteger(decimals) && decimals >= 0 ? decimals : 0;
+  return `${clamped.toFixed(safeDecimals)}%`;
+}
