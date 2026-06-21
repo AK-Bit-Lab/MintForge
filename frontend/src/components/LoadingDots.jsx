@@ -25,6 +25,7 @@ export function LoadingDots({ label = 'Loading', className = '' }) {
       role="status"
       aria-label={safeLabel}
       aria-live="polite"
+      aria-busy="true"
       title={safeLabel}
     >
       <span className="loading-dots__dot" aria-hidden="true">.</span>
