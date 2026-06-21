@@ -175,7 +175,7 @@ export const formatBlockTime = (ms) => {
  * @param {number|null} n - Trait count
  * @returns {string} Count with 'traits' label (e.g. "7 traits")
  */
-export const formatTraitCount = (n) => (n == null ? 0 : n) + " traits";
+export const formatTraitCount = (n) => `${n ?? 0} traits`;
 
 /**
  * Calculates the total mint cost for a given quantity of NFTs.
