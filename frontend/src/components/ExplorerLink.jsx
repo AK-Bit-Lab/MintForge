@@ -20,16 +20,17 @@ import { getExplorerUrl, getTokenExplorerUrl, getAddressExplorerUrl, getExplorer
  */
 export function ExplorerLink({ type = 'txid', identifier, children, className = '' }) {
   const safeType = ['txid', 'token', 'address'].includes(type) ? type : 'txid'
+  const safeIdentifier = identifier != null ? identifier : ''
 
   const href = safeType === 'token'
-    ? getTokenExplorerUrl(identifier)
+    ? getTokenExplorerUrl(safeIdentifier)
     : safeType === 'address'
-      ? getAddressExplorerUrl(identifier)
-      : getExplorerUrl(identifier)
+      ? getAddressExplorerUrl(safeIdentifier)
+      : getExplorerUrl(safeIdentifier)
 
   const label = typeof children === 'string' && children.trim()
     ? children.trim()
-    : getExplorerLinkLabel(safeType, identifier)
+    : getExplorerLinkLabel(safeType, safeIdentifier)
 
   return (
     <a
