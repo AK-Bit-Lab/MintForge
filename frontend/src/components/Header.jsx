@@ -87,7 +87,7 @@ export function Header({ account, onConnect, onDisconnect, isConnecting, walletE
         </span>
         {hasAccount ? (
           <>
-            <span className="header__chain" data-chain={CHAIN_NAME} title={CHAIN_TOOLTIP} aria-label={CHAIN_NAME}>
+            <span className="header__chain" data-chain={CHAIN_NAME} data-network={NETWORK} title={CHAIN_TOOLTIP} aria-label={CHAIN_NAME}>
               {CHAIN_NAME}
             </span>
             <button
