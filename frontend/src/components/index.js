@@ -34,6 +34,8 @@ export { LoadingDots } from './LoadingDots'
 export { default as LoadingDotsDefault } from './LoadingDots'
 export { TruncatedAddress } from './TruncatedAddress'
 export { default as TruncatedAddressDefault } from './TruncatedAddress'
+export { ExplorerLink } from './ExplorerLink'
+export { default as ExplorerLinkDefault } from './ExplorerLink'
 
 /**
  * Default export for components module.
