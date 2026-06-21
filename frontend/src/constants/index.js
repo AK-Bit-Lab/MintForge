@@ -31,7 +31,7 @@ export const HUB_CONTRACT_NAME = import.meta.env?.VITE_HUB_CONTRACT_NAME || 'min
 /** Reward token contract address — same deployer as core and hub. */
 export const TOKEN_CONTRACT_ADDRESS = import.meta.env?.VITE_TOKEN_CONTRACT_ADDRESS || MAINNET_DEPLOYER;
 /** Reward token contract name for the SIP-010 MMT token. */
-export const TOKEN_CONTRACT_NAME = import.meta.env?.VITE_TOKEN_CONTRACT_NAME || 'minimint-token-v-i27';
+export const TOKEN_CONTRACT_NAME = import.meta.env?.VITE_TOKEN_CONTRACT_NAME || 'minimint-token-v-i28';
 
 export const MINT_FEE = Number.isInteger(envMintFee) && envMintFee >= 0 ? envMintFee : SDK_MINT_FEE; // micro-STX
 
