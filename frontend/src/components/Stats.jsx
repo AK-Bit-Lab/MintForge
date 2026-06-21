@@ -12,9 +12,26 @@ import PropTypes from 'prop-types'
 import './Stats.css'
 import { formatExactTime, formatLimit, formatSTX } from '../utils/collection'
 import { STATS_SKELETON_COUNT } from '../constants'
-/** Minimum receipt count returned by the contract; negative values are clamped to this. */
+
+/**
+ * Minimum receipt count returned by the contract.
+ * Negative values from the API are clamped to this floor.
+ */
 const STATS_MIN_RECEIPT_COUNT = 0;
 
+/**
+ * Stats - Displays live collection metrics, supply progress, and wallet context.
+ *
+ * Derives collection state (ready / paused / sold-out) from contractInfo and
+ * tracks the last time data was refreshed via an internal timestamp.
+ *
+ * @param {Object} props
+ * @param {Object|null} props.contractInfo - Live collection data from the contract hook.
+ * @param {boolean} props.isLoading - Whether collection data is still being fetched.
+ * @param {boolean} [props.isConnected=false] - Whether a wallet is currently connected.
+ * @param {number} [props.recentActivityCount=0] - Number of local mint receipts.
+ * @returns {JSX.Element}
+ */
 export function Stats({ contractInfo, isLoading, isConnected = false, recentActivityCount = 0 }) {
   const [lastUpdated, setLastUpdated] = useState(new Date())
   const parsedRecentActivityCount = Number(recentActivityCount)
