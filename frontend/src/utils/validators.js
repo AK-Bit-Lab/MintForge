@@ -179,6 +179,11 @@ export const isValidWalletLimit = (v) => Number.isInteger(Number(v)) && Number(v
  */
 export const isValidTokenURI = (v) => typeof v === "string" && /^(ipfs|https):\/\//i.test(v.trim());
 
+/**
+ * Validates a mint price in micro-STX (non-negative integer).
+ * @param {*} v - Candidate price in micro-STX
+ * @returns {boolean} True when the value is a non-negative integer
+ */
 export const isValidMintPriceMicrostx = (v) => Number.isInteger(Number(v)) && Number(v) >= 0;
 
 export const isPositiveFinite = (v) => Number.isFinite(Number(v)) && Number(v) > 0;
