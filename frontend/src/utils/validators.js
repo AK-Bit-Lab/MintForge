@@ -186,6 +186,11 @@ export const isValidTokenURI = (v) => typeof v === "string" && /^(ipfs|https):\/
  */
 export const isValidMintPriceMicrostx = (v) => Number.isInteger(Number(v)) && Number(v) >= 0;
 
+/**
+ * Returns true when the value is a finite positive number (not NaN, Infinity, or zero).
+ * @param {*} v - Candidate value
+ * @returns {boolean}
+ */
 export const isPositiveFinite = (v) => Number.isFinite(Number(v)) && Number(v) > 0;
 
 export const isValidBatchTotal = (v) => Number.isInteger(Number(v)) && Number(v) >= 1 && Number(v) <= 50;
