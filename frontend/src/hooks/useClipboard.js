@@ -78,7 +78,12 @@ export function useClipboard(timeout = 2000) {
     setError(null);
   }, []);
 
-  return { copied, copy, error, reset };
+  /** Whether the Clipboard API or the execCommand fallback is available. */
+  const isSupported =
+    (typeof navigator !== 'undefined' && Boolean(navigator.clipboard?.writeText)) ||
+    (typeof document !== 'undefined' && typeof document.execCommand === 'function');
+
+  return { copied, copy, error, reset, isSupported };
 }
 
 export default useClipboard;
