@@ -92,6 +92,12 @@ export const isValidListingPrice = (v) => !isNaN(Number(v)) && Number(v) > 0;
  */
 export const isValidBidAmount = (v) => !isNaN(Number(v)) && Number(v) > 0;
 
+/**
+ * Validates a Stacks wallet address using a known prefix pattern.
+ * Accepts both mainnet (SP/SM) and testnet (ST/SN) addresses.
+ * @param {*} v - Candidate Stacks address
+ * @returns {boolean} True when the value matches the Stacks address pattern
+ */
 export const isValidOwnerAddress = (v) =>
   typeof v === 'string' && /^(S[PT])[0-9A-Z]{37,39}$/.test(v.trim());
 
