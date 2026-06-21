@@ -201,6 +201,30 @@ npm run verify:production
 
 ---
 
+## ⚙️ Automation Scripts
+
+The `scripts/` directory contains Node.js utilities for managing wallet funds and on-chain interactions during development and testing.
+
+### `distribute-funds.js`
+Splits a funder wallet balance across multiple wallets in `test-wallets.json`.  
+Uses rate-limit-safe sequencing with configurable delays and top-up logic to avoid overfunding wallets that already hold STX.
+
+```bash
+cd scripts && node distribute-funds.js
+```
+
+### `interact.js`
+Drives organic on-chain interactions across the test wallet set in six sequential phases: fund check → token contract read → mint attempt → status poll → explorer query → summary.  
+Designed to simulate realistic wallet behaviour without hitting RPC rate limits.
+
+```bash
+cd scripts && node interact.js
+```
+
+> **Note:** Both scripts require a funded deployer wallet and a valid `.env` file with `DEPLOYER_MNEMONIC` and `STACKS_API_URL` set. See `.env.example` for reference.
+
+---
+
 ## 🤝 Contributing
 
 We welcome contributions! Please see our [CONTRIBUTING.md](./CONTRIBUTING.md) for detailed guidelines on our workflow and code standards.
