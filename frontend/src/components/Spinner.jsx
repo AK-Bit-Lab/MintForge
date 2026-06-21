@@ -15,7 +15,7 @@ import './Spinner.css'
 export function Spinner({ size = 'medium', tone = 'primary', className = '', label = 'Loading content' }) {
   const safeLabel = typeof label === 'string' && label.trim() ? label.trim() : 'Loading content'
   const safeSize = ['small', 'medium', 'large'].includes(size) ? size : 'medium'
-  const safeTone = ['primary', 'white', 'success'].includes(tone) ? tone : 'primary'
+  const safeTone = ['primary', 'white', 'success', 'muted'].includes(tone) ? tone : 'primary'
   const composedClass = ['spinner', `spinner--${safeSize}`, `spinner--${safeTone}`, className].filter(Boolean).join(' ')
   return (
     <span
@@ -39,7 +39,7 @@ export function Spinner({ size = 'medium', tone = 'primary', className = '', lab
 
 Spinner.propTypes = {
   size: PropTypes.oneOf(['small', 'medium', 'large']),
-  tone: PropTypes.oneOf(['primary', 'white', 'success']),
+  tone: PropTypes.oneOf(['primary', 'white', 'success', 'muted']),
   className: PropTypes.string,
   label: PropTypes.string
 }
