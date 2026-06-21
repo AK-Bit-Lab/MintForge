@@ -198,7 +198,7 @@ export const calculateTotalMintCost = (quantity, pricePerNFT = 10) => {
 export const formatMintCount = (count) => {
   const n = Number(count);
   if (!Number.isFinite(n)) return '0 mints';
-  return n + " mint" + (n === 1 ? "" : "s");
+  return `${n} ${n === 1 ? 'mint' : 'mints'}`;
 };
 
 /**
