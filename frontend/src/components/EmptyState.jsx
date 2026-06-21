@@ -30,7 +30,7 @@ export function EmptyState({ icon, title, description, actionLabel, onAction, cl
   return (
     <div
       className={['empty-state', className].filter(Boolean).join(' ')}
-      role="status"
+      role="region"
       aria-label={safeTitle}
       data-has-action={hasAction ? 'true' : 'false'}
     >
