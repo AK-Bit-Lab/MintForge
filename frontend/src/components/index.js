@@ -20,6 +20,8 @@ export { CopyButton } from './CopyButton'
 export { Badge } from './Badge'
 export { Card, CardHeader, CardBody, CardFooter } from './Card'
 export { default as ErrorBoundary } from './ErrorBoundary'
+export { OfflineBanner } from './OfflineBanner'
+export { default as OfflineBannerDefault } from './OfflineBanner'
 
 /**
  * Default export for components module.
