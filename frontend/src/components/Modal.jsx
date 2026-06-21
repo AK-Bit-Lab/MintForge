@@ -60,7 +60,8 @@ export function Modal({ isOpen, onClose, title, children, size = 'medium' }) {
     return () => {
       document.body.style.overflow = overflow
       window.removeEventListener('keydown', handleKeyDown)
-      if (previousActiveElement && typeof previousActiveElement.focus === 'function') {
+      const isBody = previousActiveElement === document.body || !previousActiveElement
+      if (!isBody && typeof previousActiveElement.focus === 'function') {
         previousActiveElement.focus()
       }
     }
