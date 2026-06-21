@@ -37,6 +37,7 @@ export function Badge({
     : undefined
   const safeTitle = typeof title === 'string' && title.trim() ? title.trim() : fallbackTitle
   const labelLength = safeTitle ? safeTitle.length : 0
+  const isDotOnly = dot && (children == null)
   return (
     <span
       className={['badge', `badge--${variant}`, `badge--${size}`, className].filter(Boolean).join(' ')}
@@ -48,6 +49,7 @@ export function Badge({
       data-has-title={safeTitle ? 'true' : 'false'}
       title={safeTitle}
       aria-label={safeTitle}
+      aria-hidden={isDotOnly ? 'true' : undefined}
     >
       {dot && <span className="badge__dot" aria-hidden="true" />}
       {children}
