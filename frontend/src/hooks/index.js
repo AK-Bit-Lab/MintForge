@@ -31,6 +31,7 @@ export { useEventListener } from './useEventListener'
 export { useIsVisible } from './useIsVisible'
 export { useFocusTrap } from './useFocusTrap'
 export { useNetworkStatus } from './useNetworkStatus'
+export { useConfirm } from './useConfirm'
 
 /**
  * Default exports for individual hooks.
