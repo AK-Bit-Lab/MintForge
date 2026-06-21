@@ -165,6 +165,11 @@ export const isValidMaxPerWallet = (v) => Number.isInteger(Number(v)) && Number(
  */
 export const isValidTokenIdInSupply = (v) => Number.isInteger(Number(v)) && Number(v) >= 1 && Number(v) <= MAX_SUPPLY;
 
+/**
+ * Validates a per-wallet mint limit (1–1000).
+ * @param {*} v - Candidate wallet limit
+ * @returns {boolean} True when the value is an integer in the range 1–1000
+ */
 export const isValidWalletLimit = (v) => Number.isInteger(Number(v)) && Number(v) >= 1 && Number(v) <= 1000;
 
 export const isValidTokenURI = (v) => typeof v === "string" && /^(ipfs|https):\/\//i.test(v.trim());
