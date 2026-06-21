@@ -79,13 +79,7 @@ The legacy SIP-010 function surface (`transfer`, `mint`, `get-balance`, `get-tot
    ```
    > **Note**: Installs dependencies in the `frontend/` directory.
 
-3. **Automation Scripts Setup (Optional):**
-   ```bash
-   npm run scripts:install
-   ```
-   > **Note**: This command expects a `scripts/package.json`. If your checkout does not include the automation package yet, skip this step because it is not required for contracts or frontend development.
-
-4. **Frontend Environment Configuration:**
+3. **Frontend Environment Configuration:**
    ```bash
    cp frontend/.env.example frontend/.env
    ```
@@ -198,30 +192,6 @@ npm run verify:production
 | `VITE_HUB_CONTRACT_ADDRESS` | Hub contract address | Mainnet deployer |
 | `VITE_HUB_CONTRACT_NAME` | Hub contract name | `minimint-hub-v-i27` |
 | `VITE_MINT_FEE` | Mint fee in micro-STX | `1000` |
-
----
-
-## ⚙️ Automation Scripts
-
-The `scripts/` directory contains Node.js utilities for managing wallet funds and on-chain interactions during development and testing.
-
-### `distribute-funds.js`
-Splits a funder wallet balance across multiple wallets in `test-wallets.json`.  
-Uses rate-limit-safe sequencing with configurable delays and top-up logic to avoid overfunding wallets that already hold STX.
-
-```bash
-cd scripts && node distribute-funds.js
-```
-
-### `interact.js`
-Drives organic on-chain interactions across the test wallet set in six sequential phases: fund check → token contract read → mint attempt → status poll → explorer query → summary.  
-Designed to simulate realistic wallet behaviour without hitting RPC rate limits.
-
-```bash
-cd scripts && node interact.js
-```
-
-> **Note:** Both scripts require a funded deployer wallet and a valid `.env` file with `DEPLOYER_MNEMONIC` and `STACKS_API_URL` set. See `.env.example` for reference.
 
 ---
 
