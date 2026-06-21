@@ -1,10 +1,10 @@
 /**
  * ThemeContext for managing application theme preferences.
- * 
+ *
  * Provides light/dark theme support with localStorage persistence
  * and system preference detection. Includes a useTheme hook for
  * consuming theme state and toggle functionality.
- * 
+ *
  * @module ThemeContext
  */
 import React, { createContext, useCallback, useContext, useState, useEffect } from 'react';
@@ -41,7 +41,7 @@ export function ThemeProvider({ children }) {
   }, []);
 
   const setLight = useCallback(() => setTheme('light'), []);
-  const setDark = useCallback(() => setTheme('dark'), []);
+  const setDark  = useCallback(() => setTheme('dark'),  []);
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme, setLight, setDark, isDark: theme === 'dark', isLight: theme === 'light' }}>
@@ -61,7 +61,7 @@ export function useTheme() {
   }
   return {
     ...context,
-    isDark: context.theme === 'dark',
+    isDark:  context.theme === 'dark',
     isLight: context.theme === 'light'
   };
 }
