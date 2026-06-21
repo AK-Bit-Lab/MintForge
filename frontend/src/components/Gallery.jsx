@@ -18,6 +18,55 @@ import { GALLERY_VIEW_STORAGE_KEY, GALLERY_SKELETON_COUNT } from '../constants'
 const GALLERY_MOCK_LOAD_DELAY_MS = 400;
 
 /**
+ * Static mock NFT dataset used for gallery demonstration.
+ * Declared at module scope so the array reference stays stable across renders.
+ */
+const GALLERY_MOCK_NFTS = [
+  {
+    id: 1,
+    name: 'Genesis #1',
+    image: 'https://picsum.photos/seed/nft1/400/400',
+    owner: 'SP3HE2Y4S6K8N4D0X8M6G4Q2Y9B7P5R3T1V0WXYZ',
+    tokenURI: 'ipfs://QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG'
+  },
+  {
+    id: 2,
+    name: 'Genesis #2',
+    image: 'https://picsum.photos/seed/nft2/400/400',
+    owner: 'SP2JA9Q8R7T6Y5U4I3O2P1A0S9D8F7G6H5J4K3L2',
+    tokenURI: 'ipfs://QmT78zSuBmuS4z925WZfrqQ1qHaJ56DQaTfyMUF7F8ff5o'
+  },
+  {
+    id: 3,
+    name: 'Genesis #3',
+    image: 'https://picsum.photos/seed/nft3/400/400',
+    owner: 'SP1P7Q9W8E7R6T5Y4U3I2O1P0A9S8D7F6G5H4J3K',
+    tokenURI: 'ipfs://QmPChd2hVbrJ6bfo3WBcTW4iZnpHm8TEzWkLHmLpXhF68A'
+  },
+  {
+    id: 4,
+    name: 'Genesis #4',
+    image: 'https://picsum.photos/seed/nft4/400/400',
+    owner: 'SP4KR9NMHBF3JZPXKQV7D2Y1W8E6T5R4V3U2I1O0P',
+    tokenURI: 'ipfs://QmNqL9VuHpLTHeP8PNnCrNXYgV4JzRmQFt3PkhXmN5JEK6'
+  },
+  {
+    id: 5,
+    name: 'Genesis #5',
+    image: 'https://picsum.photos/seed/nft5/400/400',
+    owner: 'SP5XY4WQRE2K9P8N7M6V5B4C3D2F1G8H7J6K5L4M3',
+    tokenURI: 'ipfs://QmW2WQi7j6c7UgJTarActp7tDNikE4B2qXtFCfLPdsgaTQ'
+  },
+  {
+    id: 6,
+    name: 'Genesis #6',
+    image: 'https://picsum.photos/seed/nft6/400/400',
+    owner: 'SP6A3B2C1D0E9F8G7H6I5J4K3L2M1N0O9P8Q7R6S5',
+    tokenURI: 'ipfs://QmSgvgwxZGaBLqkGyWemEDqikCqU52XxsYLKtdy3wGLFmU'
+  }
+]
+
+/**
  * Interactive gallery grid/list for browsing the NFT collection.
  * Includes search, view mode toggling, and a detail modal for tokens.
  * 
@@ -37,53 +86,8 @@ export function Gallery() {
 
   // Load mock NFT data with a simulated network delay for gallery demonstration
   useEffect(() => {
-    const mockNfts = [
-      {
-        id: 1,
-        name: 'Genesis #1',
-        image: 'https://picsum.photos/seed/nft1/400/400',
-        owner: 'SP3HE2Y4S6K8N4D0X8M6G4Q2Y9B7P5R3T1V0WXYZ',
-        tokenURI: 'ipfs://QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG'
-      },
-      {
-        id: 2,
-        name: 'Genesis #2',
-        image: 'https://picsum.photos/seed/nft2/400/400',
-        owner: 'SP2JA9Q8R7T6Y5U4I3O2P1A0S9D8F7G6H5J4K3L2',
-        tokenURI: 'ipfs://QmT78zSuBmuS4z925WZfrqQ1qHaJ56DQaTfyMUF7F8ff5o'
-      },
-      {
-        id: 3,
-        name: 'Genesis #3',
-        image: 'https://picsum.photos/seed/nft3/400/400',
-        owner: 'SP1P7Q9W8E7R6T5Y4U3I2O1P0A9S8D7F6G5H4J3K',
-        tokenURI: 'ipfs://QmPChd2hVbrJ6bfo3WBcTW4iZnpHm8TEzWkLHmLpXhF68A'
-      },
-      {
-        id: 4,
-        name: 'Genesis #4',
-        image: 'https://picsum.photos/seed/nft4/400/400',
-        owner: 'SP4KR9NMHBF3JZPXKQV7D2Y1W8E6T5R4V3U2I1O0P',
-        tokenURI: 'ipfs://QmNqL9VuHpLTHeP8PNnCrNXYgV4JzRmQFt3PkhXmN5JEK6'
-      },
-      {
-        id: 5,
-        name: 'Genesis #5',
-        image: 'https://picsum.photos/seed/nft5/400/400',
-        owner: 'SP5XY4WQRE2K9P8N7M6V5B4C3D2F1G8H7J6K5L4M3',
-        tokenURI: 'ipfs://QmW2WQi7j6c7UgJTarActp7tDNikE4B2qXtFCfLPdsgaTQ'
-      },
-      {
-        id: 6,
-        name: 'Genesis #6',
-        image: 'https://picsum.photos/seed/nft6/400/400',
-        owner: 'SP6A3B2C1D0E9F8G7H6I5J4K3L2M1N0O9P8Q7R6S5',
-        tokenURI: 'ipfs://QmSgvgwxZGaBLqkGyWemEDqikCqU52XxsYLKtdy3wGLFmU'
-      }
-    ]
-
     const timeoutId = setTimeout(() => {
-      setNfts(mockNfts)
+      setNfts(GALLERY_MOCK_NFTS)
       setIsLoading(false)
     }, GALLERY_MOCK_LOAD_DELAY_MS)
 
