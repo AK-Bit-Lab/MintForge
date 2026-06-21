@@ -17,8 +17,11 @@ const TOAST_ICONS = {
   info: 'ℹ'
 }
 
+/** Valid type strings derived directly from TOAST_ICONS to avoid duplication. */
+const VALID_TYPES = Object.keys(TOAST_ICONS)
+
 export function Toast({ message, type = 'info', onClose }) {
-  const safeType = TOAST_ICONS[type] ? type : 'info'
+  const safeType = VALID_TYPES.includes(type) ? type : 'info'
   const icon = TOAST_ICONS[safeType]
   const isInterruptive = safeType === 'error' || safeType === 'warning'
   const safeMessage = message != null && String(message).trim().length > 0
