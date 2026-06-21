@@ -17,6 +17,16 @@ const TOOLTIP_DEFAULT_DELAY_MS = 300;
 const TOOLTIP_MAX_DELAY_MS = 5000;
 const TOOLTIP_POSITIONS = ['top', 'bottom', 'left', 'right']
 
+/**
+ * Tooltip - Contextual information shown on hover or focus.
+ *
+ * @param {Object} props
+ * @param {React.ReactNode} props.children - The element that triggers the tooltip.
+ * @param {string|React.ReactNode} props.content - Content rendered inside the tooltip bubble.
+ * @param {'top'|'bottom'|'left'|'right'} [props.position='top'] - Preferred placement.
+ * @param {number} [props.delay=300] - Milliseconds before the tooltip becomes visible.
+ * @returns {JSX.Element}
+ */
 export function Tooltip({ children, content, position = 'top', delay = TOOLTIP_DEFAULT_DELAY_MS }) {
   const [isVisible, setIsVisible] = useState(false)
   const timerRef = useRef(null)
