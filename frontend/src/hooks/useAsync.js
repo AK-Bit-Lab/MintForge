@@ -167,6 +167,8 @@ export function useAsync(asyncFn, options = {}) {
     retry,
     hasRun: state.executionCount > 0,
     isIdle: !state.isLoading && state.executionCount === 0,
+    /** True when data exists but is currently being refreshed. */
+    isStale: state.data !== null && state.isLoading,
     setData: useCallback((value) => setState(prev => ({ ...prev, data: value })), []),
   };
 }
