@@ -228,7 +228,7 @@ export const formatPercentFromBps = (bps) => `${(Number(bps) / 100).toFixed(2)}%
  * @param {number} blocks - Block delay count
  * @returns {string} Delay label (e.g. "144 blocks to reveal")
  */
-export const formatRevealDelay = (blocks) => Number(blocks) + " blocks to reveal";
+export const formatRevealDelay = (blocks) => `${Number(blocks)} blocks to reveal`;
 
 /**
  * formatTokenSymbol - Normalise and uppercase a token symbol string.
