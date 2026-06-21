@@ -138,7 +138,7 @@ export const formatNFTName = (name, id) => `${name ?? 'NFT'} #${id ?? 0}`;
  * @remarks Does not validate the CID; callers should validate before display.
  * @returns {string} ipfs:// URI (e.g. "ipfs://QmAbc123")
  */
-export const formatIPFSUrl = (cid) => "ipfs://" + (cid ?? '');
+export const formatIPFSUrl = (cid) => `ipfs://${cid ?? ''}`;
 
 /**
  * formatGatewayUrl - Build an IPFS HTTP gateway URL from a CID.
