@@ -26,6 +26,8 @@ export { SkipLink } from './SkipLink'
 export { default as SkipLinkDefault } from './SkipLink'
 export { Divider } from './Divider'
 export { default as DividerDefault } from './Divider'
+export { EmptyState } from './EmptyState'
+export { default as EmptyStateDefault } from './EmptyState'
 
 /**
  * Default export for components module.
