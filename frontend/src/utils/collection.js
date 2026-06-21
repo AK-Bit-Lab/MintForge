@@ -683,3 +683,21 @@ export function isValidTokenId(id, maxSupply = 10000) {
   const numId = Number(id);
   return Number.isInteger(numId) && numId >= 1 && numId <= maxSupply;
 }
+
+/**
+ * Formats a duration in milliseconds as a human-readable string.
+ * Useful for displaying how long a transaction took or a countdown timer.
+ *
+ * @param {number} ms - Duration in milliseconds.
+ * @returns {string} e.g. '2m 35s', '45s', '1h 4m'.
+ */
+export function formatDuration(ms) {
+  if (!Number.isFinite(ms) || ms < 0) return '0s';
+  const totalSeconds = Math.floor(ms / 1000);
+  const hours   = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+  if (hours > 0) return `${hours}h ${minutes}m`;
+  if (minutes > 0) return `${minutes}m ${seconds}s`;
+  return `${seconds}s`;
+}
