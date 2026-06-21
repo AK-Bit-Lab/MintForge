@@ -359,7 +359,7 @@ export function Gallery() {
         {hasSearch ? ` matching "${searchTerm}"` : ''} out of {nfts.length} {totalLabel}.
       </p>
 
-      <div id={gridId} className={`gallery__grid gallery__grid--${safeViewMode}`}>
+      <div id={gridId} className={`gallery__grid gallery__grid--${safeViewMode}`} data-result-count={filteredNfts.length} data-view={safeViewMode}>
         {filteredNfts.map((nft, index) => (
           <article
             key={nft.id}
