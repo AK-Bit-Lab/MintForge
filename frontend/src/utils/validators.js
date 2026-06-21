@@ -37,6 +37,11 @@ export const isValidRoyaltyBps = (v) => {
   return !isNaN(Number(v)) && Number(v) >= MIN_ROYALTY_BASIS_POINTS && Number(v) <= MAX_ROYALTY_BASIS_POINTS;
 };
 
+/**
+ * Validates a metadata schema version integer.
+ * @param {*} v - Candidate version number
+ * @returns {boolean} True when the value is an integer >= 1
+ */
 export const isValidMetadataVersion = (v) => Number.isInteger(Number(v)) && Number(v) >= 1;
 
 export const isValidBlockHeight = (v) => {
