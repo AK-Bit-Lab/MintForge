@@ -27,6 +27,7 @@ export { useAsync } from './useAsync'
 export { useScrollPosition } from './useScrollPosition'
 export { usePrevious } from './usePrevious'
 export { useDebounce } from './useDebounce'
+export { useEventListener } from './useEventListener'
 
 /**
  * Default exports for individual hooks.
