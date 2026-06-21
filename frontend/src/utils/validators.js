@@ -122,6 +122,11 @@ export const isValidMintBatch = (v) => Number.isInteger(Number(v)) && Number(v) 
  */
 export const isValidRarityTier = (v) => ["common","rare","epic","legendary"].includes(v);
 
+/**
+ * Validates a reveal delay in Stacks blocks.
+ * @param {*} v - Candidate block delay
+ * @returns {boolean} True when the value is a non-negative integer
+ */
 export const isValidRevealDelay = (v) => Number.isInteger(Number(v)) && Number(v) >= 0;
 
 export const isValidProvenanceHash = (v) =>
