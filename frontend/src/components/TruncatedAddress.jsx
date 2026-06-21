@@ -28,6 +28,7 @@ export function TruncatedAddress({ address, showCopy = true, className = '' }) {
     <span
       className={['truncated-address', className].filter(Boolean).join(' ')}
       data-has-address={hasAddress ? 'true' : 'false'}
+      data-address-length={String(safeAddress.length)}
       title={safeAddress || 'No address'}
     >
       <span className="truncated-address__value" aria-label={safeAddress || 'No address'}>
