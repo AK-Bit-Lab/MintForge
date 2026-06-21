@@ -129,6 +129,11 @@ export const isValidRarityTier = (v) => ["common","rare","epic","legendary"].inc
  */
 export const isValidRevealDelay = (v) => Number.isInteger(Number(v)) && Number(v) >= 0;
 
+/**
+ * Validates a provenance hash (lowercase 64-char hex string).
+ * @param {*} v - Candidate provenance hash
+ * @returns {boolean} True when the value is a 64-character hexadecimal string
+ */
 export const isValidProvenanceHash = (v) =>
   typeof v === 'string' && /^[0-9a-f]{64}$/i.test(v.trim());
 
