@@ -106,7 +106,7 @@ export function pluralize(count, singular, plural) {
 /**
  * Default export for strings utilities.
  */
-export default { truncateAddress, capitalize, isValidStacksAddress, truncateMiddle, isBlank, slugify, pluralize }
+export default { truncateAddress, capitalize, isValidStacksAddress, truncateMiddle, isBlank, slugify, pluralize, zeroPad, isNumericString, isAlphanumeric, clampString, formatFileSize }
 
 /**
  * Pads a number with leading zeros to reach a minimum length.
@@ -152,4 +152,21 @@ export function clampString(str, maxLength = 100) {
   const safeMax = Number.isInteger(maxLength) && maxLength > 0 ? maxLength : 100;
   if (str.length <= safeMax) return str;
   return `${str.slice(0, safeMax)}…`;
+}
+
+/**
+ * Formats a byte count as a human-readable file size string.
+ * @param {number} bytes - The size in bytes.
+ * @param {number} [decimals=1] - Decimal places to include.
+ * @returns {string} e.g. '1.4 KB', '2.3 MB'.
+ */
+export function formatFileSize(bytes, decimals = 1) {
+  if (!Number.isFinite(bytes) || bytes < 0) return '0 B';
+  if (bytes === 0) return '0 B';
+  const units = ['B', 'KB', 'MB', 'GB', 'TB'];
+  const safeDecimals = Number.isInteger(decimals) && decimals >= 0 ? decimals : 1;
+  const index = Math.floor(Math.log(bytes) / Math.log(1024));
+  const safeIndex = Math.min(index, units.length - 1);
+  const value = bytes / Math.pow(1024, safeIndex);
+  return `${value.toFixed(safeDecimals)} ${units[safeIndex]}`;
 }
