@@ -214,7 +214,7 @@ export const formatWhitelistWindow = (start, end) => `WL ${Number(start)}-${Numb
  * @param {string|null} address - Owner wallet address
  * @returns {string} Labelled address (e.g. "Owner: SP3HE...")
  */
-export const formatOwnerTag = (address) => "Owner: " + String(address || "");
+export const formatOwnerTag = (address) => `Owner: ${address || ''}`;
 
 /**
  * formatPercentFromBps - Convert basis points to a percentage string.
