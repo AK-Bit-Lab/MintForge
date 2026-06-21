@@ -101,6 +101,11 @@ export const isValidBidAmount = (v) => !isNaN(Number(v)) && Number(v) > 0;
 export const isValidOwnerAddress = (v) =>
   typeof v === 'string' && /^(S[PT])[0-9A-Z]{37,39}$/.test(v.trim());
 
+/**
+ * Validates an NFT supply limit value.
+ * @param {*} v - Candidate supply limit
+ * @returns {boolean} True when the value is an integer >= 1
+ */
 export const isValidSupplyLimit = (v) => Number.isInteger(Number(v)) && Number(v) >= 1;
 
 export const isValidMintBatch = (v) => Number.isInteger(Number(v)) && Number(v) >= 1 && Number(v) <= 10;
