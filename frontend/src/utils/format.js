@@ -272,5 +272,5 @@ export const formatMintBatch = (qty) => `Batch x${Number(qty)}`;
  */
 export const formatAddressShort = (addr) => {
   const s = String(addr || "").trim();
-  return s.length > 10 ? s.slice(0, 6) + "..." + s.slice(-4) : s;
+  return s.length > 10 ? `${s.slice(0, 6)}...${s.slice(-4)}` : s;
 };
