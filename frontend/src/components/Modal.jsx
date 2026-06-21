@@ -14,7 +14,7 @@ import './Modal.css'
 /** ARIA label used for dialogs that have no explicit title. */
 const MODAL_DEFAULT_ARIA_LABEL = 'Dialog';
 /** Supported size variants for the modal panel. */
-const MODAL_SIZES = ['small', 'medium', 'large'];
+const MODAL_SIZES = ['small', 'medium', 'large', 'full'];
 
 export function Modal({ isOpen, onClose, title, children, size = 'medium' }) {
   const safeSize = MODAL_SIZES.includes(size) ? size : 'medium'
