@@ -167,7 +167,7 @@ export const formatMicroStx = (v) => {
  */
 export const formatBlockTime = (ms) => {
   if (ms == null) return '0 min';
-  return Math.round(ms / 60000) + " min";
+  return `${Math.round(ms / 60000)} min`;
 };
 
 /**
