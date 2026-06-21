@@ -29,6 +29,7 @@ export { usePrevious } from './usePrevious'
 export { useDebounce } from './useDebounce'
 export { useEventListener } from './useEventListener'
 export { useIsVisible } from './useIsVisible'
+export { useFocusTrap } from './useFocusTrap'
 
 /**
  * Default exports for individual hooks.
