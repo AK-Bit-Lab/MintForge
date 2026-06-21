@@ -22,6 +22,8 @@ export { Card, CardHeader, CardBody, CardFooter } from './Card'
 export { default as ErrorBoundary } from './ErrorBoundary'
 export { OfflineBanner } from './OfflineBanner'
 export { default as OfflineBannerDefault } from './OfflineBanner'
+export { SkipLink } from './SkipLink'
+export { default as SkipLinkDefault } from './SkipLink'
 
 /**
  * Default export for components module.
