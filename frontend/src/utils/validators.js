@@ -54,6 +54,11 @@ export const isValidBlockHeight = (v) => {
   return Number.isInteger(Number(v)) && Number(v) >= 0;
 };
 
+/**
+ * Validates a collection name string for the allowed character count.
+ * @param {*} v - Candidate collection name
+ * @returns {boolean} True when the value is a non-empty string of 1–64 characters
+ */
 export const isValidCollectionName = (v) => typeof v === "string" && v.trim().length >= 1 && v.trim().length <= 64;
 
 export const isValidTxId = (v) => {
