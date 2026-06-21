@@ -70,7 +70,7 @@ export function Header({ account, onConnect, onDisconnect, isConnecting, walletE
       data-connection-state={connectionState}
     >
       <div className="header__brand">
-        <img src={logo} alt="MintForge Logo" className="header__logo" width="32" height="32" title="MintForge logo" />
+        <img src={logo} alt="LevelUp Logo" className="header__logo" width="32" height="32" title="MintForge logo" />
         <span className="header__title" title="MintForge home">MintForge</span>
       </div>
 
