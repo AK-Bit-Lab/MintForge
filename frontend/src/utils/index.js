@@ -17,7 +17,8 @@ export {
   zeroPad,
   isNumericString,
   isAlphanumeric,
-  clampString
+  clampString,
+  formatFileSize
 } from './strings';
 
 // Collection utilities
