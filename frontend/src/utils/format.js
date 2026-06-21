@@ -23,7 +23,7 @@ export const formatMintPrice = (stx) => {
  * @param {number|null} max - Maximum supply
  * @returns {string} Supply ratio (e.g. "150 / 10000")
  */
-export const formatSupply = (minted, max) => (minted ?? 0) + " / " + (max ?? 0);
+export const formatSupply = (minted, max) => `${minted ?? 0} / ${max ?? 0}`;
 
 /**
  * formatRoyalty - Format royalty basis points as a percentage string.
