@@ -28,6 +28,7 @@ export { useScrollPosition } from './useScrollPosition'
 export { usePrevious } from './usePrevious'
 export { useDebounce } from './useDebounce'
 export { useEventListener } from './useEventListener'
+export { useIsVisible } from './useIsVisible'
 
 /**
  * Default exports for individual hooks.
