@@ -36,6 +36,8 @@ export { TruncatedAddress } from './TruncatedAddress'
 export { default as TruncatedAddressDefault } from './TruncatedAddress'
 export { ExplorerLink } from './ExplorerLink'
 export { default as ExplorerLinkDefault } from './ExplorerLink'
+export { ConfirmDialog } from './ConfirmDialog'
+export { default as ConfirmDialogDefault } from './ConfirmDialog'
 
 /**
  * Default export for components module.
