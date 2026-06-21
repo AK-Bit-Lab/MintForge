@@ -78,6 +78,11 @@ export const isValidTxId = (v) => {
  */
 export const isValidTraitName = (v) => typeof v === "string" && v.trim().length >= 1;
 
+/**
+ * Validates a marketplace listing price in STX.
+ * @param {*} v - Candidate listing price
+ * @returns {boolean} True when the value is a finite positive number
+ */
 export const isValidListingPrice = (v) => !isNaN(Number(v)) && Number(v) > 0;
 
 export const isValidBidAmount = (v) => !isNaN(Number(v)) && Number(v) > 0;
