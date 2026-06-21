@@ -105,6 +105,9 @@ export const TX_STATUS = Object.freeze({
 /** Minimum number of characters required for a Stacks address to display truncated */
 export const MIN_DISPLAY_ADDRESS_LENGTH = 10;
 
+/** Minimum character length of a valid Stacks mainnet or testnet address */
+export const MIN_STACKS_ADDRESS_LENGTH = 40;
+
 /** Polling interval in ms for watching mint activity from the API */
 export const MINT_ACTIVITY_POLL_INTERVAL_MS = 30_000;
 
