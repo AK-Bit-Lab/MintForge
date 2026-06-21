@@ -20,6 +20,11 @@ export const isValidMintCount = (v) => {
   return Number.isInteger(Number(v)) && Number(v) >= 1;
 };
 
+/**
+ * Validates an IPFS CID string for length and type.
+ * @param {*} v - Candidate CID value
+ * @returns {boolean} True when the value is a non-empty string of 10-128 characters
+ */
 export const isValidCID = (v) => typeof v === "string" && v.trim().length >= 10 && v.trim().length <= 128;
 
 export const isValidRoyaltyBps = (v) => {
