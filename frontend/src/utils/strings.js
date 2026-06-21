@@ -106,7 +106,18 @@ export function pluralize(count, singular, plural) {
 /**
  * Default export for strings utilities.
  */
-export default { truncateAddress, capitalize, isValidStacksAddress, truncateMiddle, isBlank, slugify, pluralize, zeroPad, isNumericString, isAlphanumeric, clampString, formatFileSize }
+export default { truncateAddress, capitalize, isValidStacksAddress, truncateMiddle, isBlank, slugify, pluralize, zeroPad, isNumericString, isAlphanumeric, clampString, formatFileSize, isPositiveInteger }
+
+/**
+ * Returns true when the value is a finite integer greater than zero.
+ * Rejects strings, floats, NaN, Infinity, and zero.
+ *
+ * @param {any} value - The value to test.
+ * @returns {boolean}
+ */
+export function isPositiveInteger(value) {
+  return Number.isInteger(value) && value > 0;
+}
 
 /**
  * Pads a number with leading zeros to reach a minimum length.
