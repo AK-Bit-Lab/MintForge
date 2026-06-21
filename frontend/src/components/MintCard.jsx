@@ -134,8 +134,9 @@ export function MintCard({
   const [tokenURI, setTokenURI] = useState('')
   const [isMinting, setIsMinting] = useState(false)
   const [mintStatus, setMintStatus] = useState(null)
-  const tokenUriValidation = validateTokenURI(tokenURI)
-  const hasTokenURI = tokenURI.trim().length > 0
+  const trimmedTokenURI = tokenURI.trim()
+  const tokenUriValidation = validateTokenURI(trimmedTokenURI)
+  const hasTokenURI = trimmedTokenURI.length > 0
   const isTokenUriValid = tokenUriValidation.isValid
   const visibleContractError = typeof contractError === 'string' ? contractError.trim() : contractError
 
