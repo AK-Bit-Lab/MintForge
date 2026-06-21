@@ -157,7 +157,7 @@ export const formatGatewayUrl = (cid) => {
  */
 export const formatMicroStx = (v) => {
   if (v == null) return '0.000000 STX';
-  return (v / 1e6).toFixed(6) + " STX";
+  return `${(v / 1e6).toFixed(6)} STX`;
 };
 
 /**
