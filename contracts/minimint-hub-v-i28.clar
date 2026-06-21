@@ -128,8 +128,8 @@
     (asserts! (is-eq (contract-of nft) CORE-CONTRACT) ERR-WRONG-CONTRACT)
     (asserts! (is-eq tx-sender maker) ERR-WRONG-MAKER)
     
-    ;; Transfer NFT back - Hub is trusted caller in core so it can move it without as-contract
-    (try! (contract-call? nft transfer token-id (as-contract tx-sender) maker))
+    ;; Hub holds the escrowed NFT; use as-contract so tx-sender matches the sender arg.
+    (try! (as-contract (contract-call? nft transfer token-id (as-contract tx-sender) maker)))
     
     (map-delete listings { token-id: token-id })
     (print { event: "unlisted", token-id: token-id, maker: tx-sender })
@@ -161,8 +161,8 @@
     ;; Transfer STX from buyer to maker
     (try! (stx-transfer? price buyer maker))
     
-    ;; Transfer NFT from Hub to buyer
-    (try! (contract-call? nft transfer token-id (as-contract tx-sender) buyer))
+    ;; Hub holds the escrowed NFT; use as-contract so tx-sender matches the sender arg.
+    (try! (as-contract (contract-call? nft transfer token-id (as-contract tx-sender) buyer)))
     
     (map-delete listings { token-id: token-id })
     (print { event: "sold", token-id: token-id, maker: maker, buyer: buyer, price: price })
@@ -197,16 +197,20 @@
       (caller tx-sender)
       (current-info (default-to { staked-balance: u0, last-reward-block: burn-block-height } (map-get? staking-info caller)))
       (pending-rewards (calculate-rewards caller))
+      ;; Resolve ownership up-front so we abort early with ERR-NOT-OWNER
+      ;; instead of an opaque UnwrapFailure if the caller doesn't hold this token.
+      (owner (unwrap! (contract-call? nft-contract get-owner token-id) ERR-NOT-OWNER))
     )
     (asserts! (is-eq contract-caller caller) ERR-NOT-AUTHORIZED)
     (asserts! (is-eq (contract-of nft-contract) CORE-CONTRACT) ERR-WRONG-CONTRACT)
+    (asserts! (is-eq (some caller) owner) ERR-NOT-OWNER)
 
-    ;; Transfer NFT to this contract
-    (unwrap-panic (contract-call? nft-contract transfer token-id caller (as-contract tx-sender)))
+    ;; Transfer NFT into hub escrow; propagate any transfer error cleanly.
+    (try! (contract-call? nft-contract transfer token-id caller (as-contract tx-sender)))
 
-    ;; Mint pending rewards natively targeting minimint-token
+    ;; Mint any accrued rewards before updating the block checkpoint.
     (if (> pending-rewards u0)
-        (unwrap-panic (contract-call? .minimint-token-v-i28 mint pending-rewards caller))
+        (try! (contract-call? .minimint-token-v-i28 mint pending-rewards caller))
         true
     )
 
@@ -240,18 +244,20 @@
     (asserts! (is-eq staker caller) ERR-NOT-OWNER)
     (asserts! (is-eq (contract-of nft-contract) CORE-CONTRACT) ERR-WRONG-CONTRACT)
 
-    ;; Mint pending rewards
+    ;; Mint any accrued rewards before releasing the NFT.
     (if (> pending-rewards u0)
-        (unwrap-panic (contract-call? .minimint-token-v-i28 mint pending-rewards caller))
+        (try! (contract-call? .minimint-token-v-i28 mint pending-rewards caller))
         true
     )
 
-    ;; Transfer NFT back
-    (unwrap-panic (contract-call? nft-contract transfer token-id (as-contract tx-sender) caller))
+    ;; Hub owns the escrowed NFT, so it must act as tx-sender for the return transfer.
+    (try! (as-contract (contract-call? nft-contract transfer token-id (as-contract tx-sender) caller)))
 
     (map-delete stakers token-id)
     (map-set staking-info caller {
-      staked-balance: (- (get staked-balance current-info) u1),
+      staked-balance: (if (> (get staked-balance current-info) u0)
+                         (- (get staked-balance current-info) u1)
+                         u0),
       last-reward-block: burn-block-height
     })
     (ok true)
@@ -272,7 +278,7 @@
     )
     (asserts! (> pending-rewards u0) (ok pending-rewards))
 
-    (unwrap-panic (contract-call? .minimint-token-v-i28 mint pending-rewards caller))
+    (try! (contract-call? .minimint-token-v-i28 mint pending-rewards caller))
 
     (map-set staking-info caller {
       staked-balance: (get staked-balance current-info),
