@@ -144,6 +144,11 @@ export const isValidProvenanceHash = (v) =>
  */
 export const isValidTokenSymbol = (v) => typeof v === "string" && /^[A-Z]{2,8}$/.test(v);
 
+/**
+ * Validates a mint price in STX (can be zero for free mints).
+ * @param {*} v - Candidate mint price
+ * @returns {boolean} True when the value is a finite non-negative number
+ */
 export const isValidMintPrice = (v) => !isNaN(Number(v)) && Number(v) >= 0;
 
 export const isValidMaxPerWallet = (v) => Number.isInteger(Number(v)) && Number(v) >= 1;
