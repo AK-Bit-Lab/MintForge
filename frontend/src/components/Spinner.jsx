@@ -30,7 +30,6 @@ export function Spinner({ size = 'medium', tone = 'primary', className = '', lab
       data-tone={safeTone}
       data-label={safeLabel}
       data-label-length={String(safeLabel.length)}
-      data-live="polite"
       role="status"
       aria-busy="true"
       aria-live="polite"
