@@ -48,13 +48,22 @@ export function useLocalStorage(key, initialValue) {
       }
       setStoredValue((currentValue) => {
         const valueToStore = value instanceof Function ? value(currentValue) : value
-        window.localStorage.setItem(normalizedKey, JSON.stringify(valueToStore))
+        try {
+          window.localStorage.setItem(normalizedKey, JSON.stringify(valueToStore))
+        } catch (storageError) {
+          // Handle QuotaExceededError gracefully — in-memory state still updated.
+          if (storageError?.name === 'QuotaExceededError' || storageError?.code === 22) {
+            console.warn(`localStorage quota exceeded for key "${key}". State kept in memory only.`)
+          } else {
+            console.warn(`Error writing localStorage key "${key}":`, storageError)
+          }
+        }
         return valueToStore
       })
     } catch (error) {
       console.warn(`Error setting localStorage key "${key}":`, error)
     }
-  }, [normalizedKey, hasValidKey])
+  }, [normalizedKey, hasValidKey, key])
 
   // Remove from localStorage
   const removeValue = useCallback(() => {
