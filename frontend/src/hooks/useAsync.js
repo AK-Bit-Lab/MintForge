@@ -11,12 +11,19 @@ import { useState, useCallback, useRef, useEffect } from 'react';
 
 /**
  * @typedef {Object} AsyncState
- * @property {any} data - The resolved data from the async operation
- * @property {Error|null} error - The error if the operation failed
- * @property {boolean} isLoading - Whether the operation is currently in progress
- * @property {boolean} isSuccess - Whether the operation completed successfully
- * @property {boolean} isError - Whether the operation failed
- * @property {() => void} reset - Function to reset the state to initial values
+ * @property {any} data - The resolved data from the async operation.
+ * @property {Error|null} error - The error if the operation failed.
+ * @property {boolean} isLoading - Whether the operation is currently in progress.
+ * @property {boolean} isSuccess - Whether the operation completed successfully.
+ * @property {boolean} isError - Whether the operation failed with an error.
+ * @property {boolean} isStale - True when data exists but is being refreshed in the background.
+ * @property {boolean} hasRun - True after the first execution completes.
+ * @property {boolean} isIdle - True before the first execution starts.
+ * @property {number} executionCount - How many times execute has been called.
+ * @property {number|null} lastExecutedAt - Timestamp (ms) of the most recent execution.
+ * @property {() => void} reset - Resets all state back to initial values.
+ * @property {() => void} clearError - Clears the error without resetting data.
+ * @property {() => Promise<any>} retry - Replays the last call with the same arguments.
  */
 
 /**
