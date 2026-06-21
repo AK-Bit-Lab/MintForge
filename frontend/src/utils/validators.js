@@ -108,6 +108,11 @@ export const isValidOwnerAddress = (v) =>
  */
 export const isValidSupplyLimit = (v) => Number.isInteger(Number(v)) && Number(v) >= 1;
 
+/**
+ * Validates a mint batch size (1–10 NFTs per transaction).
+ * @param {*} v - Candidate batch size
+ * @returns {boolean} True when the value is an integer in the range 1–10
+ */
 export const isValidMintBatch = (v) => Number.isInteger(Number(v)) && Number(v) >= 1 && Number(v) <= 10;
 
 export const isValidRarityTier = (v) => ["common","rare","epic","legendary"].includes(v);
