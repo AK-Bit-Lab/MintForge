@@ -142,20 +142,23 @@ export function Gallery() {
   }, [closeModal, selectedNft])
 
   /**
-   * filteredNfts - Filter and search the loaded NFTs by name, owner, or token ID.
+   * filteredNfts - Filter the loaded NFTs by name, owner, token ID, or tokenURI.
+   * Searching by '#<id>' matches the numeric token ID exactly.
    * @type {Array<Object>}
    */
   const filteredNfts = useMemo(() => nfts.filter(nft => {
     const idSearch = normalizedSearchTerm.startsWith('#')
       ? normalizedSearchTerm.slice(1)
       : normalizedSearchTerm
-    const nftName = String(nft?.name || '').toLowerCase()
-    const nftOwner = String(nft?.owner || '').toLowerCase()
+    const nftName     = String(nft?.name     || '').toLowerCase()
+    const nftOwner    = String(nft?.owner    || '').toLowerCase()
+    const nftTokenURI = String(nft?.tokenURI || '').toLowerCase()
     if (/^\d+$/.test(idSearch)) {
       return nft.id.toString() === idSearch
     }
     return nftName.includes(normalizedSearchTerm) ||
-      nftOwner.includes(normalizedSearchTerm)
+      nftOwner.includes(normalizedSearchTerm) ||
+      nftTokenURI.includes(normalizedSearchTerm)
   }), [nfts, normalizedSearchTerm])
   const hasSearch = searchTerm.trim().length > 0
   const filteredLabel = filteredNfts.length === 1 ? 'item' : 'items'
