@@ -71,6 +71,11 @@ export const isValidTxId = (v) => {
   return typeof v === "string" && /^0x[0-9a-f]{64}$/i.test(v);
 };
 
+/**
+ * Validates a trait attribute name string.
+ * @param {*} v - Candidate trait name
+ * @returns {boolean} True when the value is a non-empty string of at least 1 character
+ */
 export const isValidTraitName = (v) => typeof v === "string" && v.trim().length >= 1;
 
 export const isValidListingPrice = (v) => !isNaN(Number(v)) && Number(v) > 0;
