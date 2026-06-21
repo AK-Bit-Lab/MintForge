@@ -26,6 +26,7 @@ export { useClipboard } from './useClipboard'
 export { useAsync } from './useAsync'
 export { useScrollPosition } from './useScrollPosition'
 export { usePrevious } from './usePrevious'
+export { useDebounce } from './useDebounce'
 
 /**
  * Default exports for individual hooks.
