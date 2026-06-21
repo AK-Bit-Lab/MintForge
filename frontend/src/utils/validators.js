@@ -115,6 +115,11 @@ export const isValidSupplyLimit = (v) => Number.isInteger(Number(v)) && Number(v
  */
 export const isValidMintBatch = (v) => Number.isInteger(Number(v)) && Number(v) >= 1 && Number(v) <= 10;
 
+/**
+ * Validates that a rarity tier string is one of the accepted values.
+ * @param {*} v - Candidate rarity tier
+ * @returns {boolean} True when the value is 'common', 'rare', 'epic', or 'legendary'
+ */
 export const isValidRarityTier = (v) => ["common","rare","epic","legendary"].includes(v);
 
 export const isValidRevealDelay = (v) => Number.isInteger(Number(v)) && Number(v) >= 0;
