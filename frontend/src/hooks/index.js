@@ -25,6 +25,7 @@ export { useTransactionStatus } from './useTransaction'
 export { useClipboard } from './useClipboard'
 export { useAsync } from './useAsync'
 export { useScrollPosition } from './useScrollPosition'
+export { usePrevious } from './usePrevious'
 
 /**
  * Default exports for individual hooks.
