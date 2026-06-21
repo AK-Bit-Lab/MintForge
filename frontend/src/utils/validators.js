@@ -61,6 +61,11 @@ export const isValidBlockHeight = (v) => {
  */
 export const isValidCollectionName = (v) => typeof v === "string" && v.trim().length >= 1 && v.trim().length <= 64;
 
+/**
+ * Validates a Stacks transaction ID (0x-prefixed 64-hex-char string).
+ * @param {*} v - Candidate transaction ID
+ * @returns {boolean} True when the value matches the expected txid pattern
+ */
 export const isValidTxId = (v) => {
   if (v == null) return false;
   return typeof v === "string" && /^0x[0-9a-f]{64}$/i.test(v);
