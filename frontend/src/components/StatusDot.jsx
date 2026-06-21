@@ -37,7 +37,7 @@ export function StatusDot({ status = 'idle', pulse = false, label, className = '
   return (
     <span
       className={['status-dot', `status-dot--${safeStatus}`, pulse ? 'status-dot--pulse' : '', className].filter(Boolean).join(' ')}
-      role="img"
+      role="status"
       aria-label={safeLabel}
       title={safeLabel}
       data-status={safeStatus}
