@@ -12,6 +12,11 @@ import { STACKS_NETWORK_CONFIG, NETWORK } from '../constants';
 /** Polling interval in ms for checking transaction confirmation status. */
 const TX_POLL_INTERVAL_MS = 8_000;
 
+/** Error message for a failed transaction status fetch. */
+const ERR_TX_FETCH_FAILED = 'Transaction fetch failed with status';
+/** Error message shown to the user when the status request cannot complete. */
+const ERR_TX_STATUS_UNAVAILABLE = 'Unable to load transaction status';
+
 /**
  * Hook to track the status of a Stacks transaction.
  * @param {string} txId - The transaction ID to track.
@@ -44,7 +49,7 @@ export function useTransactionStatus(txId) {
         signal: controller.signal
       });
       if (!response.ok) {
-        throw new Error(`Transaction fetch failed with status ${response.status}`);
+        throw new Error(`${ERR_TX_FETCH_FAILED} ${response.status}`);
       }
       const data = await response.json();
       setStatus(data.tx_status);
@@ -53,7 +58,7 @@ export function useTransactionStatus(txId) {
         return;
       }
       console.error('Error fetching transaction status:', err);
-      setError(err.message || 'Unable to load transaction status');
+      setError(err.message || ERR_TX_STATUS_UNAVAILABLE);
     } finally {
       if (!controller.signal.aborted) {
         setIsLoading(false);
