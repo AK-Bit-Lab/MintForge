@@ -30,6 +30,8 @@ export { EmptyState } from './EmptyState'
 export { default as EmptyStateDefault } from './EmptyState'
 export { StatusDot } from './StatusDot'
 export { default as StatusDotDefault } from './StatusDot'
+export { LoadingDots } from './LoadingDots'
+export { default as LoadingDotsDefault } from './LoadingDots'
 
 /**
  * Default export for components module.
