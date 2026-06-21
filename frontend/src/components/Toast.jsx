@@ -31,6 +31,7 @@ export function Toast({ message, type = 'info', onClose }) {
       data-type={safeType}
       data-dismissible={onClose ? 'true' : 'false'}
       data-message-length={safeMessage.length}
+      data-message={safeMessage}
       role={isInterruptive ? 'alert' : 'status'}
       aria-live={isInterruptive ? 'assertive' : 'polite'}
       aria-atomic="true"
