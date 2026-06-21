@@ -44,6 +44,11 @@ export const isValidRoyaltyBps = (v) => {
  */
 export const isValidMetadataVersion = (v) => Number.isInteger(Number(v)) && Number(v) >= 1;
 
+/**
+ * Validates a Stacks block height value.
+ * @param {*} v - Candidate block height
+ * @returns {boolean} True when the value is a non-negative integer
+ */
 export const isValidBlockHeight = (v) => {
   if (v == null) return false;
   return Number.isInteger(Number(v)) && Number(v) >= 0;
