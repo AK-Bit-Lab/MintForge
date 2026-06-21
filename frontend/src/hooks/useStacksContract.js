@@ -7,7 +7,7 @@
  * 
  * @module useStacksContract
  */
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useMemo } from 'react';
 import { openContractCall } from '@stacks/connect';
 import { STACKS_MAINNET, STACKS_TESTNET } from '@stacks/network';
 import {
@@ -74,7 +74,10 @@ export function useStacksContract(address) {
     maxSupply: MAX_SUPPLY,
     mintFee: MINT_FEE
   });
-  const stacksNetwork = NETWORK === 'mainnet' ? STACKS_MAINNET : STACKS_TESTNET;
+  const stacksNetwork = useMemo(
+    () => (NETWORK === 'mainnet' ? STACKS_MAINNET : STACKS_TESTNET),
+    [] // NETWORK is a module-level constant — no need to re-derive
+  );
 
   /**
    * fetchContractInfo - Fetch on-chain collection metrics (supply, fee) via a read-only call.
