@@ -8,6 +8,42 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+- `Tooltip` — moved `useCallback` and `useEffect` calls above the early return to fix a React rules-of-hooks violation.
+- `OfflineBanner` — moved `dismissed` state reset from render body into `useEffect` to prevent setState during render.
+- `Modal` — guard focus restoration to skip `document.body` as restore target.
+- `EmptyState` — corrected `role` from `status` to `region` for non-live placeholder sections.
+- `StatusDot` — changed `role` from `img` to `status` for dynamic state indicators.
+- `MintCard` — trim token URI before passing to `validateTokenURI` so pasted URIs with whitespace validate correctly.
+- `ExplorerLink` — guard against undefined `identifier` prop.
+- `Spinner` — removed redundant `data-live` attribute that shadowed `aria-live`.
+- Contract name defaults in `constants/index.js` updated from v-i27 to v-i28 to match deployed contracts.
+- Stale v-i27 inline comment in `constants/index.js` corrected.
+- Default values in the README environment variables table updated to v-i28.
+
+### Added
+- `data-complete` attribute on `ProgressBar` when value reaches max.
+- `aria-label` attribute on `SkipLink` component.
+- `title` attribute on labelled `Divider` variants.
+- `aria-hidden` for dot-only decorative `Badge` instances.
+- `aria-busy` attribute to `LoadingDots` component.
+- `data-intent` attributes on `ConfirmDialog` action buttons.
+- `data-address-length` attribute on `TruncatedAddress` wrapper.
+- `MIN_STACKS_ADDRESS_LENGTH` constant.
+- `DEFAULT_ERROR_MESSAGE` constant.
+- JSDoc added to all undocumented validators in `validators.js`.
+- `@module` tag and improved docs in `format.js`.
+
+### Changed
+- `handleMint` in `App` wrapped in `useCallback` for stable reference.
+- `GALLERY_MOCK_NFTS` lifted to module scope in `Gallery` to avoid array recreation per effect.
+- `LoadingSkeleton` style computation inlined, removing `getStyle` wrapper function.
+- `VALID_TYPES` in `Toast` derived from `TOAST_ICONS` keys to remove duplication.
+- `VALID_SIZES` / `VALID_TONES` extracted to module constants in `Spinner`.
+- `VALID_VARIANTS` / `VALID_PADDING_SIZES` extracted to module constants in `Card`.
+- All string concatenation in `format.js` formatters replaced with template literals.
+
+---
 ### Added
 - `CONTRIBUTING.md` — development workflow, commit conventions, and PR process.
 - `CHANGELOG.md` — this file.
