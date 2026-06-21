@@ -101,7 +101,7 @@ export const formatListingPrice = (stx) => {
  * @param {number|null} stx - Bid amount in STX
  * @returns {string} Formatted bid label (e.g. "Bid: 5 STX")
  */
-export const formatBidAmount = (stx) => "Bid: " + (stx ?? 0) + " STX";
+export const formatBidAmount = (stx) => `Bid: ${stx ?? 0} STX`;
 
 /**
  * formatMintDate - Format a mint timestamp as a locale date string.
