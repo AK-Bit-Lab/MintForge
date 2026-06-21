@@ -83,7 +83,7 @@ export const formatCollectionSize = (n) => {
  * @param {number|null} n - Number of unique owners
  * @returns {string} Count with 'owners' label (e.g. "42 owners")
  */
-export const formatOwnerCount = (n) => (n == null ? 0 : n) + " owners";
+export const formatOwnerCount = (n) => `${n ?? 0} owners`;
 
 /**
  * formatListingPrice - Format a listing price with two decimal places.
