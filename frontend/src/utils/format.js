@@ -1,10 +1,18 @@
+/**
+ * Formatting utility functions for NFT collection data.
+ *
+ * Converts raw numeric and string values into display-ready strings.
+ * All functions are pure and return a safe fallback for null/undefined inputs.
+ *
+ * @module format
+ */
 
 /**
  * formatTokenId - Format a token ID for display.
  * @param {number|string|null|undefined} id - Token ID
  * @returns {string} Token ID prefixed with '#', defaults to '#0'
  */
-export const formatTokenId = (id) => id == null ? '#0' : '#' + id;
+export const formatTokenId = (id) => id == null ? '#0' : `#${id}`;
 
 /**
  * formatMintPrice - Format a mint price in STX for display.
