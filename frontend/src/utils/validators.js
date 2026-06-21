@@ -85,6 +85,11 @@ export const isValidTraitName = (v) => typeof v === "string" && v.trim().length 
  */
 export const isValidListingPrice = (v) => !isNaN(Number(v)) && Number(v) > 0;
 
+/**
+ * Validates a bid amount in STX.
+ * @param {*} v - Candidate bid amount
+ * @returns {boolean} True when the value is a finite positive number
+ */
 export const isValidBidAmount = (v) => !isNaN(Number(v)) && Number(v) > 0;
 
 export const isValidOwnerAddress = (v) =>
