@@ -38,8 +38,6 @@ export function Tooltip({ children, content, position = 'top', delay = TOOLTIP_D
   const contentLength = typeof safeContent === 'string' ? safeContent.length : 0
   const wrapperTitle = typeof safeContent === 'string' ? safeContent : undefined
 
-  if (!hasContent) return <>{children}</>
-
   const showTooltip = useCallback(() => {
     if (timerRef.current) {
       clearTimeout(timerRef.current)
@@ -59,6 +57,8 @@ export function Tooltip({ children, content, position = 'top', delay = TOOLTIP_D
       }
     }
   }, [])
+
+  if (!hasContent) return <>{children}</>
 
   return (
     <div 
