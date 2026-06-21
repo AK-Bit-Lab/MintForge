@@ -56,7 +56,8 @@ export function Badge({
 }
 
 Badge.propTypes = {
-  children: PropTypes.node.isRequired,
+  /** Badge label text or content. Optional when dot-only mode is used. */
+  children: PropTypes.node,
   variant: PropTypes.oneOf([
     'default',
     'primary',
