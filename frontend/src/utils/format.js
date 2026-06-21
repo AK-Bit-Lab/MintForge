@@ -255,7 +255,7 @@ export const formatCollectionTitle = (name) => {
 export const formatFloorPrice = (stx) => {
   const amount = Number(stx);
   if (!Number.isFinite(amount)) return "Floor 0.00 STX";
-  return "Floor " + amount.toFixed(2) + " STX";
+  return `Floor ${amount.toFixed(2)} STX`;
 };
 
 /**
