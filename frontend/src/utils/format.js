@@ -221,7 +221,7 @@ export const formatOwnerTag = (address) => `Owner: ${address || ''}`;
  * @param {number} bps - Basis points (100 bps = 1%)
  * @returns {string} Percentage with 2 decimal places (e.g. "5.00%")
  */
-export const formatPercentFromBps = (bps) => (Number(bps) / 100).toFixed(2) + "%";
+export const formatPercentFromBps = (bps) => `${(Number(bps) / 100).toFixed(2)}%`;
 
 /**
  * formatRevealDelay - Format a reveal delay block count as a label.
