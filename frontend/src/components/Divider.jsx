@@ -29,6 +29,7 @@ export function Divider({ label, orientation = 'horizontal', className = '' }) {
       role="separator"
       aria-orientation={safeOrientation}
       aria-label={hasLabel ? safeLabel : undefined}
+      title={hasLabel ? safeLabel : undefined}
       data-has-label={hasLabel ? 'true' : 'false'}
       data-orientation={safeOrientation}
     >
