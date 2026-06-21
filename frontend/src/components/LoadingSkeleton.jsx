@@ -25,12 +25,9 @@ export function LoadingSkeleton({ variant = 'text', width, height, count = 1, cl
   const hasHeight = Boolean(height)
   const skeletons = Array.from({ length: safeCount }, (_, i) => i)
 
-  const getStyle = () => {
-    const style = {}
-    if (width) style.width = typeof width === 'number' ? `${width}px` : width
-    if (height) style.height = typeof height === 'number' ? `${height}px` : height
-    return style
-  }
+  const style = {}
+  if (width) style.width = typeof width === 'number' ? `${width}px` : width
+  if (height) style.height = typeof height === 'number' ? `${height}px` : height
 
   return (
     <>
@@ -45,7 +42,7 @@ export function LoadingSkeleton({ variant = 'text', width, height, count = 1, cl
           data-height-set={hasHeight ? 'true' : 'false'}
           data-animated="true"
           role="presentation"
-          style={getStyle()}
+          style={style}
           aria-hidden="true"
         />
       ))}
