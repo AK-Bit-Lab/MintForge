@@ -172,6 +172,11 @@ export const isValidTokenIdInSupply = (v) => Number.isInteger(Number(v)) && Numb
  */
 export const isValidWalletLimit = (v) => Number.isInteger(Number(v)) && Number(v) >= 1 && Number(v) <= 1000;
 
+/**
+ * Validates a token metadata URI (must begin with ipfs:// or https://).
+ * @param {*} v - Candidate token URI
+ * @returns {boolean} True when the value is a string starting with ipfs:// or https://
+ */
 export const isValidTokenURI = (v) => typeof v === "string" && /^(ipfs|https):\/\//i.test(v.trim());
 
 export const isValidMintPriceMicrostx = (v) => Number.isInteger(Number(v)) && Number(v) >= 0;
