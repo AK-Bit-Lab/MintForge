@@ -30,6 +30,7 @@ export function SkipLink({ targetId, label = 'Skip to main content' }) {
       href={`#${safeTarget}`}
       className="skip-link"
       data-target={safeTarget}
+      aria-label={safeLabel}
     >
       {safeLabel}
     </a>
