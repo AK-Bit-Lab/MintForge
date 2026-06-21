@@ -263,7 +263,7 @@ export const formatFloorPrice = (stx) => {
  * @param {number} qty - Number of NFTs in a batch
  * @returns {string} Batch label (e.g. "Batch x3")
  */
-export const formatMintBatch = (qty) => "Batch x" + Number(qty);
+export const formatMintBatch = (qty) => `Batch x${Number(qty)}`;
 
 /**
  * formatAddressShort - Truncate a wallet address for compact display.
