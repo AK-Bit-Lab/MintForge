@@ -32,6 +32,8 @@ export { StatusDot } from './StatusDot'
 export { default as StatusDotDefault } from './StatusDot'
 export { LoadingDots } from './LoadingDots'
 export { default as LoadingDotsDefault } from './LoadingDots'
+export { TruncatedAddress } from './TruncatedAddress'
+export { default as TruncatedAddressDefault } from './TruncatedAddress'
 
 /**
  * Default export for components module.
