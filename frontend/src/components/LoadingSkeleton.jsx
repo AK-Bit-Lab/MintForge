@@ -11,11 +11,13 @@ import PropTypes from 'prop-types'
 import './LoadingSkeleton.css'
 import { SKELETON_MAX_COUNT } from '../constants';
 
+/** All rendering variants accepted by LoadingSkeleton. */
+const SUPPORTED_VARIANTS = ['text', 'title', 'image', 'avatar', 'button', 'circle', 'rect'];
+
 /**
  * Renders one or more non-interactive placeholder blocks for loading content.
  */
 export function LoadingSkeleton({ variant = 'text', width, height, count = 1, className = '' }) {
-  const SUPPORTED_VARIANTS = ['text', 'title', 'image', 'avatar', 'button', 'circle', 'rect']
   const safeCount = Number.isInteger(count) && count > 0 ? Math.min(count, SKELETON_MAX_COUNT) : 1
   const safeVariant = SUPPORTED_VARIANTS.includes(variant) ? variant : 'text'
   const normalizedClassName = typeof className === 'string' ? className.trim() : className
