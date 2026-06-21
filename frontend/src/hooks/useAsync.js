@@ -52,6 +52,11 @@ export function useAsync(asyncFn, options = {}) {
   const mountedRef = useRef(true);
   /** Tracks the latest promise so stale async completions cannot overwrite state. */
   const promiseRef = useRef(null);
+  /**
+   * Stores the last arguments passed to execute so retry() can replay them.
+   * Declared before execute to satisfy the reference order requirement.
+   */
+  const lastArgsRef = useRef([]);
 
   // Set mounted state for cleanup
   useEffect(() => {
@@ -145,7 +150,6 @@ export function useAsync(asyncFn, options = {}) {
    * Re-execute the async function using the last known arguments.
    * @returns {Promise<T>}
    */
-  const lastArgsRef = useRef([]);
   const retry = useCallback(() => execute(...lastArgsRef.current), [execute]);
 
   // Execute immediately if requested
