@@ -19,7 +19,8 @@ export {
   usePrefersDarkMode,
   usePrefersReducedMotion,
   useIsLandscape,
-  useIsPortrait
+  useIsPortrait,
+  useIsTouchDevice
 } from './useMediaQuery'
 export { useTransactionStatus } from './useTransaction'
 export { useClipboard } from './useClipboard'

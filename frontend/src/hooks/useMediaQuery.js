@@ -107,6 +107,19 @@ export function useIsPortrait() {
   return useMediaQuery(MEDIA_QUERY_PORTRAIT);
 }
 
+/** Media query string matching touch-primary pointer devices (mobile, tablet). */
+const MEDIA_QUERY_TOUCH = '(hover: none) and (pointer: coarse)';
+
+/**
+ * Returns true when the primary input device is a touchscreen.
+ * Useful for adjusting tap target sizes and interaction patterns.
+ *
+ * @returns {boolean}
+ */
+export function useIsTouchDevice() {
+  return useMediaQuery(MEDIA_QUERY_TOUCH);
+}
+
 /**
  * Default export for useMediaQuery hook and presets.
  */
@@ -119,6 +132,7 @@ export default {
   useHighContrast,
   useIsLandscape,
   useIsPortrait,
+  useIsTouchDevice,
   usePrefersDarkMode,
   usePrefersReducedMotion
 }
