@@ -13,12 +13,15 @@ import { THEME_STORAGE_KEY } from '../constants';
 
 const ThemeContext = createContext();
 
+/** Allowed theme values accepted by the provider. */
+const THEME_VALID_VALUES = ['light', 'dark'];
+
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
     if (typeof window === 'undefined') return 'dark';
     try {
       const savedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
-      if (savedTheme === 'light' || savedTheme === 'dark') return savedTheme;
+      if (THEME_VALID_VALUES.includes(savedTheme)) return savedTheme;
     } catch (error) {
       console.warn('Unable to access stored theme', error);
     }
