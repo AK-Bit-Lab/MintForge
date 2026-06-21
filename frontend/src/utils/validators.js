@@ -151,6 +151,11 @@ export const isValidTokenSymbol = (v) => typeof v === "string" && /^[A-Z]{2,8}$/
  */
 export const isValidMintPrice = (v) => !isNaN(Number(v)) && Number(v) >= 0;
 
+/**
+ * Validates a per-wallet mint cap (1–1000).
+ * @param {*} v - Candidate per-wallet limit
+ * @returns {boolean} True when the value is an integer in the range 1–1000
+ */
 export const isValidMaxPerWallet = (v) => Number.isInteger(Number(v)) && Number(v) >= 1;
 
 /**
