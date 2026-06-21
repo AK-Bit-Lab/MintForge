@@ -9,13 +9,19 @@
 import PropTypes from 'prop-types'
 import './Spinner.css'
 
+/** Accepted size variants for the Spinner component. */
+const VALID_SIZES = ['small', 'medium', 'large']
+
+/** Accepted color tone variants for the Spinner component. */
+const VALID_TONES = ['primary', 'white', 'success', 'muted']
+
 /**
  * Accessible inline loading indicator with normalized size, tone, and label.
  */
 export function Spinner({ size = 'medium', tone = 'primary', className = '', label = 'Loading content' }) {
   const safeLabel = typeof label === 'string' && label.trim() ? label.trim() : 'Loading content'
-  const safeSize = ['small', 'medium', 'large'].includes(size) ? size : 'medium'
-  const safeTone = ['primary', 'white', 'success', 'muted'].includes(tone) ? tone : 'primary'
+  const safeSize = VALID_SIZES.includes(size) ? size : 'medium'
+  const safeTone = VALID_TONES.includes(tone) ? tone : 'primary'
   const composedClass = ['spinner', `spinner--${safeSize}`, `spinner--${safeTone}`, className].filter(Boolean).join(' ')
   return (
     <span
