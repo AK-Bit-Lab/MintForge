@@ -185,6 +185,10 @@ export function Stats({ contractInfo, isLoading, isConnected = false, recentActi
           ? 'Wallet-specific caps and pause state appear when available from the connected contract context.'
           : 'Connect a wallet to load address-specific mint caps and account context.'}
       </p>
+
+      <p className="stats__updated" aria-live="polite" title={`Stats last refreshed at ${lastUpdated.toLocaleTimeString()}`}>
+        Last updated: <time dateTime={lastUpdated.toISOString()}>{lastUpdated.toLocaleTimeString()}</time>
+      </p>
     </section>
   )
 }
