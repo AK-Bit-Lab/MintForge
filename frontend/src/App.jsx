@@ -90,14 +90,14 @@ function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }, [])
 
-  const handleMint = async (tokenURI) => {
+  const handleMint = useCallback(async (tokenURI) => {
     const result = await mint(tokenURI)
     if (result) {
       showToast(MINT_SUCCESS_TOAST_MESSAGE, 'success')
       setRecentMints(prev => appendRecentMintResult(prev, result))
     }
     return result
-  }
+  }, [mint, showToast])
 
   return (
     <ErrorBoundary>
