@@ -4,10 +4,12 @@
     "useDefineForClassFields": true,
     "module": "ESNext",
     "lib": [
-      "ESNext"
+      "ESNext",
+      "DOM"
     ],
     "skipLibCheck": true,
     "moduleResolution": "bundler",
+    "allowJs": true,
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -19,6 +21,8 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": [
-    "node_modules/@stacks/clarinet-sdk/vitest-helpers/src"
+    "node_modules/@stacks/clarinet-sdk/vitest-helpers/src",
+    "scripts/**/*",
+    "frontend/src/**/*"
   ]
 }
