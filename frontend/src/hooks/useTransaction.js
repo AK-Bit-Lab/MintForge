@@ -86,7 +86,7 @@ export function useTransactionStatus(txId) {
     };
   }, []);
 
-  return { status, error, isLoading, refetch: checkStatus, isConfirmed: status === 'success', isPending: status === 'pending', isFailed: status === 'abort_by_response' || status === 'abort_by_post_condition' };
+  return { status, error, isLoading, refetch: checkStatus, isConfirmed: status === 'success', isPending: status === 'pending', isFailed: status === 'abort_by_response' || status === 'abort_by_post_condition' || status === 'dropped' };
 }
 
 /**
