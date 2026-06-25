@@ -341,7 +341,7 @@ export function getMetadataGatewayUrl(uri) {
   if (lowered.startsWith('ipfs://')) {
     const path = normalized
       .slice('ipfs://'.length)
-      .replace(/^ipfs\//i, '')
+      .replace(/^\/?ipfs\//i, '')
       .trim()
     if (!path || /\s/.test(path)) {
       return null
