@@ -15,7 +15,11 @@ const TOAST_VALID_TYPES = ['success', 'error', 'warning', 'info'];
 
 export function normalizeToastMessage(message) {
   if (message == null) return '';
-  return typeof message === 'string' ? message.trim() : String(message).trim();
+  try {
+    return typeof message === 'string' ? message.trim() : String(message).trim();
+  } catch {
+    return '';
+  }
 }
 
 export function normalizeToastType(type) {
