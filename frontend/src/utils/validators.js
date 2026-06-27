@@ -203,3 +203,20 @@ export const isValidBatchTotal = (v) => Number.isInteger(Number(v)) && Number(v)
 export const isValidTraitCount = (v) => Number.isInteger(Number(v)) && Number(v) >= 0 && Number(v) <= 64;
 
 export const isValidExplorerUrl = (v) => typeof v === "string" && /^https:\/\//i.test(v.trim());
+
+/**
+ * Validates a general HTTP or HTTPS URL string.
+ * Uses the URL constructor for robust parsing rather than a simple regex.
+ * Accepts http and https protocols with a valid hostname.
+ * @param {*} v - Candidate URL
+ * @returns {boolean} True when the value is a valid http or https URL
+ */
+export const isValidHttpUrl = (v) => {
+  if (typeof v !== "string" || !v.trim()) return false;
+  try {
+    const url = new URL(v.trim());
+    return url.protocol === "http:" || url.protocol === "https:";
+  } catch {
+    return false;
+  }
+};
