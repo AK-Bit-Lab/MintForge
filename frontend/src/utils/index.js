@@ -45,6 +45,12 @@ export {
   getFocusableElements
 } from './focusTrap';
 
+// General helpers
+export {
+  debounce,
+  generateId
+} from './helpers';
+
 /**
  * Default exports for individual utility modules.
  */
