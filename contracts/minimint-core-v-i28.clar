@@ -158,6 +158,12 @@
   (ok (var-get is-paused))
 )
 
+;; Get the current contract owner address
+;; Returns: (ok principal) - The contract owner's principal
+(define-read-only (get-contract-owner)
+  (ok (var-get contract-owner))
+)
+
 ;; --- Admin Functions ---
 
 ;; Update the metadata URI for an existing token (admin only)
