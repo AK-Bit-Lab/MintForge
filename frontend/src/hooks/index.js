@@ -38,6 +38,7 @@ export { useCounter } from './useCounter'
 export { useInterval } from './useInterval'
 export { useIdle } from './useIdle'
 export { useHover } from './useHover'
+export { useToggle } from './useToggle'
 
 /**
  * Default exports for individual hooks.
