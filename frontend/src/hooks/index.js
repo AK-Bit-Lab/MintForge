@@ -41,6 +41,8 @@ export { useHover } from './useHover'
 export { useToggle } from './useToggle'
 export { useOnClickOutside } from './useOnClickOutside'
 export { useScrollLock } from './useScrollLock'
+export { useMedia } from './useMedia'
+export { useKeyPress } from './useKeyPress'
 
 /**
  * Default exports for individual hooks.
