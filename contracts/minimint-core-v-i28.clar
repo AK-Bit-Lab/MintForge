@@ -164,6 +164,12 @@
   (ok (var-get contract-owner))
 )
 
+;; Get the mint fee in micro-STX
+;; Returns: (ok uint) - The current mint fee amount
+(define-read-only (get-mint-fee)
+  (ok MINT-FEE)
+)
+
 ;; --- Admin Functions ---
 
 ;; Update the metadata URI for an existing token (admin only)
