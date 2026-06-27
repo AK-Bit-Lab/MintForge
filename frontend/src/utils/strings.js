@@ -106,7 +106,7 @@ export function pluralize(count, singular, plural) {
 /**
  * Default export for strings utilities.
  */
-export default { truncateAddress, capitalize, isValidStacksAddress, truncateMiddle, isBlank, slugify, pluralize, zeroPad, isNumericString, isAlphanumeric, clampString, formatFileSize, isPositiveInteger }
+export default { truncateAddress, capitalize, isValidStacksAddress, truncateMiddle, isBlank, slugify, pluralize, zeroPad, isNumericString, isAlphanumeric, clampString, formatFileSize, isPositiveInteger, toKebabCase, parseStacksAddress }
 
 /**
  * Returns true when the value is a finite integer greater than zero.
@@ -199,6 +199,23 @@ export function clampString(str, maxLength = 100) {
  * @param {number} [decimals=1] - Decimal places to include.
  * @returns {string} e.g. '1.4 KB', '2.3 MB'.
  */
+/**
+ * Converts a string to kebab-case for use in CSS classes, URLs, and data attributes.
+ * Handles camelCase, PascalCase, snake_case, and space-separated input.
+ *
+ * @param {string} str - The string to convert.
+ * @returns {string} The kebab-cased string.
+ */
+export function toKebabCase(str) {
+  if (typeof str !== 'string' || !str) return '';
+  return str
+    .replace(/([a-z])([A-Z])/g, '$1-$2')
+    .replace(/([A-Z])([A-Z][a-z])/g, '$1-$2')
+    .replace(/[\s_]+/g, '-')
+    .toLowerCase()
+    .replace(/^-+|-+$/g, '');
+}
+
 export function formatFileSize(bytes, decimals = 1) {
   if (!Number.isFinite(bytes) || bytes < 0) return '0 B';
   if (bytes === 0) return '0 B';

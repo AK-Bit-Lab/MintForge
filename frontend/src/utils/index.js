@@ -18,7 +18,9 @@ export {
   isNumericString,
   isAlphanumeric,
   clampString,
-  formatFileSize
+  formatFileSize,
+  toKebabCase,
+  parseStacksAddress
 } from './strings';
 
 // Collection utilities
