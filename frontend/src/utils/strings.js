@@ -153,6 +153,34 @@ export function isAlphanumeric(value) {
 }
 
 /**
+ * Parses a Stacks address and returns its network prefix and version bytes.
+ * Returns null for invalid or unrecognised address formats.
+ *
+ * @param {string} address - A Stacks address (mainnet or testnet).
+ * @returns {{ prefix: string, network: 'mainnet'|'testnet', btcVersion: number, stxVersion: number }|null}
+ */
+export function parseStacksAddress(address) {
+  if (typeof address !== 'string' || !address.trim()) return null;
+  const normalized = address.trim();
+  const prefix = normalized.slice(0, 2).toUpperCase();
+
+  if (prefix === 'SP') {
+    return { prefix, network: 'mainnet', btcVersion: 0, stxVersion: 22 };
+  }
+  if (prefix === 'SM') {
+    return { prefix, network: 'mainnet', btcVersion: 5, stxVersion: 20 };
+  }
+  if (prefix === 'ST') {
+    return { prefix, network: 'testnet', btcVersion: 111, stxVersion: 26 };
+  }
+  if (prefix === 'SN') {
+    return { prefix, network: 'testnet', btcVersion: 196, stxVersion: 21 };
+  }
+
+  return null;
+}
+
+/**
  * Clamps a string to a maximum length, appending an ellipsis if truncated.
  * @param {string} str - The string to clamp.
  * @param {number} [maxLength=100] - Maximum character count before truncation.
