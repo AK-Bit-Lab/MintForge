@@ -211,6 +211,18 @@ export const isValidExplorerUrl = (v) => typeof v === "string" && /^https:\/\//i
  * @param {*} v - Candidate URL
  * @returns {boolean} True when the value is a valid http or https URL
  */
+/**
+ * Validates a Stacks transaction ID string (0x-prefixed 64-char hex).
+ * More strict than isValidTxId as it also checks character count exactly.
+ * @param {*} v - Candidate transaction ID
+ * @returns {boolean} True when the value is a valid Stacks txid
+ */
+export const isValidStacksTxId = (v) => {
+  if (v == null) return false;
+  if (typeof v !== "string") return false;
+  return /^0x[0-9a-fA-F]{64}$/.test(v.trim());
+};
+
 export const isValidHttpUrl = (v) => {
   if (typeof v !== "string" || !v.trim()) return false;
   try {
