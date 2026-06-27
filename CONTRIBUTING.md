@@ -73,16 +73,6 @@ npm run test            # Run Vitest test suite
 npm run build           # Production build
 ```
 
-### Automation Scripts
-
-Scripts live in `scripts/` and require the root `.env` file with
-`DEPLOYMENT_MNEMONIC` set. Run from the project root:
-
-```bash
-node scripts/distribute-funds.js
-node scripts/interact.js
-```
-
 ---
 
 ## Commit Guidelines

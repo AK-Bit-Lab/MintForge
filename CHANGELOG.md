@@ -84,7 +84,6 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 - `Stats` last-updated timestamp display.
 - `Gallery` search extended to match `tokenURI` field.
 - `.env.example` updated for v-i28 contracts and token variables.
-- README Automation Scripts section documenting distribute-funds and interact.
 
 ### Changed
 - Contract references updated from `v-i27` to `v-i28` across README and frontend constants.
@@ -113,8 +112,6 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 - `minimint-token-v-i28` — SIP-010 MMT reward token, mint restricted to hub.
 - React frontend with Vite, Vitest, and `@stacks/connect` wallet integration.
 - Wallet-first minting flow with post-condition enforcement.
-- `distribute-funds.js` — rate-limit-proof top-up distribution script.
-- `interact.js` — organic 6-phase interaction script across all three contracts.
 - GPG-signed commits, AK-Bit-Lab identity.
 
 [Unreleased]: https://github.com/AK-Bit-Lab/MintForge/compare/v0.1.0...HEAD
