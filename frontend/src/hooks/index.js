@@ -33,6 +33,7 @@ export { useIsVisible } from './useIsVisible'
 export { useFocusTrap } from './useFocusTrap'
 export { useNetworkStatus } from './useNetworkStatus'
 export { useConfirm } from './useConfirm'
+export { useTimeout } from './useTimeout'
 
 /**
  * Default exports for individual hooks.
