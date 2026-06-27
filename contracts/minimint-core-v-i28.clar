@@ -150,6 +150,14 @@
   )
 )
 
+;; --- Read-Only Getters ---
+
+;; Check if minting is currently paused
+;; Returns: (ok bool) - true if minting is paused, false otherwise
+(define-read-only (get-is-paused)
+  (ok (var-get is-paused))
+)
+
 ;; --- Admin Functions ---
 
 ;; Update the metadata URI for an existing token (admin only)
