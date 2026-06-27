@@ -37,6 +37,7 @@ export { useTimeout } from './useTimeout'
 export { useCounter } from './useCounter'
 export { useInterval } from './useInterval'
 export { useIdle } from './useIdle'
+export { useHover } from './useHover'
 
 /**
  * Default exports for individual hooks.
