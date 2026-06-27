@@ -36,6 +36,7 @@ export { useConfirm } from './useConfirm'
 export { useTimeout } from './useTimeout'
 export { useCounter } from './useCounter'
 export { useInterval } from './useInterval'
+export { useIdle } from './useIdle'
 
 /**
  * Default exports for individual hooks.
