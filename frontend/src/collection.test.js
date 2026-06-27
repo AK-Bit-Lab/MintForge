@@ -1,3 +1,8 @@
+/**
+ * @module collection.test
+ *
+ * Unit tests for collection utility functions.
+ */
 import { describe, expect, it } from 'vitest'
 import {
   createSubmissionRecord,

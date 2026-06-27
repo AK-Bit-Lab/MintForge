@@ -192,6 +192,8 @@ npm run verify:production
 | `VITE_HUB_CONTRACT_ADDRESS` | Hub contract address | Mainnet deployer |
 | `VITE_HUB_CONTRACT_NAME` | Hub contract name | `minimint-hub-v-i28` |
 | `VITE_MINT_FEE` | Mint fee in micro-STX | `1000` |
+| `VITE_TOKEN_CONTRACT_ADDRESS` | Reward token (SIP‑010) contract address | Mainnet deployer |
+| `VITE_TOKEN_CONTRACT_NAME` | Reward token contract name | `minimint-token-v-i28` |
 
 ---
 
