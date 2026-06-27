@@ -34,6 +34,7 @@ export { useFocusTrap } from './useFocusTrap'
 export { useNetworkStatus } from './useNetworkStatus'
 export { useConfirm } from './useConfirm'
 export { useTimeout } from './useTimeout'
+export { useCounter } from './useCounter'
 
 /**
  * Default exports for individual hooks.
