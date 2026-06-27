@@ -39,6 +39,8 @@ export { useInterval } from './useInterval'
 export { useIdle } from './useIdle'
 export { useHover } from './useHover'
 export { useToggle } from './useToggle'
+export { useOnClickOutside } from './useOnClickOutside'
+export { useScrollLock } from './useScrollLock'
 
 /**
  * Default exports for individual hooks.
