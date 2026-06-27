@@ -670,7 +670,8 @@ export default {
   normalizeSubmissionTokenURI,
   createSubmissionRecord,
   createSubmissionSummary,
-  getCardAccent
+  getCardAccent,
+  formatNumber
 }
 
 /**
@@ -700,6 +701,25 @@ export function formatDuration(ms) {
   if (hours > 0) return `${hours}h ${minutes}m`;
   if (minutes > 0) return `${minutes}m ${seconds}s`;
   return `${seconds}s`;
+}
+
+/**
+ * Formats a numeric value with locale-aware grouping and configurable precision.
+ * Returns a fallback string for non-finite or missing inputs.
+ *
+ * @param {number|string|null|undefined} value - The number to format.
+ * @param {number} [decimals=0] - Number of decimal places.
+ * @param {string} [locale='en-US'] - Locale string for number formatting.
+ * @returns {string} The formatted number string, or '0' for invalid inputs.
+ */
+export function formatNumber(value, decimals = 0, locale = 'en-US') {
+  const num = Number(value);
+  if (!Number.isFinite(num)) return '0';
+  const safeDecimals = Number.isInteger(decimals) && decimals >= 0 ? decimals : 0;
+  return new Intl.NumberFormat(locale, {
+    minimumFractionDigits: safeDecimals,
+    maximumFractionDigits: safeDecimals,
+  }).format(num);
 }
 
 /**
