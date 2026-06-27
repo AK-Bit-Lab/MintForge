@@ -192,3 +192,16 @@
     (ok true)
   )
 )
+
+;; Toggle the contract pause state (admin only)
+;; Arguments:
+;;   paused: true to pause minting, false to resume
+;; Returns: (ok bool) - The new pause state
+(define-public (set-pause-status (paused bool))
+  (begin
+    (asserts! (is-eq tx-sender (var-get contract-owner)) ERR-NOT-AUTHORIZED)
+    (var-set is-paused paused)
+    (print { event: "pause-toggle", paused: paused, sender: tx-sender })
+    (ok paused)
+  )
+)
