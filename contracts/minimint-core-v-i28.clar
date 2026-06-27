@@ -170,6 +170,12 @@
   (ok MINT-FEE)
 )
 
+;; Get the maximum token supply for this collection
+;; Returns: (ok uint) - The maximum number of mintable tokens
+(define-read-only (get-max-supply)
+  (ok MAX-SUPPLY)
+)
+
 ;; --- Admin Functions ---
 
 ;; Update the metadata URI for an existing token (admin only)
