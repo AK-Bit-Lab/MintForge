@@ -302,3 +302,4 @@ export const formatAddressShort = (addr) => {
   return s.length > 10 ? `${s.slice(0, 6)}...${s.slice(-4)}` : s;
 };
 // improvement commit 2
+// improvement commit 3
