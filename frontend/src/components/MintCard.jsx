@@ -122,9 +122,9 @@ export function getMintSubmitLabel({ isMinting, isSoldOut, walletLimitReached, m
  * @param {string|null} [props.contractError] - Error message from the contract hook
  * @returns {JSX.Element}
  */
-export function MintCard({ 
-  contractInfo, 
-  onMint, 
+export function MintCard({
+  contractInfo,
+  onMint,
   isConnected,
   isConnecting = false,
   onConnect,
@@ -148,7 +148,7 @@ export function MintCard({
     e.preventDefault()
     const normalizedTokenURI = tokenURI.trim()
     const validation = validateTokenURI(normalizedTokenURI)
-    
+
     if (!validation.isValid) {
       setMintStatus({ type: 'error', message: validation.helper })
       return
@@ -166,16 +166,16 @@ export function MintCard({
         })
         return
       }
-      setMintStatus({ 
-        type: 'success', 
+      setMintStatus({
+        type: 'success',
         message: result.tokenId ? `NFT minted! Token ID: ${result.tokenId}` : 'Mint submitted. Track it below.',
         txId: result.txHash || result.txId
       })
       setTokenURI('')
     } catch (error) {
-      setMintStatus({ 
-        type: 'error', 
-        message: error?.message || 'Failed to mint NFT' 
+      setMintStatus({
+        type: 'error',
+        message: error?.message || 'Failed to mint NFT'
       })
     } finally {
       setIsMinting(false)
@@ -327,24 +327,16 @@ export function MintCard({
             title={mintActionMessage}
             disabled={
               !isTokenUriValid ||
-              isMinting || 
-              isSoldOut || 
-              walletLimitReached || 
+              isMinting ||
+              isSoldOut ||
+              walletLimitReached ||
               contractInfo?.isPaused
             }
           >
-            {isMinting ? (
-              <>
-                <Spinner size="small" tone="white" className="mint-card__spinner" />
-                {mintSubmitLabel}
-              </>
-            ) : isSoldOut ? (
-              mintSubmitLabel
-            ) : walletLimitReached ? (
-              mintSubmitLabel
-            ) : (
-              mintSubmitLabel
+            {isMinting && (
+              <Spinner size="small" tone="white" className="mint-card__spinner" />
             )}
+            {mintSubmitLabel}
           </button>
 
           <p id="mintActionMessage" className="mint-card__helper" data-helper-state={mintState} role="status" aria-live="polite" aria-atomic="true" title={mintActionMessage}>
