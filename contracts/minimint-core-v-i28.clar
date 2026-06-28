@@ -134,6 +134,19 @@
   )
 )
 
+;; ---------------------------------------------------------------------------
+;; Admin Functions
+;; ---------------------------------------------------------------------------
+
+;; set-paused - Toggle the contract pause state. Only the contract owner may call.
+;; @param {bool} pause - true to pause contract, false to unpause.
+;; @returns (ok true) on success, or an error if caller is not authorized.
+(define-public (set-paused (pause bool))
+  (begin
+    (asserts! (is-eq tx-sender (var-get contract-owner)) ERR-NOT-AUTHORIZED)
+    (var-set is-paused pause)
+    (ok true)))
+
 ;; Burn an NFT, removing it from circulation
 ;; Arguments:
 ;;   token-id: The NFT token ID to burn

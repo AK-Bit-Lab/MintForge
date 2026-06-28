@@ -115,6 +115,7 @@ export function Gallery() {
 
   /**
    * closeModal - Dismiss the NFT detail modal and clear the selected token.
+   * @returns {void}
    */
   const closeModal = useCallback(() => {
     setSelectedNft(null)
