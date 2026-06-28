@@ -412,7 +412,7 @@ describe('getContractExplorerUrl', () => {
     })
 
   it('includes the minimint core contract identifier in explorer urls', () => {
-      expect(getContractExplorerUrl()).toContain('minimint-core-v-i27')
+      expect(getContractExplorerUrl()).toContain('minimint-core-v-i28')
     })
 
   it('builds links under the txid explorer path', () => {

@@ -67,15 +67,24 @@ export function useTransactionStatus(txId) {
   }, [txId]);
 
   useEffect(() => {
+    let cancelled = false;
     if (txId) {
       checkStatus();
-      const interval = setInterval(checkStatus, TX_POLL_INTERVAL_MS); // Check every 8 seconds
-      return () => clearInterval(interval);
+      const interval = setInterval(() => {
+        if (!cancelled) checkStatus();
+      }, TX_POLL_INTERVAL_MS); // Check every 8 seconds
+      return () => {
+        cancelled = true;
+        clearInterval(interval);
+      };
     }
 
-    setStatus(null);
-    setError(null);
-    setIsLoading(false);
+    // Ensure we don't update state after unmount
+    if (!cancelled) {
+      setStatus(null);
+      setError(null);
+      setIsLoading(false);
+    }
   }, [txId, checkStatus]);
 
   useEffect(() => {
@@ -86,7 +95,10 @@ export function useTransactionStatus(txId) {
     };
   }, []);
 
-  return { status, error, isLoading, refetch: checkStatus, isConfirmed: status === 'success', isPending: status === 'pending', isFailed: status === 'abort_by_response' || status === 'abort_by_post_condition' || status === 'dropped' };
+  // Treat both 'success' and 'success_anchor_cost' as confirmed statuses.
+  const isConfirmed = status === 'success' || status === 'success_anchor_cost';
+  const isFailed = status === 'abort_by_response' || status === 'abort_by_post_condition' || status === 'dropped';
+  return { status, error, isLoading, refetch: checkStatus, isConfirmed, isPending: status === 'pending', isFailed };
 }
 
 /**
