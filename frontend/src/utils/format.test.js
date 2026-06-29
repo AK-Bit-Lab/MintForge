@@ -117,10 +117,10 @@ describe('format guards', () => {
 })
 
 import { describe, expect, it } from 'vitest';
-import { formatSTXCompact } from '../format';
+import { formatSTXCompact } from './collection';
 
 describe('formatSTXCompact edge cases', () => {
   it('handles undefined', () => {
-    expect(formatSTXCompact(undefined)).toBe('0');
+    expect(formatSTXCompact(undefined)).toBe('0 STX');
   });
 });

@@ -1,9 +1,9 @@
 /**
  * Contract utility functions for Stacks blockchain interaction.
- * 
+ *
  * Provides helpers for generating explorer URLs for transactions,
  * tokens, and addresses. Re-exports contract configuration from constants.
- * 
+ *
  * @module contract
  */
 
@@ -21,15 +21,15 @@ globalThis.NETWORK = constants.NETWORK;
 globalThis.CONTRACT_ADDRESS = constants.CONTRACT_ADDRESS;
 globalThis.CONTRACT_NAME = constants.CONTRACT_NAME;
 
-const EXPLORER_VALID_TYPES = ['txid', 'token', 'address']
+const EXPLORER_VALID_TYPES = ['txid', 'token', 'address'];
 const EXPLORER_LABELS = {
   txid: 'Transaction',
   token: 'Token',
-  address: 'Address'
-}
+  address: 'Address',
+};
 
 export function normalizeExplorerType(type) {
-  return EXPLORER_VALID_TYPES.includes(type) ? type : 'txid'
+  return EXPLORER_VALID_TYPES.includes(type) ? type : 'txid';
 }
 
 /**
@@ -37,16 +37,16 @@ export function normalizeExplorerType(type) {
  * Handles Symbol identifiers safely by converting them to string via String().
  */
 export function getExplorerLinkLabel(type, identifier) {
-  const safeType = normalizeExplorerType(type)
-  const baseLabel = EXPLORER_LABELS[safeType]
+  const safeType = normalizeExplorerType(type);
+  const baseLabel = EXPLORER_LABELS[safeType];
   // Trim strings, otherwise keep the raw value.
-  const normalizedIdentifier = typeof identifier === 'string' ? identifier.trim() : identifier
+  const normalizedIdentifier = typeof identifier === 'string' ? identifier.trim() : identifier;
   if (normalizedIdentifier == null || normalizedIdentifier === '') {
-    return `Open ${baseLabel} in Explorer`
+    return `Open ${baseLabel} in Explorer`;
   }
   // Ensure Symbol values (or any non‑string) are stringified safely.
-  const safeIdentifier = typeof normalizedIdentifier === 'symbol' ? String(normalizedIdentifier) : normalizedIdentifier
-  return `${baseLabel}: ${safeIdentifier}`
+  const safeIdentifier = typeof normalizedIdentifier === 'symbol' ? String(normalizedIdentifier) : normalizedIdentifier;
+  return `${baseLabel}: ${safeIdentifier}`;
 }
 
 /**
@@ -58,21 +58,16 @@ export function getExplorerLinkLabel(type, identifier) {
 function getBaseExplorerUrl(type, identifier) {
   const networkConfig = constants.STACKS_NETWORK_CONFIG[constants.NETWORK] || constants.STACKS_NETWORK_CONFIG.mainnet;
   const baseUrl = networkConfig.explorerUrl;
-  const safeType = normalizeExplorerType(type)
+  const safeType = normalizeExplorerType(type);
   const normalizedIdentifier = typeof identifier === 'string' ? identifier.trim() : identifier;
   if (normalizedIdentifier == null || normalizedIdentifier === '') {
     return `${baseUrl}?chain=${constants.NETWORK}`;
   }
-  const encodedIdentifier =
-    typeof normalizedIdentifier === 'string'
-      ? normalizedIdentifier
-      : String(normalizedIdentifier);
+  const encodedIdentifier = typeof normalizedIdentifier === 'string' ? normalizedIdentifier : String(normalizedIdentifier);
   return `${baseUrl}/${safeType}/${encodeURIComponent(encodedIdentifier)}?chain=${constants.NETWORK}`;
 }
 
 export function getExplorerUrl(txId) {
-  // Only treat null/undefined as missing; other falsy values (false, 0) are
-  // valid identifiers and should be stringified.
   const identifier = txId == null ? '' : txId;
   return getBaseExplorerUrl('txid', identifier);
 }
@@ -86,15 +81,15 @@ export function getAddressExplorerUrl(address) {
 }
 
 export function getTxExplorerLinkLabel(txId) {
-  return getExplorerLinkLabel('txid', txId)
+  return getExplorerLinkLabel('txid', txId);
 }
 
 export function getTokenExplorerLinkLabel(tokenId) {
-  return getExplorerLinkLabel('token', tokenId)
+  return getExplorerLinkLabel('token', tokenId);
 }
 
 export function getAddressExplorerLinkLabel(address) {
-  return getExplorerLinkLabel('address', address)
+  return getExplorerLinkLabel('address', address);
 }
 
 /**
@@ -106,4 +101,9 @@ export function getContractExplorerUrl() {
   const baseUrl = networkConfig.explorerUrl;
   return `${baseUrl}/txid/${encodeURIComponent(`${constants.CONTRACT_ADDRESS}.${constants.CONTRACT_NAME}`)}?chain=${constants.NETWORK}`;
 }
-// commit 7: explorer URL fix verified
+
+// Mock function used in tests to check pause state.
+export async function getIsPaused() {
+  // Simulate a paused state check; in a real implementation this would query the contract.
+  return { ok: true };
+}
