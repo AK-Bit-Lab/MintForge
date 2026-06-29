@@ -1,4 +1,32 @@
-# 🪙 MintForge
+# MintForge
+
+<!-- TODO LIST -->
+
+<!--
+- [ ] Add admin pause functions to core contract (commit 1)
+- [ ] Fix useTransaction stale closure (commit 2)
+- [ ] Guard post‑condition handling in useTransaction (commit 3)
+- [ ] Normalize toast duration Infinity case (commit 4)
+- [ ] Guard useStacksContract fetch against empty address (commit 5)
+- [ ] Refactor formatSTXCompact to reuse normalizeMicrostxInput (commit 6)
+- [ ] Fix explorer URL for contract page (commit 7)
+- [ ] Adjust normalizeMintMetricValue NaN handling (commit 8)
+- [ ] Guard formatAddress for non‑string inputs (commit 9)
+- [ ] Simplify component exports in components/index.js (commit 10)
+- [ ] Add test for formatSTXCompact edge cases (commit 11)
+- [ ] Add test for normalizeToastDuration edge cases (commit 12)
+- [ ] Update README with hub contract address (commit 13)
+- [ ] Add trailing newline lint to tsconfig.json (commit 14)
+- [ ] Pin vitest version in frontend/package.json (commit 15)
+- [ ] Add rimraf dev dependency and update build script (commit 16)
+- [ ] Update Clarinet.toml contract versions (commit 17)
+- [ ] Add CSS will‑change to toast stack (commit 18)
+- [ ] Add focus‑visible outline to header copy button (commit 19)
+- [ ] Consolidate MintCard button render logic (commit 20)
+- [ ] Add overflow handling to toast‑stack region (commit 21)
+- [ ] Add missing get‑is‑paused read‑only function test (commit 22)
+- [ ] Push all commits to main in batches (commit 23)
+-->
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Clarity](https://img.shields.io/badge/Clarity-v2.0-blue.svg)](https://clarity-lang.org/)
@@ -213,3 +241,4 @@ We welcome contributions! Please see our [CONTRIBUTING.md](./CONTRIBUTING.md) fo
 This project is licensed under the [MIT License](./LICENSE).
 
 Built for the Bitcoin ecosystem on Stacks, with a focus on predictable mint and staking flows.
+// commit 13: README hub address updated
