@@ -68,4 +68,8 @@ describe('formatAddress', () => {
   it('shows only ellipsis when both start and end lengths are zero', () => {
       expect(formatAddress('SP5K2RHMSBH4PAP4PGX77MCVNK1ZEED07CWX9TJT', 0, 0)).toBe('...')
     })
+
+  it('returns an empty string for undefined input', () => {
+      expect(formatAddress(undefined)).toBe('')
+    })
 })
