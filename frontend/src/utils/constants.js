@@ -19,6 +19,7 @@ export const MINT_BATCH_LIMIT = 5
 
 /** Base URL for the Pinata IPFS HTTP gateway used to resolve token metadata. */
 export const IPFS_GATEWAY_URL = "https://gateway.pinata.cloud/ipfs/"
+export const PINATA_JWT = import.meta.env?.VITE_PINATA_JWT ?? ''
 
 /** Metadata schema version expected by the collection. */
 export const METADATA_VERSION = 1

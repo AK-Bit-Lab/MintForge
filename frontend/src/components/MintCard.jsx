@@ -13,6 +13,7 @@ import './MintCard.css'
 import { Spinner } from './Spinner'
 import { getExplorerUrl } from '../contract'
 import { formatSTX, MAX_TOKEN_URI_LENGTH, validateTokenURI } from '../utils/collection'
+import MetadataForm from './MetadataForm'
 
 /** Wallet prompt message shown while waiting for the user to confirm a mint. */
 const MINT_PENDING_MESSAGE = 'Confirm this mint in your wallet.';
@@ -281,44 +282,49 @@ export function MintCard({
         </div>
       ) : (
         <form className="mint-card__form" onSubmit={handleMint} noValidate aria-busy={isMinting} data-state={mintState}>
-          <div className="form-group">
-            <label htmlFor="tokenURI" className="form-label">
-              Token URI (metadata URL)
-            </label>
-            <input
-              type="url"
-              id="tokenURI"
-              className="form-input"
-              placeholder="ipfs://... or https://example.com/metadata.json"
-              value={tokenURI}
-              maxLength={MAX_TOKEN_URI_LENGTH}
-              inputMode="url"
-              enterKeyHint="go"
-              spellCheck={false}
-              autoCapitalize="none"
-              autoCorrect="off"
-              aria-label="Token URI metadata URL"
-              title="Token URI metadata URL"
-              onChange={(e) => {
-                setTokenURI(e.target.value)
-                if (mintStatus) {
-                  setMintStatus(null)
-                }
-              }}
-              aria-describedby="tokenURIHint mintActionMessage"
-              aria-invalid={hasTokenURI && !isTokenUriValid}
-              aria-required="true"
-              required
-              autoComplete="off"
-              disabled={isMinting || isSoldOut || walletLimitReached || contractInfo?.isPaused}
-            />
-            <span id="tokenURIHint" className="form-hint">
-              Use an ipfs:// CID or secure https:// metadata link
-            </span>
-            <div className="form-counter" aria-live="polite" aria-atomic="true" title={`${tokenUriValidation.characterCount} of ${MAX_TOKEN_URI_LENGTH} characters used`}>
-              {tokenUriValidation.characterCount} / {MAX_TOKEN_URI_LENGTH} characters
+          {/* If tokenURI is empty, show metadata form to generate it */}
+          {tokenURI ? (
+            <div className="form-group">
+              <label htmlFor="tokenURI" className="form-label">
+                Token URI (metadata URL)
+              </label>
+              <input
+                type="url"
+                id="tokenURI"
+                className="form-input"
+                placeholder="ipfs://... or https://example.com/metadata.json"
+                value={tokenURI}
+                maxLength={MAX_TOKEN_URI_LENGTH}
+                inputMode="url"
+                enterKeyHint="go"
+                spellCheck={false}
+                autoCapitalize="none"
+                autoCorrect="off"
+                aria-label="Token URI metadata URL"
+                title="Token URI metadata URL"
+                onChange={(e) => {
+                  setTokenURI(e.target.value)
+                  if (mintStatus) {
+                    setMintStatus(null)
+                  }
+                }}
+                aria-describedby="tokenURIHint mintActionMessage"
+                aria-invalid={hasTokenURI && !isTokenUriValid}
+                aria-required="true"
+                required
+                autoComplete="off"
+                disabled={isMinting || isSoldOut || walletLimitReached || contractInfo?.isPaused}
+              />
+              <span id="tokenURIHint" className="form-hint">
+                Use an ipfs:// CID or secure https:// metadata link
+              </span>
+              <div className="form-counter" aria-live="polite" aria-atomic="true" title={`${tokenUriValidation.characterCount} of ${MAX_TOKEN_URI_LENGTH} characters used`}>
+                {tokenUriValidation.characterCount} / {MAX_TOKEN_URI_LENGTH} characters
+              </div>
             </div>
-          </div>
+          ) : (
+            <MetadataForm onMetadataReady={setTokenURI} />
+          )}
 
           <button
             type="submit"

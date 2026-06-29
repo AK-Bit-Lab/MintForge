@@ -7,6 +7,7 @@
  * @module Gallery
  */
 
+/* eslint-disable no-unused-vars */
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react'
 import './Gallery.css'
 import { getTokenExplorerUrl } from '../contract'

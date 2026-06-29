@@ -19,7 +19,10 @@
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "stacksminimint-sdk": "^0.2.1"
+    "stacksminimint-sdk": "^0.2.1",
+    "stacksminimint-protocol": "^0.1.3",
+    "stacksminimint-utils": "^0.1.3",
+    "stacksminimint-types": "^0.1.3"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",

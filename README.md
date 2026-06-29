@@ -235,7 +235,14 @@ We welcome contributions! Please see our [CONTRIBUTING.md](./CONTRIBUTING.md) fo
 - Fork the repository and create a feature branch.
 - Follow the existing code style and run lint and tests before committing.
 - Write clear, concise commit messages.
+- Ensure your commits are signed and verified using GPG.
 - Open a pull request describing your changes.
+- **Contribution Guidelines**
+  - Use the `npm run lint` script to check code style before committing.
+  - Run `npm test` and `npm run frontend:test` to ensure all tests pass.
+  - Keep commits small and focused; each commit should address a single logical change.
+  - Update documentation and JSDoc comments when adding or modifying public APIs.
+  - Include unit tests for new functionality and ensure coverage does not decrease.
 
 ---
 

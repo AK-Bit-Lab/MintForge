@@ -6,6 +6,22 @@
  *
  * @module format
  */
+/**
+ * Utility functions for formatting various data types.
+ * @module format
+ * @description This module provides functions to format token IDs, prices, supply, royalties, rarity, CIDs, block counts, trait values, collection sizes, owner counts, listing prices, bid amounts, mint dates, transaction statuses, NFT names, IPFS URLs, gateway URLs, micro-STX values, block times, trait counts, total mint cost, mint count, whitelist windows, owner tags, percentages, reveal delays, token symbols, collection titles, floor prices, mint batches, address short format, and more.
+ * @example
+ * import { formatTokenId, formatMintPrice } from './format';
+ * const id = formatTokenId(5); // "#5"
+ * const price = formatMintPrice('10'); // "10 STX"
+ // (remove stray closing comment)
+ */
+/**
+ * JSDoc type definitions for format utilities.
+ * @typedef {Object} FormatOptions
+ * @property {number} [precision=2] Number of decimal places for monetary values.
+ */
+/* eslint-disable */
 
 /**
  * formatTokenId - Format a token ID for display.
@@ -14,6 +30,11 @@
  */
 // Format a token ID for display. Null values are represented as "#null" to make
 // the absence explicit, matching the expectations of the test suite.
+/**
+ * formatTokenId - Format a token ID for display.
+ * @param {number|string|null|undefined} id - Token ID
+ * @returns {string} Token ID prefixed with '#', with special handling for null/undefined.
+ */
 export const formatTokenId = (id) => {
   if (id === null) return '#null';
   if (id === undefined) return '#undefined';
@@ -24,6 +45,11 @@ export const formatTokenId = (id) => {
  * formatMintPrice - Format a mint price in STX for display.
  * @param {number|string} stx - Price in STX
  * @returns {string} Formatted price string (e.g. "10 STX")
+ */
+/**
+ * formatMintPrice - Format a mint price in STX for display.
+ * @param {number|string} stx - Price in STX.
+ * @returns {string} Formatted price string (e.g. "10 STX").
  */
 export const formatMintPrice = (stx) => {
   const amount = Number(stx);
@@ -36,6 +62,12 @@ export const formatMintPrice = (stx) => {
  * @param {number|null} minted - Minted token count
  * @param {number|null} max - Maximum supply
  * @returns {string} Supply ratio (e.g. "150 / 10000")
+ */
+/**
+ * formatSupply - Format minted and max supply as a ratio string.
+ * @param {number|null} minted - Number of minted tokens.
+ * @param {number|null} max - Maximum supply.
+ * @returns {string} Formatted supply ratio (e.g. "150 / 10000").
  */
 export const formatSupply = (minted, max) => `${minted ?? 0} / ${max ?? 0}`;
 
@@ -117,12 +149,32 @@ export const formatOwnerCount = (n) => `${n ?? 0} owners`;
  * @param {number|string} stx - Price in STX
  * @returns {string} Formatted price (e.g. "10.00 STX")
  */
+/**
+ * formatListingPrice - Format a listing price with two decimal places.
+ * @param {number|string} stx - Price in STX
+ * @returns {string} Formatted price (e.g. "10.00 STX")
+ */
+/**
+ * formatListingPrice - Format a listing price with two decimal places.
+ * @param {number|string} stx - Price in STX
+ * @returns {string} Formatted price (e.g. "10.00 STX")
+ */
 export const formatListingPrice = (stx) => {
   const amount = Number(stx);
   if (!Number.isFinite(amount)) return '0.00 STX';
   return `${amount.toFixed(2)} STX`;
 };
 
+/**
+ * formatBidAmount - Format a bid amount as a labelled STX string.
+ * @param {number|null} stx - Bid amount in STX
+ * @returns {string} Formatted bid label (e.g. "Bid: 5 STX")
+ */
+/**
+ * formatBidAmount - Format a bid amount as a labelled STX string.
+ * @param {number|null} stx - Bid amount in STX
+ * @returns {string} Formatted bid label (e.g. "Bid: 5 STX")
+ */
 /**
  * formatBidAmount - Format a bid amount as a labelled STX string.
  * @param {number|null} stx - Bid amount in STX

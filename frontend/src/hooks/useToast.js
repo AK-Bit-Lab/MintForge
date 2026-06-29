@@ -32,6 +32,20 @@
  */
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { MAX_TOASTS, TOAST_DURATION } from '../constants'
+/**
+ * @typedef {Object} UseToastReturn
+ * @property {Array<Toast>} toasts - Current list of toasts.
+ * @property {(message:string, type?:string, duration?:number)=>number|null} addToast - Add a toast.
+ * @property {(message:string, type?:string, duration?:number)=>number|null} showToast - Alias for addToast.
+ * @property {(id:number)=>void} removeToast - Remove a toast by id.
+ * @property {(message:string, duration?:number)=>number|null} success - Add success toast.
+ * @property {(message:string, duration?:number)=>number|null} error - Add error toast.
+ * @property {(message:string, duration?:number)=>number|null} warning - Add warning toast.
+ * @property {(message:string, duration?:number)=>number|null} info - Add info toast.
+ * @property {(message:string, type?:string)=>number|null} persistent - Add persistent toast.
+ * @property {()=>void} clearAll - Clear all toasts.
+ * @property {()=>void} dismissAll - Alias for clearAll.
+ */
 
 /** Valid toast notification types accepted by addToast. */
 const TOAST_VALID_TYPES = ['success', 'error', 'warning', 'info'];
