@@ -18,6 +18,7 @@ export function MetadataForm({ onMetadataReady }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    e.stopPropagation();
     setError(null);
     if (!name || !description || !imageFile) {
       setError('All fields are required');
@@ -34,7 +35,7 @@ export function MetadataForm({ onMetadataReady }) {
   };
 
   return (
-    <form className="metadata-form" onSubmit={handleSubmit} noValidate>
+    <div className="metadata-form">
       <div className="form-group">
         <label htmlFor="metadata-name" className="form-label">Name</label>
         <input
@@ -68,10 +69,10 @@ export function MetadataForm({ onMetadataReady }) {
         />
       </div>
       {error && <p className="form-error" role="alert">{error}</p>}
-      <button type="submit" className="metadata-form__btn" disabled={uploading}>
+      <button type="button" className="metadata-form__btn" onClick={handleSubmit} disabled={uploading}>
         {uploading ? 'Uploading…' : 'Generate CID'}
       </button>
-    </form>
+    </div>
   );
 }
 

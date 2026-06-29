@@ -283,6 +283,7 @@ export function MintCard({
       ) : (
         <form className="mint-card__form" onSubmit={handleMint} noValidate aria-busy={isMinting} data-state={mintState}>
           {/* If tokenURI is empty, show metadata form to generate it */}
+          {/* If tokenURI is empty, show metadata form to generate it */}
           {tokenURI ? (
             <div className="form-group">
               <label htmlFor="tokenURI" className="form-label">
