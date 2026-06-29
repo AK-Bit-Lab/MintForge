@@ -1277,3 +1277,13 @@ describe('normalizeExplorerType', () => {
     })
 })
 
+
+import { describe, expect, it } from 'vitest';
+import { getIsPaused } from '../contract';
+
+describe('get‑is‑paused read‑only function', () => {
+  it('returns a boolean', async () => {
+    const res = await getIsPaused();
+    expect(typeof res.ok).toBe('boolean');
+  });
+});
