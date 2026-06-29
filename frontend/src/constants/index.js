@@ -33,7 +33,7 @@ export const TOKEN_CONTRACT_ADDRESS = import.meta.env?.VITE_TOKEN_CONTRACT_ADDRE
 /** Reward token contract name for the SIP-010 MMT token. */
 export const TOKEN_CONTRACT_NAME = import.meta.env?.VITE_TOKEN_CONTRACT_NAME || 'minimint-token-v-i28';
 
-export const MINT_FEE = Number.isInteger(envMintFee) && envMintFee >= 0 ? envMintFee : SDK_MINT_FEE; // micro-STX
+export const MINT_FEE = Number.isInteger(envMintFee) && envMintFee >= 0 ? envMintFee : 0; // micro-STX — contract defines MINT-FEE u0 (free minting)
 
 export const FUNCTIONS = SDK_FUNCTIONS;
 export const STACKS_NETWORK_CONFIG = SDK_STACKS_NETWORK_CONFIG;

@@ -162,8 +162,11 @@ export function useStacksContract(address) {
         setIsLoading(false);
         return null;
       }
-      // Post-condition: User transfers 0.001 STX
-      const postCondition = Pc.principal(address).willSendEq(MINT_FEE);
+      // Minting is free (MINT-FEE u0 in contract) — no STX transfer post-condition needed.
+      // Use Allow mode so the transaction does not require any STX to be sent.
+      const postConditions = MINT_FEE > 0
+        ? [Pc.principal(address).willSendEq(MINT_FEE)]
+        : [];
 
       return new Promise((resolve) => {
         openContractCall({
@@ -171,8 +174,8 @@ export function useStacksContract(address) {
           contractName: CONTRACT_NAME,
           functionName: FUNCTIONS.MINT,
           functionArgs: [stringAsciiCV(normalizedTokenURI)],
-          postConditions: [postCondition],
-          postConditionMode: PostConditionMode.Deny,
+          postConditions,
+          postConditionMode: MINT_FEE > 0 ? PostConditionMode.Deny : PostConditionMode.Allow,
           network: stacksNetwork,
           onFinish: (data) => {
             fetchContractInfo();

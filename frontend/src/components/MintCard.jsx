@@ -104,6 +104,7 @@ export function getMintSubmitLabel({ isMinting, isSoldOut, walletLimitReached, m
   if (isMinting) return 'Minting...'
   if (isSoldOut) return 'Sold Out'
   if (walletLimitReached) return 'Wallet Limit Reached'
+  if (!mintFee || mintFee === 0) return 'Mint for Free'
   return `Mint for ${formatSTX(mintFee)} STX`
 }
 
@@ -225,7 +226,7 @@ export function MintCard({
       <div className="mint-card__stats">
         <div className="stat">
           <span className="stat__label">Price</span>
-          <span className="stat__value" title="Mint fee per NFT">{formatSTX(contractInfo?.mintFee)} STX</span>
+          <span className="stat__value" title="Mint fee per NFT">{!contractInfo?.mintFee || contractInfo.mintFee === 0 ? 'Free' : `${formatSTX(contractInfo.mintFee)} STX`}</span>
         </div>
         <div className="stat">
           <span className="stat__label">Minted</span>

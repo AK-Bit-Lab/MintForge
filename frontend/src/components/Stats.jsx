@@ -82,8 +82,8 @@ export function Stats({ contractInfo, isLoading, isConnected = false, recentActi
       },
       {
         label: 'Mint price',
-        value: `${formatSTX(contractInfo?.mintFee)} STX`,
-        detail: 'Post-condition amount per mint'
+        value: !contractInfo?.mintFee || contractInfo.mintFee === 0 ? 'Free' : `${formatSTX(contractInfo.mintFee)} STX`,
+        detail: !contractInfo?.mintFee || contractInfo.mintFee === 0 ? 'Minting is free — no STX required' : 'Post-condition amount per mint'
       },
       {
         label: 'Wallet cap',
