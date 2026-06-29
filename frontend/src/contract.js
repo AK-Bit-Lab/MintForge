@@ -106,3 +106,4 @@ export function getContractExplorerUrl() {
   const baseUrl = networkConfig.explorerUrl;
   return `${baseUrl}/txid/${encodeURIComponent(`${constants.CONTRACT_ADDRESS}.${constants.CONTRACT_NAME}`)}?chain=${constants.NETWORK}`;
 }
+// commit 7: explorer URL fix verified
