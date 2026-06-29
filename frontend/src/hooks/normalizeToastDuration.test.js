@@ -10,3 +10,12 @@ describe('normalizeToastDuration', () => {
       expect(normalizeToastDuration(0)).toBe(0)
     })
 })
+
+import { describe, expect, it } from 'vitest';
+import { normalizeToastDuration } from '../useToast';
+
+describe('normalizeToastDuration edge cases', () => {
+  it('handles Infinity', () => {
+    expect(normalizeToastDuration(Infinity, 1000)).toBe(1000);
+  });
+});
