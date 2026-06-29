@@ -1,6 +1,7 @@
 /**
  * MetadataForm – Collect NFT metadata and upload to Pinata.
  * Returns the generated `ipfs://<CID>` via the `onMetadataReady` callback.
+ * Stays mounted after CID generation so form data is never lost.
  */
 import { useState } from 'react';
 import PropTypes from 'prop-types';
@@ -13,12 +14,11 @@ export function MetadataForm({ onMetadataReady }) {
   const [imageFile, setImageFile] = useState(null);
   const [error, setError] = useState(null);
   const [uploading, setUploading] = useState(false);
+  const [generatedURI, setGeneratedURI] = useState('');
 
   const { upload, status, error: uploadError } = useIPFSUpload();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const handleSubmit = async () => {
     setError(null);
     if (!name || !description || !imageFile) {
       setError('All fields are required');
@@ -28,10 +28,16 @@ export function MetadataForm({ onMetadataReady }) {
     const uri = await upload({ name, description, imageFile });
     setUploading(false);
     if (uri) {
+      setGeneratedURI(uri);
       onMetadataReady(uri);
     } else {
       setError(uploadError || 'Upload failed');
     }
+  };
+
+  const handleClearCID = () => {
+    setGeneratedURI('');
+    onMetadataReady('');
   };
 
   return (
@@ -44,7 +50,7 @@ export function MetadataForm({ onMetadataReady }) {
           className="form-input"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          required
+          disabled={uploading}
         />
       </div>
       <div className="form-group">
@@ -54,7 +60,7 @@ export function MetadataForm({ onMetadataReady }) {
           className="form-input"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          required
+          disabled={uploading}
         />
       </div>
       <div className="form-group">
@@ -65,13 +71,23 @@ export function MetadataForm({ onMetadataReady }) {
           accept="image/*"
           className="form-input"
           onChange={(e) => setImageFile(e.target.files[0])}
-          required
+          disabled={uploading}
         />
       </div>
       {error && <p className="form-error" role="alert">{error}</p>}
-      <button type="button" className="metadata-form__btn" onClick={handleSubmit} disabled={uploading}>
-        {uploading ? 'Uploading…' : 'Generate CID'}
-      </button>
+      {generatedURI ? (
+        <div className="metadata-form__cid-result">
+          <p className="metadata-form__cid-label">Generated Token URI:</p>
+          <p className="metadata-form__cid-value" title={generatedURI}>{generatedURI}</p>
+          <button type="button" className="metadata-form__btn metadata-form__btn--secondary" onClick={handleClearCID}>
+            Clear CID & Edit
+          </button>
+        </div>
+      ) : (
+        <button type="button" className="metadata-form__btn" onClick={handleSubmit} disabled={uploading}>
+          {uploading ? 'Uploading…' : 'Generate CID'}
+        </button>
+      )}
     </div>
   );
 }

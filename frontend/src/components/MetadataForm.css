@@ -42,3 +42,33 @@
   background-color: #90caf9;
   cursor: not-allowed;
 }
+
+.metadata-form__btn--secondary {
+  background-color: #616161;
+  margin-top: 0.5rem;
+}
+
+.metadata-form__btn--secondary:hover {
+  background-color: #424242;
+}
+
+.metadata-form__cid-result {
+  padding: 0.75rem;
+  background-color: #e8f5e9;
+  border: 1px solid #66bb6a;
+  border-radius: 4px;
+}
+
+.metadata-form__cid-label {
+  font-weight: 600;
+  margin: 0 0 0.25rem;
+  color: #2e7d32;
+}
+
+.metadata-form__cid-value {
+  word-break: break-all;
+  font-family: monospace;
+  font-size: 0.875rem;
+  margin: 0 0 0.5rem;
+  color: #1b5e20;
+}
