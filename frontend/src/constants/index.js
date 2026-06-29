@@ -13,7 +13,7 @@ import {
   STACKS_NETWORK_CONFIG as SDK_STACKS_NETWORK_CONFIG,
 } from 'stacksminimint-sdk';
 
-const MAINNET_DEPLOYER = 'SP5K2RHMSBH4PAP4PGX77MCVNK1ZEED07CWX9TJT';
+const MAINNET_DEPLOYER = 'SP2KK5E7D3NFTSDMSJ7SFK99YY68194E3J2H6TT96';
 
 const envNetwork = import.meta.env?.VITE_STX_NETWORK;
 const envMintFee = Number.parseInt(import.meta.env?.VITE_MINT_FEE ?? '', 10);

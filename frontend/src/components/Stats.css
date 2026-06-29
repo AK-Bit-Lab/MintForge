@@ -134,6 +134,18 @@
   padding: 0;
 }
 
+@media (max-width: 640px) {
+  .stats__grid {
+    grid-template-columns: 1fr;
+  }
+  .stat-card {
+    padding: 0.8rem;
+  }
+  .stats__title {
+    font-size: 1.25rem;
+  }
+}
+
 .stat-card {
   padding: 1.05rem;
   border-radius: 1.15rem;

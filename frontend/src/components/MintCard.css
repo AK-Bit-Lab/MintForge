@@ -315,6 +315,22 @@
   }
 }
 
+/* Additional responsive adjustments for medium screens */
+@media (max-width: 640px) {
+  .mint-card {
+    padding: 1.5rem;
+  }
+
+  .mint-card__form {
+    gap: 1rem;
+  }
+
+  .mint-card__btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .mint-card__btn {
     transition: none;
