@@ -7,7 +7,7 @@
  * @module Gallery
  */
 
-import React, { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react'
 import './Gallery.css'
 import { getTokenExplorerUrl } from '../contract'
 import { formatAddress } from '../utils/collection'
