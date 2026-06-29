@@ -115,3 +115,12 @@ describe('format guards', () => {
       expect(formatOwnerCount(5)).toBe('5 owners')
     })
 })
+
+import { describe, expect, it } from 'vitest';
+import { formatSTXCompact } from '../format';
+
+describe('formatSTXCompact edge cases', () => {
+  it('handles undefined', () => {
+    expect(formatSTXCompact(undefined)).toBe('0');
+  });
+});
