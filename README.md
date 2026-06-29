@@ -229,6 +229,15 @@ npm run verify:production
 
 We welcome contributions! Please see our [CONTRIBUTING.md](./CONTRIBUTING.md) for detailed guidelines on our workflow and code standards.
 
+### Contribution Guidelines
+
+- Fork the repository and create a feature branch.
+- Follow the existing code style and run lint and tests before committing.
+- Write clear, concise commit messages.
+- Open a pull request describing your changes.
+
+---
+
 ### Focus Areas
 - **Optimization**: Reducing gas costs in Clarity functions.
 - **UX**: Enhancing the dashboard with clearer real-time data visualization.
