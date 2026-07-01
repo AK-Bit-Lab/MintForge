@@ -21,7 +21,6 @@
  * @typedef {Object} FormatOptions
  * @property {number} [precision=2] Number of decimal places for monetary values.
  */
-/* eslint-disable */
 
 /**
  * formatTokenId - Format a token ID for display.
