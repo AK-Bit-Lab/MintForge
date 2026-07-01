@@ -9,7 +9,7 @@
 import {
   DEFAULT_NETWORK,
   FUNCTIONS as SDK_FUNCTIONS,
-  MINT_FEE as SDK_MINT_FEE,
+  // MINT_FEE as SDK_MINT_FEE, // Unused constant removed
   STACKS_NETWORK_CONFIG as SDK_STACKS_NETWORK_CONFIG,
 } from 'stacksminimint-sdk';
 
