@@ -16,7 +16,7 @@ export function MetadataForm({ onMetadataReady }) {
   const [uploading, setUploading] = useState(false);
   const [generatedURI, setGeneratedURI] = useState('');
 
-  const { upload, status, error: uploadError } = useIPFSUpload();
+  const { upload, error: uploadError } = useIPFSUpload();
 
   const handleSubmit = async () => {
     setError(null);

@@ -12,7 +12,7 @@ import PropTypes from 'prop-types'
 import './MintCard.css'
 import { Spinner } from './Spinner'
 import { getExplorerUrl } from '../contract'
-import { formatSTX, MAX_TOKEN_URI_LENGTH, validateTokenURI } from '../utils/collection'
+import { formatSTX, validateTokenURI } from '../utils/collection'
 import MetadataForm from './MetadataForm'
 
 /** Wallet prompt message shown while waiting for the user to confirm a mint. */
@@ -138,7 +138,7 @@ export function MintCard({
   const [mintStatus, setMintStatus] = useState(null)
   const trimmedTokenURI = tokenURI.trim()
   const tokenUriValidation = validateTokenURI(trimmedTokenURI)
-  const hasTokenURI = trimmedTokenURI.length > 0
+  // Removed unused hasTokenURI variable
   const isTokenUriValid = tokenUriValidation.isValid
   const visibleContractError = typeof contractError === 'string' ? contractError.trim() : contractError
 
