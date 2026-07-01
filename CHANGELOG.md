@@ -22,6 +22,7 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 - Default values in the README environment variables table updated to v-i28.
 
 ### Added
+- StacksMinimint packages added as root dependencies: `stacksminimint-sdk`, `stacksminimint-protocol`, `stacksminimint-utils`, `stacksminimint-types`.
 - `data-complete` attribute on `ProgressBar` when value reaches max.
 - `aria-label` attribute on `SkipLink` component.
 - `title` attribute on labelled `Divider` variants.

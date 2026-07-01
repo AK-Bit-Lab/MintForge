@@ -55,6 +55,15 @@
 
 ## ✨ Key Features
 
+## 📦 StacksMinimint Packages
+
+The project relies on the following StacksMinimint packages:
+
+- `stacksminimint-sdk` – Core SDK for interacting with the minimint protocol. Repository: https://github.com/AK-Bit-Lab/stacksminimint-sdk
+- `stacksminimint-protocol` – Protocol definitions. Repository: https://github.com/AK-Bit-Lab/stacksminimint-protocol
+- `stacksminimint-utils` – Utility functions. Repository: https://github.com/AK-Bit-Lab/stacksminimint-utils
+- `stacksminimint-types` – Type definitions. Repository: https://github.com/AK-Bit-Lab/stacksminimint-types
+
 - **🚀 Nakamoto Ready**: Fully compatible with the latest Stacks blockchain updates and fast block confirmations.
 - **🏗️ Modular Architecture**: Highly optimized smart contracts separated by concern (Core + Hub).
 - **💸 Low-Friction Minting**: Optimized execution costs and user-friendly post-conditions.
