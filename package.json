@@ -10,8 +10,7 @@
     "lint": "eslint .",
     "contracts:check": "clarinet check",
     "contracts:console": "clarinet console",
-    "check": "npm run contracts:check && npm run test",
-    "scripts:consolidate": "[ -f scripts/package.json ] && npm --prefix scripts run consolidate || (echo \"scripts/package.json is missing. Add the scripts package before running this command.\" && exit 1)"
+    "check": "npm run contracts:check && npm run test"
   },
   "keywords": [
     "stacks",
