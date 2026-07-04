@@ -269,6 +269,21 @@ export const calculateTotalMintCost = (quantity, pricePerNFT = 10) => {
 };
 
 /**
+ * Calculates the maximum number of NFTs that can be minted within a given STX budget.
+ * Returns 0 when the budget is insufficient for even a single mint.
+ *
+ * @param {number|string} budgetSTX - Available STX balance
+ * @param {number} [pricePerNFT=10] - Price in STX per NFT
+ * @returns {number} Maximum mintable quantity as a non-negative integer
+ */
+export const calculateMaxMintQuantity = (budgetSTX, pricePerNFT = 10) => {
+  const budget = Number(budgetSTX);
+  const price = Number.isFinite(Number(pricePerNFT)) && Number(pricePerNFT) > 0 ? Number(pricePerNFT) : 10;
+  if (!Number.isFinite(budget) || budget <= 0) return 0;
+  return Math.floor(budget / price);
+};
+
+/**
  * formatMintCount - Format a mint count with correct singular/plural label.
  * @param {number|string} count - Mint count
  * @returns {string} Count with 'mint'/'mints' label (e.g. "1 mint", "3 mints")
