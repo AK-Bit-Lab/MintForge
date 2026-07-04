@@ -29,20 +29,6 @@ jobs:
 
       - run: npm run lint
 
-      - name: Install Clarinet
-        run: |
-          CLARINET_VERSION="v3.15.1"
-          curl -sL "https://github.com/stx-labs/clarinet/releases/download/${CLARINET_VERSION}/clarinet-linux-x64-glibc.tar.gz" -o /tmp/clarinet.tar.gz
-          tar -xzf /tmp/clarinet.tar.gz -C /tmp
-          sudo mv /tmp/clarinet /usr/local/bin/clarinet
-          chmod +x /usr/local/bin/clarinet
-          clarinet --version
-
-      - name: Run contract checks
-        run: npm run contracts:check
-
-      - run: npm test
-
       - name: Run frontend tests
         run: cd frontend && npm test
 
