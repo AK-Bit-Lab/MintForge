@@ -407,7 +407,6 @@ export function validateTokenURI(value) {
   const isNearLimit = characterCount >= MAX_TOKEN_URI_LENGTH * 0.9
   const isAsciiOnly = ASCII_PATTERN.test(normalized)
   const isSecureScheme = kind === 'ipfs' || kind === 'https' || kind === 'arweave'
-  const isValid = Boolean(normalized) && isSecureScheme && isAsciiOnly && characterCount <= MAX_TOKEN_URI_LENGTH
 
   if (!normalized) {
     return {
