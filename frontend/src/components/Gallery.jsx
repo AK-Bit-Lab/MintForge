@@ -278,7 +278,7 @@ export function Gallery() {
         <div className="gallery__empty gallery__empty--search" role="status" aria-live="polite">
           <div className="gallery__empty-icon" aria-hidden="true">🔍</div>
           <h3>No matching NFTs</h3>
-          <p>We couldn't find anything matching "{searchTerm}"</p>
+          <p>We couldn&#39;t find anything matching &quot;{searchTerm}&quot;</p>
           <button
             type="button"
             className="gallery__clear-btn"
