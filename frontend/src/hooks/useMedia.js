@@ -6,7 +6,7 @@
  *
  * @module useMedia
  */
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 /**
  * Matches one or more media query strings and returns their current match state.
@@ -15,14 +15,14 @@ import { useEffect, useState } from 'react';
  * @returns {{ matches: boolean }} for single query, or {{ [query: string]: boolean }} for multiple.
  */
 export function useMedia(queries) {
-  const queryArray = Array.isArray(queries) ? queries : [queries];
+  const queryArray = useMemo(() => (Array.isArray(queries) ? queries : [queries]), [queries]);
 
-  const getMatches = () => {
+  const getMatches = useCallback(() => {
     if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
       return queryArray.reduce((acc, q) => ({ ...acc, [q]: false }), {});
     }
     return queryArray.reduce((acc, q) => ({ ...acc, [q]: window.matchMedia(q).matches }), {});
-  };
+  }, [queryArray]);
 
   const [matches, setMatches] = useState(getMatches);
 
@@ -48,7 +48,7 @@ export function useMedia(queries) {
         }
       });
     };
-  }, [queryArray]);
+  }, [queryArray, getMatches]);
 
   if (queryArray.length === 1) {
     return { matches: matches[queryArray[0]] ?? false };
