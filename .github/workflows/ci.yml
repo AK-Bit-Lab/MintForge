@@ -11,13 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 22.x]
+        node-version: [20.x, 22.x]
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
@@ -28,6 +28,15 @@ jobs:
         run: cd frontend && npm ci
 
       - run: npm run lint
+
+      - name: Install Clarinet
+        run: |
+          CLARINET_VERSION="v3.15.1"
+          curl -sL "https://github.com/stx-labs/clarinet/releases/download/${CLARINET_VERSION}/clarinet-linux-x64-glibc.tar.gz" -o /tmp/clarinet.tar.gz
+          tar -xzf /tmp/clarinet.tar.gz -C /tmp
+          sudo mv /tmp/clarinet /usr/local/bin/clarinet
+          chmod +x /usr/local/bin/clarinet
+          clarinet --version
 
       - name: Run contract checks
         run: npm run contracts:check
