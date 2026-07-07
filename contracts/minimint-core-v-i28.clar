@@ -230,4 +230,4 @@
     (ok paused)
   )
 )
-// commit 1: admin pause verified
+;; commit 1: admin pause verified
