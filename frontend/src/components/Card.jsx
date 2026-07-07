@@ -12,11 +12,7 @@ import PropTypes from 'prop-types'
 import { useCallback } from 'react'
 import './Card.css'
 
-/** Valid visual variant names accepted by the Card component. */
-// Removed unused VALID_VARIANTS constant
-
-/** Valid internal padding size names accepted by the Card component. */
-// Removed unused VALID_PADDING_SIZES constant
+// (Removed unused variant and padding constants comments)
 /**
  * Interactive card container with customizable padding, variants, and hover states.
  * 
@@ -136,20 +132,38 @@ Card.propTypes = {
   ariaDescriptionId: PropTypes.string
 }
 
+Card.displayName = 'Card';
+
+Card.defaultProps = {
+  variant: 'default',
+  padding: 'medium',
+  hover: false,
+  className: '',
+  onClick: undefined,
+  ariaLabel: undefined,
+  ariaDescriptionId: undefined
+}
+
 CardHeader.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string
 }
+
+CardHeader.displayName = 'CardHeader';
 
 CardBody.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string
 }
 
+CardBody.displayName = 'CardBody';
+
 CardFooter.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string
 }
+
+CardFooter.displayName = 'CardFooter';
 
 /**
  * Default export for Card component with sub-components.

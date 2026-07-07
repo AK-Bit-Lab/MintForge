@@ -190,11 +190,12 @@ export function useToast() {
   }, [])
 
   useEffect(() => {
+    const timers = timersRef.current;
     return () => {
-      timersRef.current.forEach((timer) => clearTimeout(timer))
-      timersRef.current.clear()
-    }
-  }, [])
+      timers.forEach((timer) => clearTimeout(timer));
+      timers.clear();
+    };
+  }, []);
 
   const persistent = useCallback((message, type = 'info') => {
     return addToast(message, type, 0);

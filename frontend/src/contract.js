@@ -67,6 +67,11 @@ function getBaseExplorerUrl(type, identifier) {
   return `${baseUrl}/${safeType}/${encodeURIComponent(encodedIdentifier)}?chain=${constants.NETWORK}`;
 }
 
+/**
+ * Returns the explorer URL for a transaction ID.
+ * @param {string} txId - Transaction identifier (may be null/undefined).
+ * @returns {string} Full explorer URL for the transaction.
+ */
 export function getExplorerUrl(txId) {
   const identifier = txId == null ? '' : txId;
   return getBaseExplorerUrl('txid', identifier);

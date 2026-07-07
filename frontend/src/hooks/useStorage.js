@@ -63,7 +63,7 @@ export function useLocalStorage(key, initialValue) {
     } catch (error) {
       console.warn(`Error setting localStorage key "${key}":`, error)
     }
-  }, [normalizedKey, hasValidKey, key])
+     }, [normalizedKey, hasValidKey, key])
 
   // Remove from localStorage
   const removeValue = useCallback(() => {
@@ -77,9 +77,9 @@ export function useLocalStorage(key, initialValue) {
     } catch (error) {
       console.warn(`Error removing localStorage key "${key}":`, error)
     }
-  }, [normalizedKey, initialValue, hasValidKey])
+  }, [normalizedKey, initialValue, hasValidKey, key])
 
-  useEffect(() => {
+     useEffect(() => {
     if (typeof window === 'undefined' || !hasValidKey) return
 
     // Keep state aligned when another tab mutates the same key.
@@ -95,9 +95,9 @@ export function useLocalStorage(key, initialValue) {
 
     window.addEventListener('storage', handleStorage)
     return () => window.removeEventListener('storage', handleStorage)
-  }, [normalizedKey, initialValue, hasValidKey])
+  }, [normalizedKey, initialValue, hasValidKey, key])
 
-  useEffect(() => {
+     useEffect(() => {
     if (typeof window === 'undefined' || !hasValidKey) return
 
     try {
@@ -107,7 +107,7 @@ export function useLocalStorage(key, initialValue) {
       console.warn(`Error reloading localStorage key "${key}":`, error)
       setStoredValue(initialValue)
     }
-  }, [normalizedKey, initialValue, hasValidKey])
+  }, [normalizedKey, initialValue, hasValidKey, key])
 
   return [storedValue, setValue, removeValue, { hasValue: storedValue !== null && storedValue !== undefined, isReady: typeof window !== 'undefined' }]
 }
@@ -143,7 +143,7 @@ export function useSessionStorage(key, initialValue) {
     }
   })
 
-  const setValue = useCallback((value) => {
+     const setValue = useCallback((value) => {
     try {
       if (typeof window === 'undefined' || !hasValidKey) {
         setStoredValue((currentValue) => (value instanceof Function ? value(currentValue) : value))
@@ -157,9 +157,9 @@ export function useSessionStorage(key, initialValue) {
     } catch (error) {
       console.warn(`Error setting sessionStorage key "${key}":`, error)
     }
-  }, [normalizedKey, hasValidKey])
+  }, [normalizedKey, hasValidKey, key])
 
-  const removeValue = useCallback(() => {
+     const removeValue = useCallback(() => {
     try {
       if (typeof window === 'undefined' || !hasValidKey) {
         setStoredValue(initialValue)
@@ -170,9 +170,9 @@ export function useSessionStorage(key, initialValue) {
     } catch (error) {
       console.warn(`Error removing sessionStorage key "${key}":`, error)
     }
-  }, [normalizedKey, initialValue, hasValidKey])
+  }, [normalizedKey, initialValue, hasValidKey, key])
 
-  useEffect(() => {
+     useEffect(() => {
     if (typeof window === 'undefined' || !hasValidKey) return
 
     const handleStorage = (event) => {
@@ -189,9 +189,9 @@ export function useSessionStorage(key, initialValue) {
 
     window.addEventListener('storage', handleStorage)
     return () => window.removeEventListener('storage', handleStorage)
-  }, [normalizedKey, initialValue, hasValidKey])
+  }, [normalizedKey, initialValue, hasValidKey, key])
 
-  useEffect(() => {
+     useEffect(() => {
     if (typeof window === 'undefined' || !hasValidKey) return
 
     try {
@@ -201,7 +201,7 @@ export function useSessionStorage(key, initialValue) {
       console.warn(`Error reloading sessionStorage key "${key}":`, error)
       setStoredValue(initialValue)
     }
-  }, [normalizedKey, initialValue, hasValidKey])
+  }, [normalizedKey, initialValue, hasValidKey, key])
 
   return [storedValue, setValue, removeValue, { hasValue: storedValue !== null && storedValue !== undefined }]
 }
