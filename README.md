@@ -236,6 +236,16 @@ We welcome contributions! Please see our [CONTRIBUTING.md](./CONTRIBUTING.md) fo
 
 ## 📄 License
 
+## 🛠️ Maintenance
+
+The MintForge repository follows a conventional Git workflow. When performing maintenance, follow these steps:
+1. **Synchronise** – Pull the latest `main` branch.
+2. **Install dependencies** – Run `npm ci` at the repository root and again inside `frontend/`.
+3. **Validate code** – Execute `npm run lint` and `npm run check` to ensure the codebase passes linting and builds without errors.
+4. **Run tests** – Run `npm test` for backend tests and `npm run frontend:test` for the frontend test suite.
+5. **Commit changes** – Use clear, atomic commit messages and push to the `main` branch.
+6. **Release** – Tag releases with `npm version` inside the `frontend` directory and push tags.
+
 This project is licensed under the [MIT License](./LICENSE).
 
 Built for the Bitcoin ecosystem on Stacks, with a focus on predictable mint and staking flows.
