@@ -18,6 +18,9 @@
 /**
  * Debounce utility to limit function execution frequency.
  */
+/**
+ * Debounce utility to limit function execution frequency.
+ */
 export function debounce(fn, delay = 300) {
   let timerId = null;
 
@@ -47,6 +50,12 @@ export function debounce(fn, delay = 300) {
  *
  * @param {string} [prefix=''] - Optional prefix for the ID.
  * @returns {string} A unique identifier string.
+ */
+/**
+ * Generate a unique identifier with optional prefix.
+ */
+/**
+ * Generate a unique identifier with optional prefix.
  */
 export function generateId(prefix = '') {
   const timestamp = Date.now().toString(36);
