@@ -6,6 +6,7 @@
  *
  * @module helpers
  */
+// Helper utilities for the MintForge frontend
 
 /**
  * Creates a debounced version of a function that delays invocation until `delay` milliseconds have passed since the last call.
@@ -13,6 +14,9 @@
  * @param {Function} fn - The function to debounce.
  * @param {number} [delay=300] - Debounce delay in milliseconds.
  * @returns {Function} A debounced function with a `cancel` method to abort pending calls.
+ */
+/**
+ * Debounce utility to limit function execution frequency.
  */
 export function debounce(fn, delay = 300) {
   let timerId = null;
