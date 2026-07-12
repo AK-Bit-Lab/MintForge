@@ -8,14 +8,11 @@
  */
 
 /**
- * Creates a debounced version of a function that delays invocation
- * until `delay` milliseconds have passed since the last call.
- *
- * Useful for rate-limiting search input, scroll handlers, and resize events.
+ * Creates a debounced version of a function that delays invocation until `delay` milliseconds have passed since the last call.
  *
  * @param {Function} fn - The function to debounce.
  * @param {number} [delay=300] - Debounce delay in milliseconds.
- * @returns {Function} A debounced version of the input function with a `cancel` method.
+ * @returns {Function} A debounced function with a `cancel` method to abort pending calls.
  */
 export function debounce(fn, delay = 300) {
   let timerId = null;
@@ -56,6 +53,8 @@ export function generateId(prefix = '') {
 
 /**
  * Default export for helpers module.
+ * Provides utility functions for external use.
+ * @type {{debounce: (fn: Function, delay?: number) => Function, generateId: (prefix?: string) => string}}
  */
 export default {
   debounce,
