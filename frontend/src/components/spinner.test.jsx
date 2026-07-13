@@ -27,7 +27,7 @@ describe('Spinner', () => {
   it('emits live-region and ring metadata for UI targeting', () => {
       const markup = renderToStaticMarkup(React.createElement(Spinner))
 
-      expect(markup).toContain('data-live="polite"')
+      expect(markup).toContain('aria-live="polite"')
       expect(markup).toContain('data-part="ring"')
     })
 

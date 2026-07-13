@@ -92,6 +92,6 @@ describe('ProgressBar', () => {
         React.createElement(ProgressBar, { value: 25, max: 50, showLabel: false })
       )
 
-      expect(markup).toContain('aria-valuetext="50.0%"')
+      expect(markup).toContain('aria-valuetext="50% (25 of 50)"')
     })
 })
