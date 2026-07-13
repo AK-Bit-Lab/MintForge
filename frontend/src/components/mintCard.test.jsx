@@ -36,7 +36,7 @@ describe('MintCard', () => {
         })
       )
 
-      expect(markup).toContain('Token URI (Metadata URL)')
+      expect(markup).toContain('for="metadata-name"')
       expect(markup).toContain('Mint for 0.001 STX')
       expect(markup).toContain('data-connect-state="connected"')
       expect(markup).toContain('data-token-uri-valid="false"')
@@ -127,7 +127,7 @@ describe('MintCard', () => {
       expect(markup).not.toContain('role="alert"')
     })
 
-  it('disables the token URI input when the wallet cap has been reached', () => {
+  it('disables the mint submit button when the wallet cap has been reached', () => {
       const markup = renderToStaticMarkup(
         React.createElement(MintCard, {
           contractInfo: { mintFee: 1000, totalSupply: 5, maxSupply: 10, walletMinted: 2, maxPerWallet: 2, isPaused: false },
@@ -137,10 +137,11 @@ describe('MintCard', () => {
         })
       )
 
-      expect(markup).toMatch(/id="tokenURI"[^>]*disabled=""/)
+      expect(markup).toMatch(/mint-card__btn--primary"[^>]*disabled=""/)
+      expect(markup).toContain('Wallet Limit Reached')
     })
 
-  it('applies token URI max length constraint to metadata input field', () => {
+  it('documents the metadata URL length constraint in the mint action guidance', () => {
       const markup = renderToStaticMarkup(
         React.createElement(MintCard, {
           contractInfo: { mintFee: 1000, totalSupply: 0, maxSupply: 10, walletMinted: 0, maxPerWallet: 2, isPaused: false },
@@ -150,7 +151,7 @@ describe('MintCard', () => {
         })
       )
 
-      expect(markup).toContain('maxLength="256"')
+      expect(markup).toContain('up to 256 characters')
     })
 
   it('formats mint fee values in STX units within summary stats', () => {
@@ -179,7 +180,7 @@ describe('MintCard', () => {
       expect(markup).toContain('3 / 10')
     })
 
-  it('renders the token URI input label for connected users', () => {
+  it('renders the metadata form name field for connected users', () => {
       const markup = renderToStaticMarkup(React.createElement(MintCard, {
         contractInfo: { mintFee: 1000, totalSupply: 0, maxSupply: 10 },
         onMint: async () => null,
@@ -189,7 +190,7 @@ describe('MintCard', () => {
         contractError: null
       }))
 
-      expect(markup).toContain('Token URI (metadata URL)')
+      expect(markup).toContain('for="metadata-name"')
     })
 
   it('renders wallet mint count and configured wallet cap values', () => {
