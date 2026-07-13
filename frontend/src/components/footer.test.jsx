@@ -15,9 +15,9 @@ describe('Footer', () => {
       const markup = renderToStaticMarkup(React.createElement(Footer))
 
       expect(markup).toContain('aria-label="Site footer"')
-      expect(markup).toContain('aria-label="Project links"')
-      expect(markup).toContain('aria-label="Community links"')
-      expect(markup).toContain('aria-label="Resource links"')
+      expect(markup).toContain('id="footer-project-links-heading"')
+      expect(markup).toContain('id="footer-community-links-heading"')
+      expect(markup).toContain('id="footer-resource-links-heading"')
       expect(markup).toContain('data-column-count="3"')
       expect(markup).toContain('data-link-count="3"')
       expect(markup).toContain('data-link-count="5"')
@@ -51,7 +51,7 @@ describe('Footer', () => {
   it('includes an explorer link for the tracked core contract', () => {
       const markup = renderToStaticMarkup(React.createElement(Footer))
       expect(markup).toContain('Core Contract')
-      expect(markup).toContain('https://explorer.hiro.so/address/SP5K2RHMSBH4PAP4PGX77MCVNK1ZEED07CWX9TJT.minimint-core-v-i27?chain=mainnet')
+      expect(markup).toContain('https://explorer.hiro.so/address/SP2KK5E7D3NFTSDMSJ7SFK99YY68194E3J2H6TT96.minimint-core-v-i28?chain=mainnet')
     })
 
   it('shows the current year in copyright copy', () => {
@@ -63,7 +63,7 @@ describe('Footer', () => {
   it('includes an explorer link for the tracked hub contract', () => {
       const markup = renderToStaticMarkup(React.createElement(Footer))
       expect(markup).toContain('Hub Contract')
-      expect(markup).toContain('https://explorer.hiro.so/address/SP5K2RHMSBH4PAP4PGX77MCVNK1ZEED07CWX9TJT.minimint-hub-v-i27?chain=mainnet')
+      expect(markup).toContain('https://explorer.hiro.so/address/SP2KK5E7D3NFTSDMSJ7SFK99YY68194E3J2H6TT96.minimint-hub-v-i28?chain=mainnet')
     })
 
   it('includes the IPFS docs link in project resources', () => {

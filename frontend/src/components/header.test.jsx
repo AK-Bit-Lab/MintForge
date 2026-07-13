@@ -210,7 +210,7 @@ describe('Header', () => {
         })
       )
 
-      expect(markup).toContain('title="SP3FBR2AGK4B2Y6A4J91G4FJ3P1N5X4K8TB8Z3YQH"')
+      expect(markup).toContain('title="Copy wallet address: SP3FBR2AGK4B2Y6A4J91G4FJ3P1N5X4K8TB8Z3YQH"')
       expect(markup).toContain('data-account-length="41"')
     })
 
@@ -226,7 +226,7 @@ describe('Header', () => {
       )
 
       expect(markup).toContain('...')
-      expect(markup).toContain('title="SP5K2RHMSBH4PAP4PGX77MCVNK1ZEED07CWX9TJT"')
+      expect(markup).toContain('title="Copy wallet address: SP5K2RHMSBH4PAP4PGX77MCVNK1ZEED07CWX9TJT"')
     })
 
   it('renders wallet connection status text in live region', () => {
@@ -247,7 +247,7 @@ describe('Header', () => {
         })
       )
 
-      expect(connectedMarkup).toContain('Wallet connected')
+      expect(connectedMarkup).toContain('Wallet ready')
       expect(disconnectedMarkup).toContain('Wallet disconnected')
     })
 
@@ -261,7 +261,7 @@ describe('Header', () => {
         })
       )
 
-      expect(markup).toContain('Connect Wallet')
+      expect(markup).toContain('Connect wallet')
       expect(markup).not.toContain('Disconnect')
     })
 })
