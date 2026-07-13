@@ -14,14 +14,64 @@ import mediaHooks, {
   usePrefersReducedMotion
 } from './useMediaQuery'
 
+function MediaQueryProbe({ query }) {
+  const matches = useMediaQuery(query)
+  return React.createElement('div', { 'data-matches': String(matches) })
+}
+
+function DarkModeProbe() {
+  const matches = usePrefersDarkMode()
+  return React.createElement('div', { 'data-prefers-dark': String(matches) })
+}
+
+function DesktopProbe() {
+  const matches = useIsDesktop()
+  return React.createElement('div', { 'data-desktop': String(matches) })
+}
+
+function HighContrastProbe() {
+  const matches = useHighContrast()
+  return React.createElement('div', { 'data-high-contrast': String(matches) })
+}
+
+function LandscapeProbe() {
+  const matches = useIsLandscape()
+  return React.createElement('div', { 'data-landscape': String(matches) })
+}
+
+function LargeDesktopProbe() {
+  const matches = useIsLargeDesktop()
+  return React.createElement('div', { 'data-large-desktop': String(matches) })
+}
+
+function MobileProbe() {
+  const matches = useIsMobile()
+  return React.createElement('div', { 'data-mobile': String(matches) })
+}
+
+function PortraitProbe() {
+  const matches = useIsPortrait()
+  return React.createElement('div', { 'data-portrait': String(matches) })
+}
+
+function ReducedMotionProbe() {
+  const matches = usePrefersReducedMotion()
+  return React.createElement('div', { 'data-prefers-reduced-motion': String(matches) })
+}
+
+function TabletProbe() {
+  const matches = useIsTablet()
+  return React.createElement('div', { 'data-tablet': String(matches) })
+}
+
 describe('useMediaQuery', () => {
   it('returns false when query is blank after trimming', () => {
-      const markup = renderToStaticMarkup(React.createElement(MediaQueryProbe))
+      const markup = renderToStaticMarkup(React.createElement(MediaQueryProbe, { query: '   ' }))
       expect(markup).toContain('data-matches="false"')
     })
 
   it('returns false when query is not a string', () => {
-      const markup = renderToStaticMarkup(React.createElement(MediaQueryProbe))
+      const markup = renderToStaticMarkup(React.createElement(MediaQueryProbe, { query: undefined }))
       expect(markup).toContain('data-matches="false"')
     })
 })
