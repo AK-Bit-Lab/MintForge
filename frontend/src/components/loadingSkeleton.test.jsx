@@ -65,6 +65,4 @@ describe('LoadingSkeleton', () => {
 
       expect(markup.match(/class="skeleton skeleton--text/g)?.length).toBe(3)
     })
-  })
-
 })
