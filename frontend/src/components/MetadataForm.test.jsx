@@ -1,17 +1,22 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, cleanup } from '@testing-library/react';
+import { vi, test, expect, afterEach } from 'vitest';
 import MetadataForm from './MetadataForm';
 
+afterEach(() => {
+  cleanup();
+});
+
 // Mock the useIPFSUpload hook to avoid real network calls
-jest.mock('../hooks/useIPFSUpload', () => ({
+vi.mock('../hooks/useIPFSUpload', () => ({
   useIPFSUpload: () => ({
-    upload: jest.fn().mockResolvedValue('ipfs://bafytestmetadata'),
+    upload: vi.fn().mockResolvedValue('ipfs://bafytestmetadata'),
     status: 'idle',
     error: null,
   }),
 }));
 
 test('renders metadata form fields', () => {
-  const onMetadataReady = jest.fn();
+  const onMetadataReady = vi.fn();
   render(<MetadataForm onMetadataReady={onMetadataReady} />);
 
   expect(screen.getByLabelText(/Name/i)).toBeInTheDocument();
@@ -20,7 +25,7 @@ test('renders metadata form fields', () => {
 });
 
 test('calls onMetadataReady with generated CID after submit', async () => {
-  const onMetadataReady = jest.fn();
+  const onMetadataReady = vi.fn();
   render(<MetadataForm onMetadataReady={onMetadataReady} />);
 
   fireEvent.change(screen.getByLabelText(/Name/i), { target: { value: 'Test NFT' } });

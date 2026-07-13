@@ -1,11 +1,12 @@
 import { render, screen } from '@testing-library/react';
+import { vi, test, expect } from 'vitest';
 import React from 'react';
 import MintCard from './MintCard';
 
 // Mock the useIPFSUpload hook used inside MetadataForm to avoid real network calls
-jest.mock('../hooks/useIPFSUpload', () => ({
+vi.mock('../hooks/useIPFSUpload', () => ({
   useIPFSUpload: () => ({
-    upload: jest.fn().mockResolvedValue('ipfs://mockedCID'),
+    upload: vi.fn().mockResolvedValue('ipfs://mockedCID'),
     status: 'idle',
     error: null,
   }),
@@ -14,10 +15,10 @@ jest.mock('../hooks/useIPFSUpload', () => ({
 // Minimal required props for MintCard
 const defaultProps = {
   contractInfo: { mintFee: 1000, totalSupply: 0, maxSupply: 10, walletMinted: 0, maxPerWallet: 2, isPaused: false },
-  onMint: jest.fn().mockResolvedValue(null),
+  onMint: vi.fn().mockResolvedValue(null),
   isConnected: true,
   isConnecting: false,
-  onConnect: jest.fn(),
+  onConnect: vi.fn(),
   walletError: null,
   contractError: null,
 };
