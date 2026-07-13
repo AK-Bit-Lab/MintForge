@@ -3,6 +3,25 @@ import useClipboardDefault, { useClipboard } from './useClipboard'
 import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 
+function ClipboardProbe() {
+  const { copied, error } = useClipboard()
+  return React.createElement('div', { 'data-copied': String(copied), 'data-error': String(error) })
+}
+
+function ClipboardMethodProbe() {
+  const { copy, reset } = useClipboard()
+  return React.createElement('div', { 'data-copy-type': typeof copy, 'data-reset-type': typeof reset })
+}
+
+function ClipboardTimeoutProbe() {
+  const { copied, copy, reset } = useClipboard(0)
+  return React.createElement('div', {
+    'data-copied': String(copied),
+    'data-copy-type': typeof copy,
+    'data-reset-type': typeof reset
+  })
+}
+
 describe('useClipboard module exports', () => {
   it('keeps default export aligned with named hook export', () => {
       expect(useClipboardDefault).toBe(useClipboard)

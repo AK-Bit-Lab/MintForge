@@ -3,6 +3,44 @@ import useAsyncDefault, { useAsync } from './useAsync'
 import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 
+const noopAsync = () => Promise.resolve(null)
+
+function AsyncImmediateProbe() {
+  const { isLoading, hasRun } = useAsync(noopAsync, { immediate: true })
+  return React.createElement('div', { 'data-loading': String(isLoading), 'data-has-run': String(hasRun) })
+}
+
+function AsyncMetadataProbe() {
+  const { executionCount, lastExecutedAt } = useAsync(noopAsync)
+  return React.createElement('div', {
+    'data-execution-count': String(executionCount),
+    'data-last-executed-at': String(lastExecutedAt)
+  })
+}
+
+function AsyncProbe() {
+  const { data, error, isLoading, isSuccess, isError, hasRun } = useAsync(noopAsync)
+  return React.createElement('div', {
+    'data-data': String(data),
+    'data-error': String(error),
+    'data-loading': String(isLoading),
+    'data-success': String(isSuccess),
+    'data-is-error': String(isError),
+    'data-has-run': String(hasRun)
+  })
+}
+
+function AsyncMethodProbe() {
+  const { execute, reset, clearError, retry, setData } = useAsync(noopAsync)
+  return React.createElement('div', {
+    'data-execute-type': typeof execute,
+    'data-reset-type': typeof reset,
+    'data-clear-error-type': typeof clearError,
+    'data-retry-type': typeof retry,
+    'data-set-data-type': typeof setData
+  })
+}
+
 describe('useAsync module exports', () => {
   it('keeps default export aligned with named hook export', () => {
       expect(useAsyncDefault).toBe(useAsync)
