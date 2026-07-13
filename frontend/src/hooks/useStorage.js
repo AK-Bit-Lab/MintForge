@@ -23,6 +23,13 @@ export function useLocalStorage(key, initialValue) {
   const normalizedKey = typeof key === 'string' ? key.trim() : ''
   const hasValidKey = normalizedKey.length > 0
 
+  // Tracks whether the component has mounted on the client, so consumers can
+  // distinguish the initial (SSR-safe) render from the hydrated client state.
+  const [isReady, setIsReady] = useState(false)
+  useEffect(() => {
+    setIsReady(true)
+  }, [])
+
   // Get stored value or use initial
   const [storedValue, setStoredValue] = useState(() => {
     try {
@@ -109,7 +116,7 @@ export function useLocalStorage(key, initialValue) {
     }
   }, [normalizedKey, initialValue, hasValidKey, key])
 
-  return [storedValue, setValue, removeValue, { hasValue: storedValue !== null && storedValue !== undefined, isReady: typeof window !== 'undefined' }]
+  return [storedValue, setValue, removeValue, { hasValue: storedValue !== null && storedValue !== undefined, isReady }]
 }
 
 /**
