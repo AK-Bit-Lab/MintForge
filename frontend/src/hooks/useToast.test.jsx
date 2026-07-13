@@ -9,6 +9,42 @@ import useToastDefault, {
   useToast
 } from './useToast'
 
+function ToastMethodProbe() {
+  const { addToast, showToast, removeToast, clearAll } = useToast()
+  return React.createElement('div', {
+    'data-add-type': typeof addToast,
+    'data-show-type': typeof showToast,
+    'data-remove-type': typeof removeToast,
+    'data-clear-type': typeof clearAll
+  })
+}
+
+function ToastStateProbe() {
+  const { count, hasToasts, latestToast, toasts } = useToast()
+  return React.createElement('div', {
+    'data-count': String(count),
+    'data-has-toasts': String(hasToasts),
+    'data-latest-toast': String(latestToast),
+    'data-toasts-length': String(toasts.length)
+  })
+}
+
+function ToastAliasProbe() {
+  const { addToast, showToast } = useToast()
+  return React.createElement('div', { 'data-show-is-add': String(showToast === addToast) })
+}
+
+function ToastVariantMethodProbe() {
+  const { success, error, warning, info, persistent } = useToast()
+  return React.createElement('div', {
+    'data-success-type': typeof success,
+    'data-error-type': typeof error,
+    'data-warning-type': typeof warning,
+    'data-info-type': typeof info,
+    'data-persistent-type': typeof persistent
+  })
+}
+
 describe('useToast', () => {
   it('exposes core toast queue methods as functions', () => {
       const markup = renderToStaticMarkup(React.createElement(ToastMethodProbe))

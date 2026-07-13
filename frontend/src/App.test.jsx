@@ -1,13 +1,47 @@
 import { describe, expect, it, vi } from 'vitest'
-import App, {
+import React from 'react'
+import { renderToStaticMarkup } from 'react-dom/server'
+
+const mockWallet = {
+  address: null,
+  isConnected: false,
+  isConnecting: false,
+  connect: () => {},
+  disconnect: () => {},
+  error: null
+}
+
+const mockContract = {
+  contractInfo: null,
+  mint: () => {},
+  isLoading: false,
+  error: null
+}
+
+const mockToast = {
+  toasts: [],
+  showToast: () => {},
+  removeToast: () => {}
+}
+
+vi.mock('./hooks', async (importOriginal) => {
+  const actual = await importOriginal()
+  return {
+    ...actual,
+    useWallet: () => mockWallet,
+    useContract: () => mockContract,
+    useToast: () => mockToast
+  }
+})
+
+const App = (await import('./App')).default
+const {
   appendRecentMintResult,
   getAppConnectionState,
   getAppDocumentTitle,
   getBackToTopControlState,
   getToastStackMetadata
-} from './App'
-import React from 'react'
-import { renderToStaticMarkup } from 'react-dom/server'
+} = await import('./App')
 
 describe('appendRecentMintResult', () => {
   it('returns a new array without mutating previous entries', () => {
@@ -103,7 +137,7 @@ describe('App shell metadata', () => {
       const markup = renderToStaticMarkup(React.createElement(App))
 
       expect(markup).toContain('data-visible="false"')
-      expect(markup).toContain('title="Back to top"')
+      expect(markup).toContain('title="Back to top of page"')
     })
 
   it('exposes toast stack count metadata for active notifications', () => {

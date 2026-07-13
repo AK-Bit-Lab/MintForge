@@ -3,6 +3,30 @@ import useTransactionStatusDefault, { useTransactionStatus } from './useTransact
 import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 
+function TransactionProbe() {
+  const { status, error, isLoading, isConfirmed, isPending, isFailed } = useTransactionStatus('')
+  return React.createElement('div', {
+    'data-status': String(status),
+    'data-error': String(error),
+    'data-loading': String(isLoading),
+    'data-confirmed': String(isConfirmed),
+    'data-pending': String(isPending),
+    'data-failed': String(isFailed)
+  })
+}
+
+function TransactionRefetchProbe() {
+  const { refetch } = useTransactionStatus('')
+  return React.createElement('div', { 'data-refetch-type': typeof refetch })
+}
+
+function TransactionSsrProbe() {
+  const { status, isLoading } = useTransactionStatus(
+    '0x1234567890123456789012345678901234567890123456789012345678901234'
+  )
+  return React.createElement('div', { 'data-status': String(status), 'data-loading': String(isLoading) })
+}
+
 describe('useTransaction module exports', () => {
   it('keeps default export aligned with named hook export', () => {
       expect(useTransactionStatusDefault).toBe(useTransactionStatus)
