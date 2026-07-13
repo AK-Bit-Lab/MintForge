@@ -213,6 +213,8 @@ We welcome contributions! Please see our [CONTRIBUTING.md](./CONTRIBUTING.md) fo
 
 ### Contribution Guidelines
 
+**Maintenance Tip:** Remember to run `npm run lint` and `npm run check` after each change to catch issues early.
+
 - Fork the repository and create a feature branch.
 - Follow the existing code style and run lint and tests before committing.
 - Write clear, concise commit messages.
